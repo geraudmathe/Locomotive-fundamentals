@@ -11,20 +11,22 @@ This book is currently uncomplete and should evolve in the future. For any quest
   1. __[Introduction](#introduction)__
 
   2. __[Installation](#installation)__
+  
+  3. __Overview__
 
-  3. __[Liquid syntax](#liquidsyntax)__
+  4. __[Liquid syntax](#liquidsyntax)__
 
-  4. __[Models mapping and creation](#modelsmapping)__
+  5. __[Models mapping and creation](#modelsmapping)__
 
-  5. __Templating logic__
+  6. __Templating logic__
 
-  6. __Using Locomotive as an engine__
+  7. __Locomotive editor__
 
-  6. __Use multi-sites__
+  8. __Using Locomotive in an existing rails app__
 
-  7. __Customizing locomotive__
+  9. __Use multi-sites__
 
-  8. __Locomotive editor__
+  10. __Customizing locomotive__
 
 * ###Appendix
   
@@ -85,8 +87,6 @@ First, to get a working version of locomotive cms in your local machine , you wi
 * mongoDB 
 
 Now for those who have 
-
-### I.As a Website
 
 ### II.As an engine
 
