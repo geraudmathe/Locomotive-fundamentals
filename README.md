@@ -117,7 +117,7 @@ You can have as many ``` {% block %} ``` tags as you want, everywhere in the lay
 The principle of page's inheritance can be applied to every page. 
 When you create a page, it automatically inherits from index, but you can also make it inherits from another page, by specifying it's parent :
 
-![Specifying parent](Locomotive-fundamentals/images/specifying_parent.png)
+![Specifying parent](Locomotive-fundamentals/raw/master/images/specifying_parent.png)
 
 By doing so, you can define as many levels as you want :
 
