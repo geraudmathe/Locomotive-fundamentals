@@ -73,10 +73,36 @@ In Locomotive, it's a bit different :
 All pages inherit from index. This way, the index contains the application's layout and the index page content. How do you re-use the layout without re-using the index page content ? By introducing ```{% block 'block_name' %} ... {% endblock %}``` : since all pages inherit from index, you declare blocks of content inside the layout (index), which will be overwritten in child pages. Here is a the simpliest example :
 
 Index page :
-<script src="https://gist.github.com/2687937.js?file=index.liquid.html"></script>
+
+```html
+<html>
+  <head>
+    <title>My index page</title>
+  </head>
+  <body>
+    <header>
+      layout header
+    </header>
+    <div id="content">
+      {% block content %}
+        the content of the index page
+      {% endblock %}
+    </div>
+    <footer>
+      layout footer
+    </footer>
+  </body>
+</html>
+```
 
 A page, which inherits from index :
-<script src="https://gist.github.com/2687937.js?file=a-page.liquid.html"></script>
+```html
+{% extends parent %}
+
+{% block content %}
+  the content of this page
+{% endblock %}
+```
 
 By extending index, 'a-page' re-use all of its content, except the content inside the ``` {% block %} ``` tag which is overwritten. This tag is written with the Liquid syntax which will is explained later.
 
