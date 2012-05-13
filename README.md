@@ -6,25 +6,25 @@
 
 1. __[Foreword](#foreword)__
 
-    *  __[Why this guide ?](#foreword_1)__
-    *  __[Why you should use Locomotive ?](#foreword_2)__
-    *  __[Assumptions](#foreword_3)__
-    *  __[Ressources](#foreword_4)__
+ *  __[Why this guide ?](#foreword_1)__
+ *  __[Why you should use Locomotive ?](#foreword_2)__
+ *  __[Assumptions](#foreword_3)__
+ *  __[Ressources](#foreword_4)__
 
 2. __[Overview](#overview)__
 
-    *  __[What is Locomotive CMS ?](#overview_1)__
-    *  __[Key features](#overview_2)__
+ *  __[What is Locomotive CMS ?](#overview_1)__
+ *  __[Key features](#overview_2)__
   
 3. __[Getting something running in 5 minutes](#getting_something_running)__
 
 4. __[Templating](#templating)__ 
 
-    *  __[Templating Logic](#templating_1)__
-    *  __[Liquid syntax](#templating_2)__
-    *  __[Page options](#templating_3)__
-    *  __[Use case : templatize a model](#templating_4)__
-    *  __[Use case : create a RSS feed](#templating_5)__
+ *  __[Templating Logic](#templating_1)__
+ *  __[Liquid syntax](#templating_2)__
+ *  __[Page options](#templating_3)__
+ *  __[Use case : templatize a model](#templating_4)__
+ *  __[Use case : create a RSS feed](#templating_5)__
 
 
 
@@ -41,10 +41,10 @@
 
 11. __[Appendix](#appendix)__
 
-    *  __[List of examples](#appendix_1)__
-    * Deployment
-    * Schemas
-    * Links
+ *  __[List of examples](#appendix_1)__
+ * Deployment
+ * Schemas
+ * Links
 
 ##Foreword <a name="foreword"></a>
 
