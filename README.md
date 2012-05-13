@@ -178,28 +178,66 @@ The skeleton will look like that :
  
  First, the index page : 
  ```html
+ <html>
+  <head>
+    <title>The Main Layout</title>
+  </head>
+  <body>
+    <header>
+      Main header
+    </header>
+    <div id="content">
+      {% block main_content %}
+        the content of the index page
+      {% endblock %}
+    </div>
+    <footer>
+      Main footer
+    </footer>
+  </body>
+</html>
  ```
- <script src="https://gist.github.com/2688818.js?file=index.liquid.html"></script>
  
  The "normal" page, which inherits from it index :
- <script src="https://gist.github.com/2688818.js?file=normal.liquid.html"></script>
  
  ```html
+{% extends parent %}
+
+{% block main_content %}
+  the content of the normal page
+{% endblock %}
  ```
- 
  
  Then the "alternate layout" page, which doesn't extends its parent, index :
- <script src="https://gist.github.com/2688818.js?file=alternate_layout.liquid.html"></script>
- 
  ```html
- ```
+<html>
+  <head>
+    <title>The Alternate Layout</title>
+  </head>
+  <body>
+    <header>
+      Alternate header
+    </header>
+    <div id="content">
+      {% block alternate_content %}
+        the content of the alternate layout page, it can be empty if you just want to define an empty layout
+      {% endblock %}
+    </div>
+    <footer>
+      Alternate footer
+    </footer>
+  </body>
+</html>
+```
  
- 
- And finally, the "alternate page", which inherits from "alternate layout". You may notice the ``` {% extends alternate_layout %} ``` instead of ``` {% extends parent %} ```, as explained in the previous part.
- <script src="https://gist.github.com/2688818.js?file=alternate_page.liquid.html"></script>
- 
- ```html
- ```
+And finally, the "alternate page", which inherits from "alternate layout". You may notice the ``` {% extends alternate_layout %} ``` instead of ``` {% extends parent %} ```, as explained in the previous part.
+```html
+{% extends alternate_layout %}
+
+{% block alternate_content %}
+  the content of alternate page, using the layout defined in alternate_layout.liquid.html
+{% endblock %}
+```
  
 
 **Snippets**
