@@ -294,16 +294,13 @@ To cover all, we will distinguish 3 cases :
 which are all in the Locomotive doc : http://doc.locomotivecms.com/templates/basics
 In the next part, we give some examples.
 
-    original Liquid doc: 
-    https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
+original Liquid doc: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     
 #### Objects
 
 When writing a liquid template, you will access to a couple of objects representing for instance the current site, page, logged in account as well as collections such as your custom content types. They are also called 'drops'.
 
-Available objects and their attributes are listed here :
-
-    http://doc.locomotivecms.com/templates/objects
+Available objects and their attributes are listed here : http://doc.locomotivecms.com/templates/objects
 
 **SEO purpose**
 
@@ -320,7 +317,7 @@ You can either use the object ``` site ``` and have the same meta all over your 
   </body>
 </html>
  ```
-Or you can define SEO meta for each ``` site ``` :
+Or you can define SEO meta for each ``` page ``` :
 ```html
 <html>
   <head>
