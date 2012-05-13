@@ -5,17 +5,13 @@
 ## Summary
 
 1. __[Foreword](#foreword)__
-
-  *  __[Why this guide ?](#foreword_1)__
-  *  __[Why you should use Locomotive ?](#foreword_2)__
-  *  __[Assumptions](#foreword_3)__
-  *  __[Ressources](#foreword_4)__
-
+   *  __[Why this guide ?](#foreword_1)__
+   *  __[Why you should use Locomotive ?](#foreword_2)__
+   *  __[Assumptions](#foreword_3)__
+   *  __[Ressources](#foreword_4)__
 2. __[Overview](#overview)__
-
  *  __[What is Locomotive CMS ?](#overview_1)__
  *  __[Key features](#overview_2)__
-  
 3. __[Getting something running in 5 minutes](#getting_something_running)__
 
 4. __[Templating](#templating)__ 
