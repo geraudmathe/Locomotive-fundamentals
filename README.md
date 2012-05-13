@@ -108,7 +108,7 @@ By extending index, 'a-page' re-use all of its content, except the content insid
 
 You can have as many ``` {% block %} ``` tags as you want, everywhere in the layout, as long as the name of each block is unique. For a basic application which only have one layout, that's all you need to know.
 
-    src: http://doc.locomotivecms.com/templates/tags#block-section
+src: http://doc.locomotivecms.com/templates/tags#block-section
 
 #### Going further
 
@@ -120,7 +120,6 @@ When you create a page, it automatically inherits from index, but you can also m
 ![Specifying parent](Locomotive-fundamentals/raw/master/images/specifying_parent.png)
 
 By doing so, you can define as many levels as you want :
-
 
     +- Pages
         +- index
@@ -143,15 +142,20 @@ For example, how would you make "first page" extends "second page" ?
 It's simple : ``` {% extends first_page %} ``` ! 
 You specify the page you want to extend with its *slug*.
 
-    src: http://doc.locomotivecms.com/templates/tags#extends-section
+src: http://doc.locomotivecms.com/templates/tags#extends-section
 
 **What about several layouts ?**
 
 Let's say your website needs two layouts, how do it without putting the entire index in ``` {% block %} ``` tags ? It's actually fairly simple : you are not forced to make a page inherits its content from another.
 
 Remember the previous page we created which inherited from index : 
+```html
+{% extends parent %}
 
-<script src="https://gist.github.com/2687937.js?file=a-page.liquid.html"></script>
+{% block content %}
+  the content of this page
+{% endblock %}
+```
 
 Well, actually the tag ``` {% extends parent %} ``` can be removed, so the page doesn't extends any other page, letting you define a brand new layout if needed.
 
@@ -173,16 +177,30 @@ The skeleton will look like that :
  Here we go :
  
  First, the index page : 
+ ```html
+ ```
  <script src="https://gist.github.com/2688818.js?file=index.liquid.html"></script>
  
  The "normal" page, which inherits from it index :
  <script src="https://gist.github.com/2688818.js?file=normal.liquid.html"></script>
  
+ ```html
+ ```
+ 
+ 
  Then the "alternate layout" page, which doesn't extends its parent, index :
  <script src="https://gist.github.com/2688818.js?file=alternate_layout.liquid.html"></script>
  
+ ```html
+ ```
+ 
+ 
  And finally, the "alternate page", which inherits from "alternate layout". You may notice the ``` {% extends alternate_layout %} ``` instead of ``` {% extends parent %} ```, as explained in the previous part.
  <script src="https://gist.github.com/2688818.js?file=alternate_page.liquid.html"></script>
+ 
+ ```html
+ ```
+ 
 
 **Snippets**
 
@@ -199,15 +217,44 @@ Like Rails, you can pass a variable to the snippet, or simply include a static b
 
 
 Here is the index, which includes the sidebar, and also loops on products model and include the snippet "product_information" at each product item :
-<script src="https://gist.github.com/2688941.js?file=index.liquid.html"></script>
-
+```html
+<html>
+  <head>
+    <title>Snippet example</title>
+  </head>
+  <body>
+    <header>
+    </header>
+    <div id="content">
+      <!-- Loop on products  -->
+      {% for product in contents.products %}
+        <!-- Include "product_information" snippet with the current product -->
+        {% include 'product_information' with product %}
+      {% endfor %}
+    </div>
+    {% include 'sidebar' %}
+    <footer>
+    </footer>
+  </body>
+</html>
+```
+ 
 Then the sidebar :
-<script src="https://gist.github.com/2688941.js?file=sidebar.liquid.html"></script>
-
+```html
+<div id="sidebar">
+  the sidebar
+</div>
+```
+ 
 And finally the product_information snippet which uses the context "product" :
-<script src="https://gist.github.com/2688941.js?file=product_information.liquid.html"></script>
 
-    src: http://doc.locomotivecms.com/templates/tags#include-section
+```html
+<div class="product">
+{{ product.name }} :  {{ product.price }}$
+</div>
+```
+ 
+src: http://doc.locomotivecms.com/templates/tags#include-section
 
 ### Liquid syntax <a name="templating_2"></a>
 
@@ -261,10 +308,31 @@ Available objects and their attributes are listed here :
 **SEO purpose**
 
 You can either use the object ``` site ``` and have the same meta all over your website :
-<script src="https://gist.github.com/2689208.js?file=index.liquid.html"></script>
-Or you can define SEO meta for each ``` site ``` :
-<script src="https://gist.github.com/2689208.js?file=page.liquid.html"></script>
 
+```html
+<html>
+  <head>
+    <title>{{ site.seo_title }}</title>
+    <meta name='description' content='{{ site.meta_description }}' />
+    <meta name='keyword' content='{{ site.meta_keywords }}' />
+  </head>
+  <body>
+  </body>
+</html>
+ ```
+Or you can define SEO meta for each ``` site ``` :
+```html
+<html>
+  <head>
+    <title>{{ page.seo_title }}</title>
+    <meta name='description' content='{{ page.meta_description }}' />
+    <meta name='keyword' content='{{ page.meta_keywords }}' />
+  </head>
+  <body>
+  </body>
+</html>
+```
+ 
 
 
 
