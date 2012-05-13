@@ -6,10 +6,10 @@
 
 1. __[Foreword](#foreword)__
 
- *  __[Why this guide ?](#foreword_1)__
- *  __[Why you should use Locomotive ?](#foreword_2)__
- *  __[Assumptions](#foreword_3)__
- *  __[Ressources](#foreword_4)__
+  *  __[Why this guide ?](#foreword_1)__
+  *  __[Why you should use Locomotive ?](#foreword_2)__
+  *  __[Assumptions](#foreword_3)__
+  *  __[Ressources](#foreword_4)__
 
 2. __[Overview](#overview)__
 
@@ -25,9 +25,6 @@
  *  __[Page options](#templating_3)__
  *  __[Use case : templatize a model](#templating_4)__
  *  __[Use case : create a RSS feed](#templating_5)__
-
-
-
 
 5. __[Models](#models)__
 
