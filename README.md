@@ -7,8 +7,8 @@
 1. __[Foreword](#foreword)__
   *  __[Why this guide ?](#foreword_1)__
   *  __[Why you should use Locomotive ?](#foreword_2)__
-  *  __[Assumptions](#foreword_3)__
-  *  __[Ressources](#foreword_4)__
+  *  __[Philosophy behind the CMS](#foreword_3)
+  *  __[Assumptions](#foreword_4)__
 2. __[Overview](#overview)__
   *  __[What is Locomotive CMS ?](#overview_1)__
   *  __[Key features](#overview_2)__
@@ -33,9 +33,36 @@
 ##Foreword <a name="foreword"></a>
 
 ### Why this guide ? <a name="foreword_1"></a>
+
+There is already an official documentation reference, which lists almost everything, but a pragmatic guide to Locomotive is missing, especially for the beginners.
+
+What's more, there is a lot of goodness in the Locomotive's <a href="http://groups.google.com/forum/?fromgroups#!forum/locomotivecms">Google Group</a> but it seems relevant to gather good practices & hacks in one place.
+
+This guide isn't the official one, even if some members of the Locomotive core team have reviewed some parts of it. 
+
 ### Why should you use locomotive ? <a name="foreword_2"></a>
-### Assumptions <a name="foreword_3"></a>
-### Ressources <a name="foreword_4"></a>
+
+Locomotive is a CMS that has been created with a main guideline: keep it simple !
+
+Keep it simple, for the lambda user who doesn't write code.
+
+Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
+
+Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
+
+If you recognize yourself in on of the case listed above, you should use Locomotive.
+
+### Philosophy behind the CMS <a name="foreword_3"></a>
+
+TODO: demander à Didier de l'expliquer ?
+
+### Assumptions <a name="foreword_4"></a>
+
+During this reading, it is assumed that:
+
+- You know what is Ruby and Rails and you've a good feeling with terms like Gem, Bundle, deployment
+- You know what is a data model, and ideally what is a document-oriented storage like Mongo
+- You have basic knowledge about shell and command-line interface
 
 ## Overview <a name="overview"></a>
 
@@ -44,6 +71,9 @@
 ### Anatomy of a Locomotive app
 
 ## Getting something running in 5 minutes <a name="getting_something_running"></a>
+
+TODO: demander à Didier une idée d'app exemple
+
 
 ## Templating <a name="templating"></a>
 
