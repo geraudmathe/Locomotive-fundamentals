@@ -2,7 +2,7 @@
 
 This book is incomplete and should evolve in the future. Any contribution is very welcomed ! 
 
-For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), and if you need support from Locomotive team, ask [didier@nocoffe.fr](mailto:didier@nocoffee.fr).
+For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), and if you need support from Locomotive team, ask [support@locomotivecms.com](mailto:support@locomotivecms.com).
 
 ## Summary
 
@@ -76,7 +76,27 @@ During this reading, it is assumed that:
 ## Overview <a name="overview"></a>
 
 ### What is Locomotive CMS ? <a name="overview_1"></a>
+
+Locomotive CMS is crafted as an engine.
+```
+A Rails engine is an application packaged in a rubygem that is able to be run or mounted within another Rails application. An engine can have its own models, views, controllers, generators and publicly served static files.
+(<a href="http://guides.rubyonrails.org/engines.html" >more about engines</a>)
+```
+
+
 ### Key features <a name="overview_2"></a>
+
+You have out of the box :
+
+- Multi sites : manage multiple websites with one application instance
+- Flexible content types
+- Front-end inline editing (Aloha editor)
+- Content localization
+- Restful API
+- Haml / Sass support
+- Liquid templating langage
+- A very nice User Interface
+
 ### Anatomy of a Locomotive app
 
 ## Getting something running in 5 minutes <a name="getting_something_running"></a>
@@ -324,18 +344,16 @@ Then the sidebar :
 ```
  
 And finally the product_information snippet which uses the context "product" :
-
 ```html
 <div class="product">
 {{ product.name }} :  {{ product.price }}$
 </div>
 ```
- 
 src: http://doc.locomotivecms.com/templates/tags#include-section
 
 ### Liquid syntax <a name="templating_2"></a>
 
-    project: http://liquidmarkup.org/
+Liquid is a templating library extracted from Shopify, the project is hosted at <a href="http://liquidmarkup.org" >http://liquidmarkup.org</a>. Locomotive reuse a lot of the original library.
 
 #### Everything in 2 markups
 
