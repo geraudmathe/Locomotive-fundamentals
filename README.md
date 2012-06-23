@@ -78,10 +78,21 @@ During this reading, it is assumed that:
 ### Anatomy of a Locomotive app <a name="overview_1"></a>
 
 Locomotive CMS is crafted as an engine.
+
 <i>
 A Rails engine is an application packaged in a rubygem that is able to be run or mounted within another Rails application. An engine can have its own models, views, controllers, generators and publicly served static files.
 </i>
 ([more about engines](http://guides.rubyonrails.org/engines.html))
+
+What's inside ?
+
+- Rails 3
+- Mongoid
+- Devise
+- Liquid
+- Haml
+- Formtastic
+- Carrierwave
 
 TODO: complete this
 
@@ -109,7 +120,7 @@ TODO: demander à Didier une idée d'app exemple
 
 ### Templating Logic <a name="templating_1"></a>
 
-#### Basics
+#### Basics of inheritance
 
 The logic in Locomotive is differs a bit from what you are certainly used to, it may be weird a first, but it's actually very simple.
 
