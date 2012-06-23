@@ -1,6 +1,6 @@
 # Locomotive CMS kickass
 
-[geraud@lewattman.com](mailto:geraud@lewattman.com), if you need support from locomotive team, ask to [nocoffee](mailto:didier@nocoffe.fr).
+If you have questions about this ebook, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), if you need support from Locomotive team, ask [didier@nocoffe.fr](mailto:didier@nocoffee.fr).
 
 ## Summary
 
