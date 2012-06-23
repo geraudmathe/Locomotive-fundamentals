@@ -12,7 +12,7 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Philosophy behind the CMS](#foreword_3)__
   *  __[Assumptions](#foreword_4)__
 2. __[Overview](#overview)__
-  *  __[What is Locomotive CMS ?](#overview_1)__
+  *  __[Anatomy of a Locomotive app](#overview_1)__
   *  __[Key features](#overview_2)__
 3. __[Getting something running in 5 minutes](#getting_something_running)__
 4. __[Templating](#templating)__ 
@@ -75,14 +75,15 @@ During this reading, it is assumed that:
 
 ## Overview <a name="overview"></a>
 
-### What is Locomotive CMS ? <a name="overview_1"></a>
+### Anatomy of a Locomotive app <a name="overview_1"></a>
 
 Locomotive CMS is crafted as an engine.
 <i>
 A Rails engine is an application packaged in a rubygem that is able to be run or mounted within another Rails application. An engine can have its own models, views, controllers, generators and publicly served static files.
 </i>
 ([more about engines](http://guides.rubyonrails.org/engines.html))
-```
+
+TODO: complete this
 
 
 ### Key features <a name="overview_2"></a>
@@ -98,7 +99,6 @@ You have out of the box :
 - Liquid templating langage
 - A very nice User Interface
 
-### Anatomy of a Locomotive app
 
 ## Getting something running in 5 minutes <a name="getting_something_running"></a>
 
