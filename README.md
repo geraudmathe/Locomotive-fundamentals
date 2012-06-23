@@ -50,6 +50,15 @@ Locomotive is a CMS that has been created with a main guideline: keep it simple 
 
 If you recognize yourself in on of the case listed above, you should use Locomotive.
 
+///
+
+From a "business" point of view, Locomotive have several benefits to sell :
+
+- Front-end editing of static texts, using Aloha editor
+- Hosting on Heroku / AWS very cheap, almost free
+- Finally, a great looking backoffice !
+
+
 ### Philosophy behind the CMS <a name="foreword_3"></a>
 
 TODO: demander à Didier de l'expliquer ?
