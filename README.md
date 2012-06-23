@@ -449,6 +449,71 @@ Or you can define SEO meta for each ``` page ``` :
 
 ### Page options <a name="templating_3"></a>
 
+When you create a page, you have several option. Let's take a look.
+
+#### General information
+
+![General Information](Locomotive-fundamentals/raw/master/images/page_general_info.png)
+
+Nothing complex, just specify the name of the page. The slug field will be updated automatically.
+
+Be aware the slug will reference the url linked with the page you are creating, if you change it later, it could break links in the website.
+
+Set the parent page, as explained in __[Templating Logic](#templating_1)__.
+
+#### SEO settings
+
+![SEO settings](Locomotive-fundamentals/raw/master/images/page_seo_settings.png)
+
+Edit the meta ```title```, ```keyword```, ```description``` for the page, or leave it empty if you want use the global meta.
+
+These meta values will then be available for use in the template with Liquid tags, this way :
+
+```html
+<title>{{ page.title }}</title>
+<meta name="keywords" content="{{ page.keywords }}"/>
+<meta name="description" content="{{ page.description }}"/>
+```
+
+#### Advanced options
+
+![Advanced options](Locomotive-fundamentals/raw/master/images/page_advanced_options.png)
+
+
+- Handle : 
+
+TODO: integrate Locomotive with a rails app
+
+- Response type :
+
+You can choose between HTML, RSS, XML or JSON. You may this way generate a RSS feed or build an simple API from your Locomotive site.
+
+- Templatized : 
+
+TODO: link to the part of the book about templatized pages
+
+- Published : 
+
+Since only authenticated accounts can view unpublished pages, this allows debugging a page on a deployed site.
+
+- Listed :
+
+The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.com/templates/tags#nav-section)) based on your page. Control here weither this page appears in the generated menu.
+
+- Redirect :
+
+If you check this, you can redirect the page to a url.
+
+- Cache strategy :
+
+Define here the cache strategy for this page.
+
+
+
+
+
+
+
 ### Use case : templatize a model <a name="templating_4"></a>
 
 ### Use case : create a RSS feed <a name="templating_5"></a>
