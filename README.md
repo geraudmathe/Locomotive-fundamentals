@@ -7,7 +7,7 @@
 1. __[Foreword](#foreword)__
   *  __[Why this guide ?](#foreword_1)__
   *  __[Why you should use Locomotive ?](#foreword_2)__
-  *  __[Philosophy behind the CMS](#foreword_3)
+  *  __[Philosophy behind the CMS](#foreword_3)__
   *  __[Assumptions](#foreword_4)__
 2. __[Overview](#overview)__
   *  __[What is Locomotive CMS ?](#overview_1)__
@@ -34,9 +34,9 @@
 
 ### Why this guide ? <a name="foreword_1"></a>
 
-There is already an official documentation reference, which lists almost everything, but a pragmatic guide to Locomotive is missing, especially for the beginners.
+There is already an official documentation reference, which lists almost everything. Still, a pragmatic guide to Locomotive is missing, especially for beginners.
 
-What's more, there is a lot of goodness in the Locomotive's <a href="http://groups.google.com/forum/?fromgroups#!forum/locomotivecms">Google Group</a> but it seems relevant to gather good practices & hacks in one place.
+What's more, since there is a lot of goodness in the Locomotive's <a href="http://groups.google.com/forum/?fromgroups#!forum/locomotivecms">Google Group</a>, it seems relevant to gather good practices & hacks in one place.
 
 This guide isn't the official one, even if some members of the Locomotive core team have reviewed some parts of it. 
 
@@ -44,11 +44,9 @@ This guide isn't the official one, even if some members of the Locomotive core t
 
 Locomotive is a CMS that has been created with a main guideline: keep it simple !
 
-Keep it simple, for the lambda user who doesn't write code.
-
-Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
-
-Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
+- Keep it simple, for the lambda user who doesn't write code.
+- Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
+- Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
 
 If you recognize yourself in on of the case listed above, you should use Locomotive.
 
