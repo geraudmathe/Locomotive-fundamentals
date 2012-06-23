@@ -1,6 +1,8 @@
 # Locomotive CMS kickass
 
-If you have questions about this ebook, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), if you need support from Locomotive team, ask [didier@nocoffe.fr](mailto:didier@nocoffee.fr).
+This book is incomplete and should evolve in the future. Any contribution is very welcomed ! 
+
+For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), and if you need support from Locomotive team, ask [didier@nocoffe.fr](mailto:didier@nocoffee.fr).
 
 ## Summary
 
