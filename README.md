@@ -23,10 +23,12 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Use case : create a RSS feed](#templating_5)__
 5. __[Models](#models)__
 6. __[Locomotive Editor](#locomotive_editor)__
-7. __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
-8. __[Using multi-sites](#multi_sites)__
-9. __[Customizing Locomotive](#customizing_locomotive)__
-10. __[Appendix](#appendix)__
+7. __[Locomotive Recipes](#locomotive_recipes)__
+  *  __[Public Submission](#public_submission)__
+  *  __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
+  *  __[Using multi-sites](#multi_sites)__
+  *  __[Customizing Locomotive](#customizing_locomotive)__
+8. __[Appendix](#appendix)__
   *  __[List of examples](#appendix_1)__
   * Deployment
   * Schemas
@@ -449,7 +451,7 @@ Or you can define SEO meta for each ``` page ``` :
 
 ### Page options <a name="templating_3"></a>
 
-When you create a page, you have several option. Let's take a look.
+You have several option when you create a page. Let's take a look.
 
 #### General information
 
@@ -470,7 +472,7 @@ Edit the meta ```title```, ```keyword```, ```description``` for the page, or lea
 These meta values will then be available for use in the template with Liquid tags, this way :
 
 ```html
-<title>{{ page.title }}</title>
+<title>{{ page.seo_title }}</title>
 <meta name="keywords" content="{{ page.keywords }}"/>
 <meta name="description" content="{{ page.description }}"/>
 ```
@@ -482,7 +484,7 @@ These meta values will then be available for use in the template with Liquid tag
 
 - Handle : 
 
-TODO: integrate Locomotive with a rails app
+TODO: link to integrate Locomotive with a rails app
 
 - Response type :
 
@@ -516,13 +518,17 @@ Define here the cache strategy for this page.
 
 ### Use case : templatize a model <a name="templating_4"></a>
 
+
+
 ### Use case : create a RSS feed <a name="templating_5"></a>
 
 ## Models <a name="models"></a>
 ## Locomotive Editor <a name="locomotive_editor"></a>
-## Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
-## Using multi-sites <a name="multi_sites"></a>
-## Customizing Locomotive <a name="customizing_locomotive"></a>
+## Locomotive Recipes <a name="locomotive_recipes"></a>
+### Public Submission <a name="public_submission"></a>
+### Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
+### Using multi-sites <a name="multi_sites"></a>
+### Customizing Locomotive <a name="customizing_locomotive"></a>
 ## Appendix <a name="appendix"></a>
 
 ### List of examples <a name="appendix_1"></a>
