@@ -27,7 +27,7 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Public Submission](#public_submission)__
   *  __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
   *  __[Using multi-sites](#multi_sites)__
-  *  __[Customizing Locomotive](#customizing_locomotive)__
+  *  __[Export site](#export_site)__
 8. __[Appendix](#appendix)__
   *  __[List of examples](#appendix_1)__
   * Deployment
@@ -528,7 +528,47 @@ Define here the cache strategy for this page.
 ### Public Submission <a name="public_submission"></a>
 ### Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
 ### Using multi-sites <a name="multi_sites"></a>
-### Customizing Locomotive <a name="customizing_locomotive"></a>
+
+### Export site <a name="export_site"></a>
+
+``` source: [https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion) ```
+
+In Locomotive 1.0, there was an export feature, which allowed to export the site (template, models, entries) in a zip. 
+
+This is no longer the case in Locomotive 2.0, since it now uses a REST API for push & pull commands.
+
+Pushing a site (a Locomotive Editor one) is described in [this](#locomotive_editor) section and [here](http://doc.locomotivecms.com/editor/deployment).
+
+For now, there isn't any script for pulling a Locomotive app, but it's possible though, following these steps :
+
+1. Get an auth token
+
+```
+curl -d 'email=me@mysite.com&password=secret' 'http://mysite.com/locomotive/api/tokens.json'
+```
+
+Obviously change the email and password to be valid credientials.
+
+Response will be something like 
+```
+{"token":"dtsjkqs1TJrWiSiJt2gg"}
+```
+
+2. Use the token to get the information you need. 
+
+Pages :
+
+```curl 'http://mysite.com/locomotive/api/pages.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+
+Content Types :
+
+```curl 'http://test.engine.dev:1234/locomotive/api/content_types.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+
+Content Entries ( assume we have a "Projects" model ) : 
+
+```curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+
+
 ## Appendix <a name="appendix"></a>
 
 ### List of examples <a name="appendix_1"></a>
