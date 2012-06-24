@@ -4,6 +4,7 @@ This book is incomplete and should evolve in the future. Any contribution is ver
 
 For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:mail@geraudmathe.com), and if you need support from Locomotive team, ask [support@locomotivecms.com](mailto:support@locomotivecms.com).
 
+
 ## Summary
 
 1. __[Foreword](#foreword)__
@@ -11,6 +12,7 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Why you should use Locomotive ?](#foreword_2)__
   *  __[Philosophy behind the CMS](#foreword_3)__
   *  __[Assumptions](#foreword_4)__
+  *  __[Organization of this book](#foreword_5)__
 2. __[Overview](#overview)__
   *  __[Anatomy of a Locomotive app](#overview_1)__
   *  __[Key features](#overview_2)__
@@ -18,24 +20,22 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
 4. __[Templating](#templating)__ 
   *  __[Templating Logic](#templating_1)__
   *  __[Liquid syntax](#templating_2)__
-  *  __[Page options](#templating_3)__
-  *  __[Use case : templatize a model](#templating_4)__
-  *  __[Use case : create a RSS feed](#templating_5)__
+  *  __[Creating a page](#templating_3)__
 5. __[Models](#models)__
+  *  __[Basics](#models_basics)__
+  *  __[Models mapping](#models_mapping)__
+  *  __[Templatize a Model](#models_templatize)__
 6. __[Locomotive Editor](#locomotive_editor)__
-7. __[Locomotive Recipes](#locomotive_recipes)__
+7. __[Recipes](#recipes)__
+  *  __[Create a RSS feed](#rss_feed)__
   *  __[Public Submission](#public_submission)__
   *  __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
   *  __[Using multi-sites](#multi_sites)__
   *  __[Export site](#export_site)__
   *  __[Internationalization](#internationalization)__
   *  __[Customise TinyMCE](#customise_tiny_mce)__
-  *  __[Writing custom Liquid tags](#custom_liquid_tag)
+  *  __[Writing custom Liquid tags](#custom_liquid_tag)__
 8. __[Appendix](#appendix)__
-  *  __[List of examples](#appendix_1)__
-  * Deployment
-  * Schemas
-  * Links
 
 ##Foreword <a name="foreword"></a>
 
@@ -77,6 +77,8 @@ During this reading, it is assumed that:
 - You know what is Ruby and Rails and you've a good feeling with terms like Gem, Bundle, deployment
 - You know what is a data model, and ideally what is a document-oriented storage like Mongo
 - You have basic knowledge about shell and command-line interface
+
+### Organization of this book <a name="foreword_5"></a>
 
 ## Overview <a name="overview"></a>
 
@@ -459,7 +461,10 @@ exemple: <img src="{% editable_file 'Promotion_2_image', hint: 'Upload a promoti
 
 
 
-### Page options <a name="templating_3"></a>
+### Creating a page <a name="templating_3"></a>
+
+TODO: montrer la gestion visuelle des pages dans la home
+TODO: lister les différents types de page ?
 
 You have several option when you create a page. Let's take a look.
 
@@ -526,12 +531,18 @@ It then will be a 301 redirection, which from a SEO point of view, is a permanen
 Define here the cache strategy for this page.
 
 
+## Models <a name="models"></a>
+
+https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
+
+https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
 
 
+### Basics <a name="models_basics"></a>
 
+### Models mapping <a name="models_mapping"></a>
 
-
-### Use case : templatize a model <a name="templating_4"></a>
+### Templatize a model <a name="models_templatize"></a>
 
  The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
  
@@ -555,13 +566,9 @@ nested pas possible pour l'instant, voir la branche 2.1 wildcards
 
 
 
-### Use case : create a RSS feed <a name="templating_5"></a>
 
-## Models <a name="models"></a>
 
-https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
 
-https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
 
 ### Rendering models
 
@@ -576,7 +583,10 @@ lien: Carrier Wave seems to be locking down ThemeAsset to only allow images
 
 https://groups.google.com/forum/#!topic/locomotivecms/r7f-54gSg0U
 
-## Locomotive Recipes <a name="locomotive_recipes"></a>
+## Recipes <a name="recipes"></a>
+
+### Create a RSS feed <a name="rss_feed"></a>
+
 ### Public Submission <a name="public_submission"></a>
 
 https://github.com/locomotivecms/engine/blob/master/features/public/contact_form.feature
