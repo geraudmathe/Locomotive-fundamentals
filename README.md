@@ -28,6 +28,9 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
   *  __[Using multi-sites](#multi_sites)__
   *  __[Export site](#export_site)__
+  *  __[Internationalization](#internationalization)__
+  *  __[Customise TinyMCE](#customise_tiny_mce)__
+  *  __[Writing custom Liquid tags](#custom_liquid_tag)
 8. __[Appendix](#appendix)__
   *  __[List of examples](#appendix_1)__
   * Deployment
@@ -115,7 +118,9 @@ You have out of the box :
 
 ## Getting something running in 5 minutes <a name="getting_something_running"></a>
 
-TODO: demander à Didier une idée d'app exemple
+TODO: définir avec géraud et didier ce que l'on fait dans cette app, liste des choses à voir : editable texts, models, templates (héritage), tags liquid de base, … ?
+
+il n'y a pas de template de base, sauf si on achète loco editor là il y en a mais sinon non, pas dans la version 2.0
 
 
 ## Templating <a name="templating"></a>
@@ -447,6 +452,11 @@ Or you can define SEO meta for each ``` page ``` :
 
 #### Tags
 
+editable file => https://groups.google.com/forum/#!topic/locomotivecms/hOaqFUcZCm8 only in backoffice for 2.0
+
+exemple: <img src="{% editable_file 'Promotion_2_image', hint: 'Upload a promotion image (perfect size: 250px by 100px)' %} {{'promo.jpg'| theme_image_url }} {% endeditable_file %}" alt="promotion" />
+
+
 
 
 ### Page options <a name="templating_3"></a>
@@ -506,6 +516,11 @@ The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.co
 
 If you check this, you can redirect the page to a url.
 
+It then will be a 301 redirection, which from a SEO point of view, is a permanent redirection. You should use it when you have changed your urls. The search engine will then forget the previous page and update the url in its database.
+
+
+``` source: [https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion](https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion)``` 
+
 - Cache strategy :
 
 Define here the cache strategy for this page.
@@ -518,16 +533,81 @@ Define here the cache strategy for this page.
 
 ### Use case : templatize a model <a name="templating_4"></a>
 
+ The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
+ 
+ The templatized mechanism expects to have "models" under a parent folder which makes more sense for SEO purpose actually (well that's my opinion).
+
+A quick example:
+
+/home
+/products (<= used for instance to list of your products, could also be a redirect page)
+/products/template (templatized => true, model => Products)
+
+Note: in the 2.0 version, you can not have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.
+
+sources :
+https://groups.google.com/d/topic/locomotivecms/EQ-leEOgU2U/discussion
+
+note : 
+
+nested pas possible pour l'instant, voir la branche 2.1 wildcards
+
+
 
 
 ### Use case : create a RSS feed <a name="templating_5"></a>
 
 ## Models <a name="models"></a>
+
+https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
+
+https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
+
+### Rendering models
+
+https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
+
+
+
+
 ## Locomotive Editor <a name="locomotive_editor"></a>
+
+lien: Carrier Wave seems to be locking down ThemeAsset to only allow images
+
+https://groups.google.com/forum/#!topic/locomotivecms/r7f-54gSg0U
+
 ## Locomotive Recipes <a name="locomotive_recipes"></a>
 ### Public Submission <a name="public_submission"></a>
+
+https://github.com/locomotivecms/engine/blob/master/features/public/contact_form.feature
+
+
+
+////
+Very big form, session problem hack : https://github.com/locomotivecms/engine/issues/418
+
 ### Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
+
+sources :
+
+https://groups.google.com/d/topic/locomotivecms/suBZggHJ0OI/discussion
+
+
+https://groups.google.com/d/topic/locomotivecms/ZMhKPe78pZM/discussion
+
+
 ### Using multi-sites <a name="multi_sites"></a>
+
+notes : 
+
+
+
+Well, each site is fully independent form the others: they have different pages, domains, content types, ...etc. The ONLY part they have in common is that they have a "administration" access point based on a common domain name as explained in the guide (http://doc.locomotivecms.com/guides/multisites) but since we can use domain aliases, it's not a problem at all.
+
+
+dev locally : https://groups.google.com/d/topic/locomotivecms/nmgDaCdb7Ts/discussion
+
+
 
 ### Export site <a name="export_site"></a>
 
@@ -568,8 +648,48 @@ Content Entries ( assume we have a "Projects" model ) :
 
 ```curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
 
+### Internationalization <a name="internationalization"></a>
+
+
+localised snippets / pages
+
+### Customise TinyMCE <a name="customise_tiny_mce"></a>
+
+``` source: [https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)``` 
+
+TODO: test this and finish it !
+
+Within your main app,
+
+1. create a partial at the "app/views/locomotive/shared/_main_app_head.html.haml" location 
+note: create the folders if they don't exist
+
+2. edit the _main_app_head.html.haml file and insert this:
+
+= javascript_include_tag  'locomotive_misc'
+
+3. create a javascript file at the "app/assets/javascripts/locomotive_misc.js.coffee" and fill in with
+
+window.Locomotive.tinyMCE.defaultSettings.valid_elements = "<your option>"
+
+Note: basically, you can modify all the default tinymce settings for Locomotive. Take a look at this file if you need to check them: https://github.com/locomotivecms/engine/blob/master/app/assets/javascripts/locomotive/utils/tinymce_settings.js.coffee
+
+
+
+
+
+### Writing custom Liquid tags <a name="custom_liquid_tag"></a>
+
+https://groups.google.com/d/topic/locomotivecms/vfxun5pOvEY/discussion
 
 ## Appendix <a name="appendix"></a>
 
-### List of examples <a name="appendix_1"></a>
+### Locomotive API <a name="locomotive_api"></a>
+
+notes récupérées du google group :
+
+I looked at the api source and it appears currently you can only query the entire model using it's slug which returns all entries in the model
+
+https://groups.google.com/d/topic/locomotivecms/_sPLTseOnJs/discussion
+
 
