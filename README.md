@@ -21,15 +21,15 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Templating Logic](#templating_1)__
   *  __[Liquid syntax](#templating_2)__
   *  __[Creating a page](#templating_3)__
+  *  __[Recipe : Create a RSS feed](#rss_feed)__
 5. __[Models](#models)__
   *  __[Basics](#models_basics)__
   *  __[Models mapping](#models_mapping)__
   *  __[Templatize a Model](#models_templatize)__
+  *  __[Recipe: Public Submission](#public_submission)__
 6. __[Locomotive Editor](#locomotive_editor)__
-7. __[Recipes](#recipes)__
-  *  __[Create a RSS feed](#rss_feed)__
-  *  __[Public Submission](#public_submission)__
-  *  __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
+7. __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
+7. __[Tips](#tips)__
   *  __[Using multi-sites](#multi_sites)__
   *  __[Export site](#export_site)__
   *  __[Internationalization](#internationalization)__
@@ -79,6 +79,12 @@ During this reading, it is assumed that:
 - You have basic knowledge about shell and command-line interface
 
 ### Organization of this book <a name="foreword_5"></a>
+
+This guide is structured as follow :
+
+First, an *Overview* of the CMS aims to introduce the environment and the main things to know about.
+
+*Getting something running in 5 minutes* may help Locomotive's beginners walking through the 
 
 ## Overview <a name="overview"></a>
 
@@ -531,6 +537,9 @@ It then will be a 301 redirection, which from a SEO point of view, is a permanen
 Define here the cache strategy for this page.
 
 
+### Recipe : Create a RSS feed <a name="rss_feed"></a>
+
+
 ## Models <a name="models"></a>
 
 https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
@@ -576,18 +585,7 @@ https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
 
 
 
-
-## Locomotive Editor <a name="locomotive_editor"></a>
-
-lien: Carrier Wave seems to be locking down ThemeAsset to only allow images
-
-https://groups.google.com/forum/#!topic/locomotivecms/r7f-54gSg0U
-
-## Recipes <a name="recipes"></a>
-
-### Create a RSS feed <a name="rss_feed"></a>
-
-### Public Submission <a name="public_submission"></a>
+### Recipe : Public Submission <a name="public_submission"></a>
 
 https://github.com/locomotivecms/engine/blob/master/features/public/contact_form.feature
 
@@ -596,7 +594,15 @@ https://github.com/locomotivecms/engine/blob/master/features/public/contact_form
 ////
 Very big form, session problem hack : https://github.com/locomotivecms/engine/issues/418
 
-### Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
+
+
+## Locomotive Editor <a name="locomotive_editor"></a>
+
+lien: Carrier Wave seems to be locking down ThemeAsset to only allow images
+
+https://groups.google.com/forum/#!topic/locomotivecms/r7f-54gSg0U
+
+## Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
 
 sources :
 
@@ -606,18 +612,18 @@ https://groups.google.com/d/topic/locomotivecms/suBZggHJ0OI/discussion
 https://groups.google.com/d/topic/locomotivecms/ZMhKPe78pZM/discussion
 
 
+
+
+## Tips <a name="tips"></a>
+
 ### Using multi-sites <a name="multi_sites"></a>
 
 notes : 
-
-
 
 Well, each site is fully independent form the others: they have different pages, domains, content types, ...etc. The ONLY part they have in common is that they have a "administration" access point based on a common domain name as explained in the guide (http://doc.locomotivecms.com/guides/multisites) but since we can use domain aliases, it's not a problem at all.
 
 
 dev locally : https://groups.google.com/d/topic/locomotivecms/nmgDaCdb7Ts/discussion
-
-
 
 ### Export site <a name="export_site"></a>
 
