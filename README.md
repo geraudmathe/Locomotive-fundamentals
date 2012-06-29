@@ -25,7 +25,6 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
 5. __[Models](#models)__
   *  __[Basics](#models_basics)__
   *  __[Models mapping](#models_mapping)__
-  	*  __[Belongs to](#models_mapping_belongs_to)__
   *  __[Templatize a Model](#models_templatize)__
   *  __[Recipe : Editing has_many in parent model](#editing_has_many)__
   *  __[Recipe: Public Submission](#public_submission)__
@@ -588,12 +587,20 @@ Let's see each one of them :
 The other fields specifying a relationship with an other model (belongs_to, has_many, many_to_many) will be explained in the next section. 
 
 
-tips : verifier que on a bien le meme nom de champ et de slug dans option panel, sinon on peut ne pas comprendre pourquoi on n qccede pas a un champ
+tips : 
+
+verifier que on a bien le meme nom de champ et de slug dans option panel, sinon on peut ne pas comprendre pourquoi on n qccede pas a un champ
+
+il faut au moins un champs texte je crois obligatoire dans un model, le premier champs sera rendu obligatoire a lenregistremenet sil ny en a aucun de defini
 
 
-### Models mapping <a name="models_mapping"></a>
+
+<a name="models_mapping"></a>
+### Models mapping
 
 Locomotive let you define the relationships between models you are used to in Rails, but the creation and usage of these mapped models can sometimes be disturbing in the UI, so let's see for each one of them of to deal with.
+
+This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
 
 <a name="models_mapping_belongs_to">
 #### Belongs to
@@ -615,10 +622,39 @@ But wait, we haven't mapped ```books``` to ```authors``` yet, so click on the "a
 
 ![books arrow](Locomotive-fundamentals/raw/master/images/belongsto_arrow.png)
 
-You then have the option panel where you choose the ```Class``` of the model targeted by the belongs_to relationship :
+You then have the option panel where you choose the ```Class name``` of the model targeted by the belongs_to relationship :
 
 ![books step 2](Locomotive-fundamentals/raw/master/images/belongsto_books_2.png)
 
+We are done, so click on the "Create" button to save the model.
+
+*Nota Bene : the name of the field defining the belongs_to relationship can be named as you want, you don't have to name it the singular of the targeted model, even if it may be a good practice. (???)*
+
+
+Now we have our models defined, let's add some dummy entries. We will create a new book entrie :
+
+![books entrie empty](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_empty.png)
+
+We can give him a name, but the ```writter``` list is empty, right, because ```authors``` model hasn't any entries.
+
+So add an author :
+
+![author add](Locomotive-fundamentals/raw/master/images/belongsto_author_entrie.png)
+
+And then he appears in the ```writter``` list :
+
+![book entrie valid](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_valid.png)
+
+Great, save the entrie and we will check if it works.
+
+In a dummy page, we loop on ```books``` entries and for each one (here the only one) display the title of the book and it's writter :
+
+```
+{% for book in contents.books %}
+{{ book.title }} written by {{ book.writter.name }} is a great lecture.
+{% endfor %}
+```
+and it displays : ```Responsive Web design written by Ethan Marcotte is a great lecture.```.
 
 
 ### Templatize a model <a name="models_templatize"></a>
@@ -652,6 +688,8 @@ nested pas possible pour l'instant, voir la branche 2.1 wildcards
 ### Rendering models
 
 https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
+
+ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 
 <a name="editing_has_many"></a>
 ### Recipe : Editing has_many in parent model
