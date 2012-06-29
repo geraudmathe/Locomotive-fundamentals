@@ -1,4 +1,4 @@
-# Locomotive CMS kickass
+# Locomotive CMS Guide
 
 This book is incomplete and should evolve in the future. Any contribution is very welcomed ! 
 
@@ -25,7 +25,9 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
 5. __[Models](#models)__
   *  __[Basics](#models_basics)__
   *  __[Models mapping](#models_mapping)__
+  	*  __[Belongs to](#models_mapping_belongs_to)__
   *  __[Templatize a Model](#models_templatize)__
+  *  __[Recipe : Editing has_many in parent model](#editing_has_many)__
   *  __[Recipe: Public Submission](#public_submission)__
 6. __[Locomotive Editor](#locomotive_editor)__
 7. __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
@@ -542,6 +544,9 @@ Define here the cache strategy for this page.
 
 ## Models <a name="models"></a>
 
+TODO: it's a draft, rewritte it
+
+
 https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
 
 https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
@@ -549,7 +554,72 @@ https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
 
 ### Basics <a name="models_basics"></a>
 
+introduction blqblq
+
+
+
+
+First step, specifying the name of the model and so on :
+
+![Create model](Locomotive-fundamentals/raw/master/images/models_basics_creation.png)
+
+As mentioned in the hint, it's the slug of the model's name you will then refence to in your liquid logic.
+
+Then, you define all the fields (attributes) of your model in this section :
+
+![Create fields](Locomotive-fundamentals/raw/master/images/models_basics_fields.png)
+
+You have the following available types for a field :
+
+![Types list](Locomotive-fundamentals/raw/master/images/models_basics_types_list.png)
+
+Let's see each one of them :
+
+- Simple input 
+
+	Simple string, max 255 chars
+
+- Text
+- Select
+- Checkbox
+- Date
+- File
+
+The other fields specifying a relationship with an other model (belongs_to, has_many, many_to_many) will be explained in the next section. 
+
+
+tips : verifier que on a bien le meme nom de champ et de slug dans option panel, sinon on peut ne pas comprendre pourquoi on n qccede pas a un champ
+
+
 ### Models mapping <a name="models_mapping"></a>
+
+Locomotive let you define the relationships between models you are used to in Rails, but the creation and usage of these mapped models can sometimes be disturbing in the UI, so let's see for each one of them of to deal with.
+
+<a name="models_mapping_belongs_to">
+#### Belongs to
+
+We have the model ```books``` belongs_to ```authors```.
+
+First, we create the model ```authors``` in its simpliest form :
+
+![authors](Locomotive-fundamentals/raw/master/images/belongsto_authors.png)
+
+The mapping with the model ```books``` will be defined in ```books```.
+Let's create ```books```:
+
+![books step 1](Locomotive-fundamentals/raw/master/images/belongsto_books_1.png)
+
+We give him a ```title``` field, and a ```writter``` field which defines the ```belongs_to``` relationship.
+
+But wait, we haven't mapped ```books``` to ```authors``` yet, so click on the "add" button and then on the down arrow to specify more options concerning this field :
+
+![books arrow](Locomotive-fundamentals/raw/master/images/belongsto_arrow.png)
+
+You then have the option panel where you choose the ```Class``` of the model targeted by the belongs_to relationship :
+
+![books step 2](Locomotive-fundamentals/raw/master/images/belongsto_books_2.png)
+
+
 
 ### Templatize a model <a name="models_templatize"></a>
 
@@ -583,7 +653,15 @@ nested pas possible pour l'instant, voir la branche 2.1 wildcards
 
 https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
 
+<a name="editing_has_many"></a>
+### Recipe : Editing has_many in parent model
 
+homes has many pictures 
+
+homes : adress, has_many(pictures)
+pictures : item file
+
+save a homes object and then you can edit it and upload several pictures
 
 ### Recipe : Public Submission <a name="public_submission"></a>
 
