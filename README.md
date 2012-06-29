@@ -660,19 +660,19 @@ and it displays : ```Responsive Web design written by Ethan Marcotte is a great 
 #### Has many
 
 Let's keep the previous models, and let's say ```books``` have ```reviews```.
-A review is basically a piece of text, and it is often published in a media. What's more, a book has many reviews, but a review refers to one and only one book.  We So we are indeed in the relationship ```books``` has_many ```reviews```.
+A review is basically a piece of text, and it is often published in a media. What's more, a book has many reviews, but a review refers to one and only one book.  So we are indeed in the relationship ```books``` has_many ```reviews```.
 
-First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content``` :
+First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content```, and also a belongs_to field ```book``` :
 
 ![book reviews](Locomotive-fundamentals/raw/master/images/hasmany_reviews.png)
 
-**The ```belongs_to``` field targeting the parent model class name, ```books```, is required :**
+**The ```belongs_to``` field targeting the parent model class name, ```books```, is required !**
 
 ![book reviews belongs to field](Locomotive-fundamentals/raw/master/images/hasmany_reviews_belongsfield.png)
 
 Save the model, and now go editing ```books```. We will add a has_many field named ```reviews```, targeting the ```Class name``` ```reviews```, and ```Inverse of``` itself, so ```books``` :
 
-![book editing](Locomotive-fundamentals/raw/master/images/hasmany_books.pmg)
+![book editing](Locomotive-fundamentals/raw/master/images/hasmany_books.png)
 
 *Nota Bene : here again, the name of the field defining the has_many relationship (here 'reviews') can be named as you want.*
 
