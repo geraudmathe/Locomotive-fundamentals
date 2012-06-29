@@ -593,7 +593,7 @@ verifier que on a bien le meme nom de champ et de slug dans option panel, sinon 
 
 il faut au moins un champs texte je crois obligatoire dans un model, le premier champs sera rendu obligatoire a lenregistremenet sil ny en a aucun de defini
 
-
+UI ENABLED
 
 <a name="models_mapping"></a>
 ### Models mapping
@@ -628,33 +628,89 @@ You then have the option panel where you choose the ```Class name``` of the mode
 
 We are done, so click on the "Create" button to save the model.
 
-*Nota Bene : the name of the field defining the belongs_to relationship can be named as you want, you don't have to name it the singular of the targeted model, even if it may be a good practice. (???)*
+*Nota Bene : the name of the field defining the belongs_to relationship (here 'writter') can be named as you want, you don't have to name it the singular of the targeted model (here it would be 'author'), even if it may be a good practice. (???)*
 
 
 Now we have our models defined, let's add some dummy entries. We will create a new book entrie :
 
 ![books entrie empty](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_empty.png)
 
-We can give him a name, but the ```writter``` list is empty, right, because ```authors``` model hasn't any entries.
+We can give him a name, but the ```writter``` list is empty, right, because ```authors``` model hasn't any entries yet.
 
-So add an author :
+So create an author :
 
 ![author add](Locomotive-fundamentals/raw/master/images/belongsto_author_entrie.png)
 
-And then he appears in the ```writter``` list :
+And then go back in the book creation page, the author appears in the ```writter``` list :
 
 ![book entrie valid](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_valid.png)
 
 Great, save the entrie and we will check if it works.
 
-In a dummy page, we loop on ```books``` entries and for each one (here the only one) display the title of the book and it's writter :
+In a dummy page, we loop on ```books``` entries, and for each one (here the only one), we display the title of the book and it's writter :
 
 ```
 {% for book in contents.books %}
-{{ book.title }} written by {{ book.writter.name }} is a great lecture.
+	{{ book.title }} written by {{ book.writter.name }} is a great lecture.
 {% endfor %}
 ```
 and it displays : ```Responsive Web design written by Ethan Marcotte is a great lecture.```.
+
+<a name="models_mapping_has_many">
+#### Has many
+
+Let's keep the previous models, and let's say ```books``` have ```reviews```.
+A review is basically a piece of text, and it is often published in a media. What's more, a book has many reviews, but a review refers to one and only one book.  We So we are indeed in the relationship ```books``` has_many ```reviews```.
+
+First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content``` :
+
+![book reviews](Locomotive-fundamentals/raw/master/images/hasmany_reviews.png)
+
+**The ```belongs_to``` field targeting the parent model class name, ```books```, is required :**
+
+![book reviews belongs to field](Locomotive-fundamentals/raw/master/images/hasmany_reviews_belongsfield.png)
+
+Save the model, and now go editing ```books```. We will add a has_many field named ```reviews```, targeting the ```Class name``` ```reviews```, and ```Inverse of``` itself, so ```books``` :
+
+![book editing](Locomotive-fundamentals/raw/master/images/hasmany_books.pmg)
+
+*Nota Bene : here again, the name of the field defining the has_many relationship (here 'reviews') can be named as you want.*
+
+Save the updated ```books``` model, and let's edit the previous ```books``` entrie :
+
+![book entrie](Locomotive-fundamentals/raw/master/images/hasmany_bookentrie_1.png)
+
+Let's add a review to this book, click on "Add a new entry" and fill it with dummy text :
+
+![book entrie reviewed](Locomotive-fundamentals/raw/master/images/hasmany_bookentrie_2.png)
+
+Click on "Save" to close the modal window and create the ```reviews``` entrie related to this ```books``` entrie. Click again on "Save" to update the ```book```.
+
+In the previous dummy page where we tested the belongs_to relationship, we add a loop on the reviews of a book :
+
+```
+{% for book in contents.books %}
+	{{ book.title }} written by {{ book.writter.name }} is a great lecture.
+	<br>
+	Reviews :
+	<br>
+	{% for review in book.reviews %}
+		Published in {{ review.journal }} : {{ review.content }}
+	{% endfor %}
+{% endfor %}
+```
+
+and it displays : 
+
+```
+Responsive Web design written by Ethan Marcotte is a great lecture.
+Published in Web design monthly :
+Awesome book, blablabla ...
+```
+
+<a name="models_mapping_has_many">
+#### Many to many
+
 
 
 ### Templatize a model <a name="models_templatize"></a>
