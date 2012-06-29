@@ -39,9 +39,11 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Writing custom Liquid tags](#custom_liquid_tag)__
 8. __[Appendix](#appendix)__
 
-##Foreword <a name="foreword"></a>
+<a name="foreword"></a>
+##Foreword
 
-### Why this guide ? <a name="foreword_1"></a>
+<a name="foreword_1"></a>
+### Why this guide ?
 
 There is already an official documentation reference, which lists almost everything. Still, a pragmatic guide to Locomotive is missing, especially for beginners.
 
@@ -49,7 +51,8 @@ What's more, since there is a lot of goodness in the Locomotive's <a href="http:
 
 This guide isn't the official one, even if some members of the Locomotive core team have reviewed some parts of it. 
 
-### Why should you use locomotive ? <a name="foreword_2"></a>
+<a name="foreword_2"></a>
+### Why should you use locomotive ?
 
 Locomotive is a CMS that has been created with a main guideline: keep it simple !
 
@@ -68,11 +71,13 @@ From a "business" point of view, Locomotive have several benefits to sell :
 - Finally, a great looking backoffice !
 
 
-### Philosophy behind the CMS <a name="foreword_3"></a>
+<a name="foreword_3"></a>
+### Philosophy behind the CMS
 
 TODO: demander à Didier de l'expliquer ?
 
-### Assumptions <a name="foreword_4"></a>
+<a name="foreword_4"></a>
+### Assumptions
 
 During this reading, it is assumed that:
 
@@ -80,7 +85,8 @@ During this reading, it is assumed that:
 - You know what is a data model, and ideally what is a document-oriented storage like Mongo
 - You have basic knowledge about shell and command-line interface
 
-### Organization of this book <a name="foreword_5"></a>
+<a name="foreword_5"></a>
+### Organization of this book
 
 This guide is structured as follow :
 
@@ -88,9 +94,11 @@ First, an *Overview* of the CMS aims to introduce the environment and the main t
 
 *Getting something running in 5 minutes* may help Locomotive's beginners walking through the 
 
-## Overview <a name="overview"></a>
+<a name="overview"></a>
+## Overview
 
-### Anatomy of a Locomotive app <a name="overview_1"></a>
+<a name="overview_1"></a>
+### Anatomy of a Locomotive app
 
 Locomotive CMS is crafted as an engine.
 
@@ -111,8 +119,8 @@ What's inside ?
 
 TODO: complete this
 
-
-### Key features <a name="overview_2"></a>
+<a name="overview_2"></a>
+### Key features
 
 You have out of the box :
 
@@ -126,16 +134,19 @@ You have out of the box :
 - A very nice User Interface
 
 
-## Getting something running in 5 minutes <a name="getting_something_running"></a>
+<a name="getting_something_running"></a>
+## Getting something running in 5 minutes
 
 TODO: définir avec géraud et didier ce que l'on fait dans cette app, liste des choses à voir : editable texts, models, templates (héritage), tags liquid de base, … ?
 
 il n'y a pas de template de base, sauf si on achète loco editor là il y en a mais sinon non, pas dans la version 2.0
 
 
-## Templating <a name="templating"></a>
+<a name="templating"></a>
+## Templating
 
-### Templating Logic <a name="templating_1"></a>
+<a name="templating_1"></a>
+### Templating Logic
 
 #### Basics of inheritance
 
@@ -380,7 +391,8 @@ And finally the product_information snippet which uses the context "product" :
 ```
 src: http://doc.locomotivecms.com/templates/tags#include-section
 
-### Liquid syntax <a name="templating_2"></a>
+<a name="templating_2"></a>
+### Liquid syntax
 
 Liquid is a templating library extracted from Shopify, the project is hosted at <a href="http://liquidmarkup.org" >http://liquidmarkup.org</a>. Locomotive reuse a lot of the original library.
 
@@ -468,8 +480,8 @@ exemple: <img src="{% editable_file 'Promotion_2_image', hint: 'Upload a promoti
 
 
 
-
-### Creating a page <a name="templating_3"></a>
+<a name="templating_3"></a>
+### Creating a page
 
 TODO: montrer la gestion visuelle des pages dans la home
 TODO: lister les différents types de page ?
@@ -539,10 +551,12 @@ It then will be a 301 redirection, which from a SEO point of view, is a permanen
 Define here the cache strategy for this page.
 
 
-### Recipe : Create a RSS feed <a name="rss_feed"></a>
+<a name="rss_feed"></a>
+### Recipe : Create a RSS feed
 
 
-## Models <a name="models"></a>
+<a name="models"></a>
+## Models
 
 TODO: it's a draft, rewritte it
 
@@ -551,8 +565,8 @@ https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
 
 https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
 
-
-### Basics <a name="models_basics"></a>
+<a name="models_basics"></a>
+### Basics
 
 introduction blqblq
 
@@ -603,7 +617,7 @@ Locomotive let you define the relationships between models you are used to in Ra
 
 This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
 
-<a name="models_mapping_belongs_to">
+
 #### Belongs to
 
 We have the model ```books``` belongs_to ```authors```.
@@ -657,7 +671,6 @@ In a dummy page, we loop on ```books``` entries, and for each one (here the only
 ```
 and it displays : ```Responsive Web design written by Ethan Marcotte is a great lecture.```.
 
-<a name="models_mapping_has_many">
 #### Has many
 
 Let's keep the previous models, and let's say ```books``` have ```reviews```.
@@ -709,7 +722,6 @@ Published in Web design monthly :
 Awesome book, blablabla ...
 ```
 
-<a name="models_mapping_has_many">
 #### Many to many
 
 Finally, we will add the ability to associate tags to a book. Here, the model ```tags``` have many ```books``` and ```books``` have many ```tags```.
@@ -829,7 +841,8 @@ pictures : item file
 
 save a homes object and then you can edit it and upload several pictures
 
-### Recipe : Public Submission <a name="public_submission"></a>
+<a name="public_submission"></a>
+### Recipe : Public Submission
 
 https://github.com/locomotivecms/engine/blob/master/features/public/contact_form.feature
 
@@ -839,14 +852,15 @@ https://github.com/locomotivecms/engine/blob/master/features/public/contact_form
 Very big form, session problem hack : https://github.com/locomotivecms/engine/issues/418
 
 
-
-## Locomotive Editor <a name="locomotive_editor"></a>
+<a name="locomotive_editor"></a>
+## Locomotive Editor
 
 lien: Carrier Wave seems to be locking down ThemeAsset to only allow images
 
 https://groups.google.com/forum/#!topic/locomotivecms/r7f-54gSg0U
 
-## Using Locomotive in an existing Rails app <a name="locomotive_rails_app"></a>
+<a name="locomotive_rails_app"></a>
+## Using Locomotive in an existing Rails app
 
 sources :
 
@@ -858,9 +872,11 @@ https://groups.google.com/d/topic/locomotivecms/ZMhKPe78pZM/discussion
 
 
 
-## Tips <a name="tips"></a>
+<a name="tips"></a>
+## Tips
 
-### Using multi-sites <a name="multi_sites"></a>
+<a name="multi_sites"></a>
+### Using multi-sites
 
 notes : 
 
@@ -869,7 +885,8 @@ Well, each site is fully independent form the others: they have different pages,
 
 dev locally : https://groups.google.com/d/topic/locomotivecms/nmgDaCdb7Ts/discussion
 
-### Export site <a name="export_site"></a>
+<a name="export_site"></a>
+### Export site
 
 ``` source: [https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion) ```
 
@@ -908,12 +925,14 @@ Content Entries ( assume we have a "Projects" model ) :
 
 ```curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
 
-### Internationalization <a name="internationalization"></a>
+<a name="internationalization"></a>
+### Internationalization
 
 
 localised snippets / pages
 
-### Customise TinyMCE <a name="customise_tiny_mce"></a>
+<a name="customise_tiny_mce"></a>
+### Customise TinyMCE 
 
 ``` source: [https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)``` 
 
@@ -937,14 +956,16 @@ Note: basically, you can modify all the default tinymce settings for Locomotive.
 
 
 
-
-### Writing custom Liquid tags <a name="custom_liquid_tag"></a>
+<a name="custom_liquid_tag"></a>
+### Writing custom Liquid tags
 
 https://groups.google.com/d/topic/locomotivecms/vfxun5pOvEY/discussion
 
-## Appendix <a name="appendix"></a>
+<a name="appendix"></a>
+## Appendix
 
-### Locomotive API <a name="locomotive_api"></a>
+<a name="locomotive_api"></a>
+### Locomotive API
 
 notes récupérées du google group :
 
