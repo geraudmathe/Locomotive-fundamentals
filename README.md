@@ -25,7 +25,8 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
 5. __[Models](#models)__
   *  __[Basics](#models_basics)__
   *  __[Models mapping](#models_mapping)__
-  *  __[Templatize a Model](#models_templatize)__
+  *  __[Rendering models](#models_rendering)__
+  *  __[Templatize a model](#models_templatize)__
   *  __[Recipe : Editing has_many in parent model](#editing_has_many)__
   *  __[Recipe: Public Submission](#public_submission)__
 6. __[Locomotive Editor](#locomotive_editor)__
@@ -711,11 +712,98 @@ Awesome book, blablabla ...
 <a name="models_mapping_has_many">
 #### Many to many
 
+Finally, we will add the ability to associate tags to a book. Here, the model ```tags``` have many ```books``` and ```books``` have many ```tags```.
+
+Let's create the ```tags``` model.
+
+![tags creation 1](Locomotive-fundamentals/raw/master/images/manytomany_tags_1.png)
+![tags creation 2](Locomotive-fundamentals/raw/master/images/manytomany_tags_2.png)
+
+We have the ```books``` field refering to books via a ```many_to_many``` relationship. Like previously, we specify the ```Class name``` of the targeted model, which is ```books```. We also have to specify ```Inverse of``` (itself) ```tags``` here, but we can't, the select list is empty. 
+
+For now, save the  ```tags``` model, we will get back here soon.
+Go edit the  ```books``` model and add, as you may guessed, the ```tags``` field refering to tags via a ```many_to_many``` relationship. The ```Class name``` of the targeted model is ```tags```. Yes I'm repeating myself a little, just in case. 
+But here you can define the ```Inverse of``` (itself) which is ```books```, so do it please :
+
+![books m2m update](Locomotive-fundamentals/raw/master/images/manytomany_books.png)
+
+Then save the ```books``` model and go back editing ```tags``` model : magic, the ```Inverse of``` attribute of the many_to_many field ```books``` is field with the appropriate value ```tags``` :
 
 
-### Templatize a model <a name="models_templatize"></a>
+![tags inverse of update](Locomotive-fundamentals/raw/master/images/manytomany_tags_inverseof.png)
 
- The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
+Here it is, your many to many is settled.
+
+Now we will add some tags to our book, but unlike the previous cases, you can't create a tag entrie in the book entrie page :
+
+![m2m enable ui problem](Locomotive-fundamentals/raw/master/images/manytomany_enableui.png)
+
+We have to create a new tag entrie separatelly, and then add it when editing the book entrie. So we do :
+
+
+![m2m tag available in book](Locomotive-fundamentals/raw/master/images/manytomany_tag_entrie.png)
+
+
+You don't have to select here the book entrie you want to connect the tag.
+And when we go back to the book entrie we were editing, the tag is available in the select list :
+
+manytomany_books_tags_available
+
+So let's (finally !) add our tag to our book, save, and check if everything is okay back in frontend :
+
+```
+{% for book in contents.books %}
+	{{ book.title }} written by {{ book.writter.name }} is a great lecture.
+	<br>
+	Tags :
+	<br>
+	{% for tag in book.tags %}
+		"{{ tag.text }}" 
+	{% endfor %}
+{% endfor %}
+```
+
+displays :
+
+```
+Responsive Web design written by Ethan Marcotte is a great lecture. 
+Tags : 
+"responsive"
+```
+
+And if we do the opposite, it's okay too (as expected after so much pain) :
+
+```
+{% for tag in contents.tags %}
+	Tag : "{{ tag.text }}" is related to the following books :
+	<br>
+	{% for book in tag.books %}
+		{{ book.title }} written by {{ book.writter.name }}
+	{% endfor %}
+{% endfor %}
+```
+
+displays :
+
+```
+Tag : "responsive" is related to the following books : 
+Responsive Web design written by Ethan Marcotte
+```
+
+
+
+<a name="models_rendering"></a>
+### Rendering models
+
+https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
+
+ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
+
+
+<a name="models_templatize"></a>
+### Templatize a model
+
+The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
  
  The templatized mechanism expects to have "models" under a parent folder which makes more sense for SEO purpose actually (well that's my opinion).
 
@@ -730,22 +818,6 @@ Note: in the 2.0 version, you can not have multiple nested levels of templatized
 sources :
 https://groups.google.com/d/topic/locomotivecms/EQ-leEOgU2U/discussion
 
-note : 
-
-nested pas possible pour l'instant, voir la branche 2.1 wildcards
-
-
-
-
-
-
-
-
-### Rendering models
-
-https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
-
-ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 
 <a name="editing_has_many"></a>
 ### Recipe : Editing has_many in parent model
