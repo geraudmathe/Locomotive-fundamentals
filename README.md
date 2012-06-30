@@ -945,13 +945,36 @@ When set to true, you can for example ...
 <a name="models_rendering"></a>
 ### Rendering models
 
-https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
+In this subchapter, we will try to show the most common cases of rendering a model entries. It would be tedious to list every possible cases, the aim is only to give an overview of what's possible.
 
-ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
+#### Basic loop
+
+The simpliest loop is an iteration on your model entries, we loop here on the model ```posts```, the one from the previous [Basics](#models_basics) subchapter.
+
+
+```
+{% for post in contents.posts %}
+<p>{{ post.title }}</p>
+{% endfor %}
+```
 
 
 
 
+
+
+
+
+Source : 
+
+- [loop for](http://doc.locomotivecms.com/templates/tags#for-section)  
+- [content type object](http://doc.locomotivecms.com/templates/objects#content-type-section)
+
+
+
+#### Paginate entries
+
+#### Define a scope
 {% with_scope _slug: params.section %}
 {% assigns section = contents.sections.first %}
 {% endwith_scope %}
@@ -959,6 +982,9 @@ ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 {% for article in section.articles %}
 ...
 {% endfor %}
+
+
+#### All together
 
 
 
@@ -1005,7 +1031,6 @@ With :
 	
 	![templatized page template liquid](Locomotive-fundamentals/raw/master/images/templatize_template_liquid.png)
 	
-
 
 
 **Note: in Locomotive 2.0, you can't have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.**
