@@ -673,7 +673,54 @@ When the attributes of the model are defined, click on "Create" to edit advanced
 
 ![models advanced props](Locomotive-fundamentals/raw/master/images/models_basics_advanced.png)
 
+For the purpose of the example, the following dummy model is used in what's follow :
 
+
+![models advanced model](Locomotive-fundamentals/raw/master/images/models_basics_advanced_model.png)
+  
+So let's say we have a model of posts, with a title (string), some text (text), a category (select with options "frontend" and "backend") and a publishing_date (date).
+
+**Presentation**
+
+Theses options let you customise a bit how entries of your model are displayed in the backoffice page.
+
+- Label field :
+
+	Choose the field of the model displayed for each entrie.
+	
+	If you choose the field ```title```, you have :
+	
+	![models advanced label 1](Locomotive-fundamentals/raw/master/images/models_basics_advanced_label1.png)
+	
+	
+	And if you choose ```publishing_date```, you end up with :
+	
+	![models advanced label 2](Locomotive-fundamentals/raw/master/images/models_basics_advanced_label2.png)
+	
+- Group by field :
+
+	Group entries by a common field value. This is available only for fields which have the type ```select```. So here we can group by category :
+	
+	![models advanced group by](Locomotive-fundamentals/raw/master/images/models_basics_advanced_groupby.png)
+
+- Item template :
+
+	Let you really customize the string displayed for each entry in the list of model's entries.
+	For example, let's say I don't display my posts grouped by category, but still I would like the category appears aside the post title, I would do so :
+	
+	![models advanced item template](Locomotive-fundamentals/raw/master/images/models_basics_advanced_itemtemplate.png)
+
+**Advanced options**
+
+And finally, last properties of your model:
+
+- Order by, Order direction :
+	The ordering of items in your model, both in frontend and in backend.
+	
+- Public Submission :
+	Let frontend users create entries for the model, so typically you would use that option in a model "messages" for a contact form. This is detailed [here](#models_public_submission).
+
+ 
 
 
 
