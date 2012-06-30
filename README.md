@@ -673,7 +673,7 @@ When the attributes of the model are defined, click on "Create" to edit advanced
 
 ![models advanced props](Locomotive-fundamentals/raw/master/images/models_basics_advanced.png)
 
-For the purpose of the example, the following dummy model is used in what's follow :
+For the purpose of the example, the following model will be used in what's follow :
 
 
 ![models advanced model](Locomotive-fundamentals/raw/master/images/models_basics_advanced_model.png)
@@ -682,11 +682,11 @@ So let's say we have a model of posts, with a title (string), some text (text), 
 
 **Presentation**
 
-Theses options let you customise a bit how entries of your model are displayed in the backoffice page.
+Theses options let you customise how entries of your model are displayed in the backoffice page.
 
 - Label field :
 
-	Choose the field of the model displayed for each entrie.
+	Choose the field of the model displayed for each entry.
 	
 	If you choose the field ```title```, you have :
 	
@@ -709,6 +709,11 @@ Theses options let you customise a bit how entries of your model are displayed i
 	For example, let's say I don't display my posts grouped by category, but still I would like the category appears aside the post title, I would do so :
 	
 	![models advanced item template](Locomotive-fundamentals/raw/master/images/models_basics_advanced_itemtemplate.png)
+	
+	And my entries would display this way :
+	
+	![models advanced item template1](Locomotive-fundamentals/raw/master/images/models_basics_advanced_itemtemplate1.png)
+	
 
 **Advanced options**
 
