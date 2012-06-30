@@ -923,9 +923,7 @@ Tag : "responsive" is related to the following books :
 Responsive Web design written by Ethan Marcotte
 ```
 
-#### Miscellaneous tips
-
-
+#### Miscellaneous
 
 
 ** UI enabled :**
@@ -937,10 +935,10 @@ When you define a field which will reference a child model, the property "Ui ena
 
 This property sets either you can edit and create a child model entrie directly from parent or not.
 
-When set to true, you can for example 
+When set to true, you can for example ...
 
->> qd on edite, on peut directement
->> qd on cree un parent, il faut dabord le creer et ensuite ds lediting on peut creer le child >> what happens if required field ??
+- qd on edite, on peut directement
+- qd on cree un parent, il faut dabord le creer et ensuite ds lediting on peut creer le child >> what happens if required field ??
 
 
 
@@ -968,20 +966,49 @@ ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 <a name="models_templating"></a>
 ### Templatize a model
 
-The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
+The idea of a templatized page is that's a view of one instance of the model you specified in the ```templatized``` option of a page. 
  
- The templatized mechanism expects to have "models" under a parent folder which makes more sense for SEO purpose actually (well that's my opinion).
+Here is how it works : let's say you have the model ```products```. You will have the following pages structure :
 
-A quick example:
+![templatized page archi](Locomotive-fundamentals/raw/master/images/templatize_archi.png)
 
-/home
-/products (<= used for instance to list of your products, could also be a redirect page)
-/products/template (templatized => true, model => Products)
+With :
 
-Note: in the 2.0 version, you can not have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.
+- ```posts``` page :
 
-sources :
-https://groups.google.com/d/topic/locomotivecms/EQ-leEOgU2U/discussion
+	The templatized mechanism expects to have "models" under a parent folder which makes more sense for SEO purpose. This page can be used for instance to list the products, or could be a redirect page.
+	
+	So for the example, here are the parameters of the page, but there isn't anything specific here : 
+	
+	![templatized page posts](Locomotive-fundamentals/raw/master/images/templatize_posts1.png)
+	
+	![templatized page posts 2](Locomotive-fundamentals/raw/master/images/templatize_posts2.png)
+	
+	Again for the example, we could list in this page the posts, and display the link of each entrie (the example model is the one from the previous [Basics](#models_basics) part) :
+	
+	![templatized page posts liquid](Locomotive-fundamentals/raw/master/images/templatize_posts_liquid.png)
+	
+	
+- ```template``` page :
+	
+	The template of the templatized model is defined as follow :
+	
+	![templatized page 1](Locomotive-fundamentals/raw/master/images/templatize_template1.png)
+	
+	You set the page ```posts``` as the ```parent``` of this one. A templatized page **must** have a parent one, other than index.
+	
+	![templatized page 2](Locomotive-fundamentals/raw/master/images/templatize_template2.png)
+	
+	You set the parameter ```Templatized``` as true, and select bellow the appropriate model you want templatize.
+	
+	So to follow the example, we will display a full post here, using directly the ```posts``` instance :
+	
+	![templatized page template liquid](Locomotive-fundamentals/raw/master/images/templatize_template_liquid.png)
+	
+
+
+
+**Note: in the 2.0 version, you can not have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.**
 
 
 <a name="models_public_submission"></a>
