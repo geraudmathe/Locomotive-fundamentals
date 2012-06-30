@@ -18,3 +18,4 @@
 - Internationalization
 - Writing custom Liquid tags
 - Locomotive API
+- simple input type : max 255 chars ?

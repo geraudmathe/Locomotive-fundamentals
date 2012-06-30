@@ -559,48 +559,121 @@ These meta values will then be available for use in the template with Liquid tag
 TODO: it's a draft, rewritte it
 
 
+This chapter covers models, or the custom content, Locomotive let you build in the Ui. In this guide we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type``` and ```content entrie``` for an instance of a ```content type``` (obivously).
+
+The first subchapter aims to introduce the very basic creation and usage of models, the second one is about building relationships between your models. 
+We cover then the rendering of models using Liquid, where we try to show the usual use cases, and after that a subchapter is dedicated to the functionality of templatizing a model.
+Finally, we will see the public submission of models, which allows frontend users to create instances. 
 
 
 <a name="models_basics"></a>
 ### Basics
 
-introduction blqblq
 
-
-
-
-First step, specifying the name of the model and so on :
+First step, specify the name of the model and so on :
 
 ![Create model](Locomotive-fundamentals/raw/master/images/models_basics_creation.png)
 
-As mentioned in the hint, it's the slug of the model's name you will then refence to in your liquid logic.
-
-Then, you define all the fields (attributes) of your model in this section :
+As mentioned in the hint, you will reference your model in Liquid logic by its *slug*. Then, you define the fields (attributes) of your model in the following section :
 
 ![Create fields](Locomotive-fundamentals/raw/master/images/models_basics_fields.png)
 
-You have the following available types for a field :
+
+#### Fields types
+
+The following types of attributes are available :
 
 ![Types list](Locomotive-fundamentals/raw/master/images/models_basics_types_list.png)
 
-Let's see each one of them :
+Let's detail each one of them. The rendering of these types will be detailed later.
 
-- Simple input 
+*Nota bene : you will encounter some properties not explained, it's because they are common to all field types and will be detailed later.*
 
-	Simple string, max 255 chars
+- Simple input :
 
-- Text
-- Select
-- Checkbox
-- Date
-- File
+	A string, max 255 chars (?)
 
-The other fields specifying a relationship with an other model (```belongs_to```, ```has_many``` and ```many_to_many```) will be explained in the next section. 
+- Text :
+	
+	Text field, but you can choose the format.
+	When you add a field :
+	
+	![type text 1](Locomotive-fundamentals/raw/master/images/models_basics_text_1.png)
+	
+	you then have an properties panel which slides down by clicking on the arrow on the right part of the line :
+	
+	![type text 2](Locomotive-fundamentals/raw/master/images/models_basics_text_2.png)
+
+	If you choose ```Text formatting : HTML```, you will have a WYSIWYG editor, TinyMCE :
+	
+	![type text tinymce](Locomotive-fundamentals/raw/master/images/models_basics_text_tinymce.png)
+	 
+	 And if you choose ```Text formatting : none```, you will have a simple textarea :
+	 
+	 ![type text textarea](Locomotive-fundamentals/raw/master/images/models_basics_text_textarea.png)
+	
+- Select :
+
+	Displays a select list of options for the field.
+	
+	![type select](Locomotive-fundamentals/raw/master/images/models_basics_select.png)
+	
+	You have to put the options of the list in the property of the field, here we have "frontend" "backend" and "api" for the example. This type of attribute is handy, since it may avoids you the creation of a model for simple lists like this one. But you have to know the options of the list are editable only from the model editing page. So when you are creating a model instance, you can't edit options of the list. It may be a problem if you don't want a user access to model's structure.   
+	
+
+- Checkbox :
+
+	A simple boolean field.
+
+- Date :
+
+	A date field which is editable by this :
+	
+	![type date](Locomotive-fundamentals/raw/master/images/models_basics_date.png)
+
+- File :
+
+	A field of this type supports the upload of any kind of file.
 
 
-tips : 
+The other fields specifying a relationship with an other model (```belongs_to```, ```has_many``` and ```many_to_many```) will be explained in the next section, [Models mapping](#models_mapping).
 
-il faut au moins un champs texte je crois obligatoire dans un model, le premier champs sera rendu obligatoire a lenregistremenet sil ny en a aucun de defini
+**Common fields properties :**
+
+When you define an attribute (or a field) for your model, you have some properties which are specific for each kind of attribute, and some which are common to every one.
+
+![type properties](Locomotive-fundamentals/raw/master/images/models_basics_properties.png)
+
+- Required / Optionnal :
+
+	Defines weither this field is required or not for the validation.
+	 
+	A model must have at least one field, that's obvious, and the first field you will define will be considered as the mandatory one, and will be automatically saved as ```Required```. There is one exception though: you can't have a mandatory field whose type defines a relationship with an other model.
+
+- Name :
+
+	Make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the tip explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow. 
+
+	It may seems obvious, it is, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in liquid and may wonder why...
+
+- Hint :
+
+	Hint for the end user of the backoffice, displayed in the model form just below the field.
+
+- Localized :
+
+	Used for internationalization, detailed [here](#internationalization). 
+
+
+#### Presentation and Advanced options
+
+When the attributes of the model are defined, click on "Create" to edit advanced options of the model :
+
+![models advanced props](Locomotive-fundamentals/raw/master/images/models_basics_advanced.png)
+
+
+
+
 
 <a name="models_mapping"></a>
 ### Models mapping
@@ -798,15 +871,7 @@ Responsive Web design written by Ethan Marcotte
 
 #### Miscellaneous tips
 
-** Name of a field :**
 
-When you define a relationship field as follow (by example) :
-
-![tips name of field](Locomotive-fundamentals/raw/master/images/models_tips_slug.png)
-
-make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the hint explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow. 
-
-It may seems obvious, but if you change the name of the field (the one highlighten in yellow) and forgot the change accordingly the value of the field bellow, you will not be able to retrieve the object in liquid and may wonder why...
 
 
 ** UI enabled :**
