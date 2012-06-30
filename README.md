@@ -472,6 +472,9 @@ Or you can define SEO meta for each ``` page ``` :
 
 #### Filters
 
+
+ img magick http://markevans.github.com/dragonfly/file.ImageMagick.html
+
 #### Tags
 
 editable file => https://groups.google.com/forum/#!topic/locomotivecms/hOaqFUcZCm8 only in backoffice for 2.0
