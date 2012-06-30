@@ -559,33 +559,35 @@ These meta values will then be available for use in the template with Liquid tag
 TODO: it's a draft, rewritte it
 
 
-This chapter covers models, or the custom content, Locomotive let you build in the Ui. In this guide we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type``` and ```content entrie``` for an instance of a ```content type``` (obivously).
+This chapter covers models, or the custom content, Locomotive let you build in the Ui. In this guide we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type```, and ```content entrie``` for an instance of a ```content type```.
 
-The first subchapter aims to introduce the very basic creation and usage of models, the second one is about building relationships between your models. 
-We cover then the rendering of models using Liquid, where we try to show the usual use cases, and after that a subchapter is dedicated to the functionality of templatizing a model.
-Finally, we will see the public submission of models, which allows frontend users to create instances. 
+The [first](#models_basics) subchapter aims to introduce the very basic creation and usage of models, the [second one](#models_mapping) is about building relationships between your models. 
+We cover [then](#models_rendering) the rendering of models using Liquid, where we try to show the common use cases, and after that a [subchapter](#models_templating) is dedicated to the functionality of templating a model.
+Finally, we will cover the [public submission](#models_public_submission) of models, which allows frontend users to create instances. 
 
 
 <a name="models_basics"></a>
 ### Basics
 
 
-First step, specify the name of the model and so on :
+First step of model creation, specify the name of the model :
 
 ![Create model](Locomotive-fundamentals/raw/master/images/models_basics_creation.png)
 
-As mentioned in the hint, you will reference your model in Liquid logic by its *slug*. Then, you define the fields (attributes) of your model in the following section :
+As mentioned in the hint, you will reference your model in Liquid logic by its *slug*. 
+
+Then, you will define the fields (attributes) of your model in the following section :
 
 ![Create fields](Locomotive-fundamentals/raw/master/images/models_basics_fields.png)
 
 
 #### Fields types
 
-The following types of attributes are available :
+The following types of attributes (fields) are available :
 
 ![Types list](Locomotive-fundamentals/raw/master/images/models_basics_types_list.png)
 
-Let's detail each one of them. The rendering of these types will be detailed later.
+Let's detail each one of them. The rendering of these types will be detailed [later](#models_rendering).
 
 *Nota bene : you will encounter some properties not explained, it's because they are common to all field types and will be detailed later.*
 
@@ -600,7 +602,7 @@ Let's detail each one of them. The rendering of these types will be detailed lat
 	
 	![type text 1](Locomotive-fundamentals/raw/master/images/models_basics_text_1.png)
 	
-	you then have an properties panel which slides down by clicking on the arrow on the right part of the line :
+	you then have a properties panel which appears by clicking on the arrow on the right part of the line :
 	
 	![type text 2](Locomotive-fundamentals/raw/master/images/models_basics_text_2.png)
 
@@ -618,7 +620,7 @@ Let's detail each one of them. The rendering of these types will be detailed lat
 	
 	![type select](Locomotive-fundamentals/raw/master/images/models_basics_select.png)
 	
-	You have to put the options of the list in the property of the field, here we have "frontend" "backend" and "api" for the example. This type of attribute is handy, since it may avoids you the creation of a model for simple lists like this one. But you have to know the options of the list are editable only from the model editing page. So when you are creating a model instance, you can't edit options of the list. It may be a problem if you don't want a user access to model's structure.   
+	You have to put the options of the list in the property of the field, here we have "frontend" "backend" and "api" for the example. This type of attribute is handy, since it may avoids you the creation of a third-party model for simple lists like this one. But you have to know the options of the list are *only editable from the model editing page*. So when you are creating a model instance, you can't edit options of the list. It may be a problem if you don't want a user access to model's structure.   
 	
 
 - Checkbox :
@@ -640,7 +642,7 @@ The other fields specifying a relationship with an other model (```belongs_to```
 
 **Common fields properties :**
 
-When you define an attribute (or a field) for your model, you have some properties which are specific for each kind of attribute, and some which are common to every one.
+When you define an attribute (or a field) for your model, you have some properties which are specific for each kind of attribute (detailed previously), and some which are common to every one.
 
 ![type properties](Locomotive-fundamentals/raw/master/images/models_basics_properties.png)
 
@@ -654,7 +656,7 @@ When you define an attribute (or a field) for your model, you have some properti
 
 	Make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the tip explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow. 
 
-	It may seems obvious, it is, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in liquid and may wonder why...
+	It may seems obvious, it is, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in Liquid and may wonder why...
 
 - Hint :
 
@@ -911,7 +913,7 @@ ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 
 
 
-<a name="models_templatize"></a>
+<a name="models_templating"></a>
 ### Templatize a model
 
 The idea of a templatized page is that it is a view of one instance of the model you specified in the templatized option. 
@@ -930,17 +932,7 @@ sources :
 https://groups.google.com/d/topic/locomotivecms/EQ-leEOgU2U/discussion
 
 
-<a name="editing_has_many"></a>
-### Recipe : Editing has_many in parent model
-
-homes has many pictures 
-
-homes : adress, has_many(pictures)
-pictures : item file
-
-save a homes object and then you can edit it and upload several pictures
-
-<a name="public_submission"></a>
+<a name="models_public_submission"></a>
 ### Recipe : Public Submission
 
 https://github.com/locomotivecms/engine/blob/master/features/public/contact_form.feature
