@@ -963,7 +963,7 @@ ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 
 
 
-<a name="models_templating"></a>
+<a name="models_templatize"></a>
 ### Templatize a model
 
 The idea of a templatized page is that's a view of one instance of the model you specified in the ```templatized``` option of a page. 
