@@ -968,7 +968,7 @@ ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
 
 The idea of a templatized page is that's a view of one instance of the model you specified in the ```templatized``` option of a page. 
  
-Here is how it works : let's say you have the model ```products```. You will have the following pages structure :
+Here is how it works : let's say you have the model ```posts```, the one from the previous [Basics](#models_basics) subchapter. You will have the following pages structure :
 
 ![templatized page archi](Locomotive-fundamentals/raw/master/images/templatize_archi.png)
 
@@ -984,7 +984,7 @@ With :
 	
 	![templatized page posts 2](Locomotive-fundamentals/raw/master/images/templatize_posts2.png)
 	
-	Again for the example, we could list in this page the posts, and display the link of each entrie (the example model is the one from the previous [Basics](#models_basics) part) :
+	Again for the example, we could list in this page the posts, and display the link of each entrie. You have to build the relative url according this page's slug, and using the ```_permalink``` attribute of a model instance.
 	
 	![templatized page posts liquid](Locomotive-fundamentals/raw/master/images/templatize_posts_liquid.png)
 	
@@ -1001,14 +1001,14 @@ With :
 	
 	You set the parameter ```Templatized``` as true, and select bellow the appropriate model you want templatize.
 	
-	So to follow the example, we will display a full post here, using directly the ```posts``` instance :
+	To follow the example, we will display a full post here, using directly the ```posts``` instance (notice the singular) :
 	
 	![templatized page template liquid](Locomotive-fundamentals/raw/master/images/templatize_template_liquid.png)
 	
 
 
 
-**Note: in the 2.0 version, you can not have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.**
+**Note: in Locomotive 2.0, you can't have multiple nested levels of templatized pages. It will be possible with the 2.1 version, if you need this feature now, have a look at [this](https://github.com/locomotivecms/engine/tree/2.1-dev) branch and [this](https://github.com/locomotivecms/engine/pull/125) discussion.**
 
 
 <a name="models_public_submission"></a>
