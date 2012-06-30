@@ -483,9 +483,6 @@ exemple: <img src="{% editable_file 'Promotion_2_image', hint: 'Upload a promoti
 <a name="templating_3"></a>
 ### Creating a page
 
-TODO: montrer la gestion visuelle des pages dans la home
-TODO: lister les différents types de page ?
-
 You have several option when you create a page. Let's take a look.
 
 #### General information
@@ -519,36 +516,37 @@ These meta values will then be available for use in the template with Liquid tag
 
 - Handle : 
 
-TODO: link to integrate Locomotive with a rails app
+	Used when you integrate Locomotive with a Rails app, see [this chapter](#locomotive_rails_app).
 
 - Response type :
 
-You can choose between HTML, RSS, XML or JSON. You may this way generate a RSS feed or build an simple API from your Locomotive site.
+	You can choose between HTML, RSS, XML or JSON. You may this way generate a RSS feed or build an simple API from your Locomotive site.
 
 - Templatized : 
 
-TODO: link to the part of the book about templatized pages
+	Defines weither this page should be a template for a model instance, see [this chapter](#models_templatize).
+	 
 
 - Published : 
 
-Since only authenticated accounts can view unpublished pages, this allows debugging a page on a deployed site.
+	Since only authenticated accounts can view unpublished pages, this allows debugging a page on a deployed site.
 
 - Listed :
 
-The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.com/templates/tags#nav-section)) based on your page. Control here weither this page appears in the generated menu.
+	The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.com/templates/tags#nav-section)) based on your page. Control here weither this page appears in the generated menu.
 
 - Redirect :
 
-If you check this, you can redirect the page to a url.
+	If you check this, you can redirect the page to a url.
 
-It then will be a 301 redirection, which from a SEO point of view, is a permanent redirection. You should use it when you have changed your urls. The search engine will then forget the previous page and update the url in its database.
+	It then will be a 301 redirection, which from a SEO point of view, is a permanent redirection. You should use it when you have changed your urls. The search engine will then forget the previous page and update the url in its database.
 
 
-``` source: [https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion](https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion)``` 
+	``` source: [https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion](https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion)``` 
 
 - Cache strategy :
 
-Define here the cache strategy for this page.
+	Define here the cache strategy for this page.
 
 
 <a name="rss_feed"></a>
@@ -561,9 +559,7 @@ Define here the cache strategy for this page.
 TODO: it's a draft, rewritte it
 
 
-https://groups.google.com/forum/#!topic/locomotivecms/GGUJfwvzS9k
 
-https://groups.google.com/d/topic/locomotivecms/xV3KR-IlOmI/discussion
 
 <a name="models_basics"></a>
 ### Basics
@@ -599,23 +595,21 @@ Let's see each one of them :
 - Date
 - File
 
-The other fields specifying a relationship with an other model (belongs_to, has_many, many_to_many) will be explained in the next section. 
+The other fields specifying a relationship with an other model (```belongs_to```, ```has_many``` and ```many_to_many```) will be explained in the next section. 
 
 
 tips : 
 
-verifier que on a bien le meme nom de champ et de slug dans option panel, sinon on peut ne pas comprendre pourquoi on n qccede pas a un champ
-
 il faut au moins un champs texte je crois obligatoire dans un model, le premier champs sera rendu obligatoire a lenregistremenet sil ny en a aucun de defini
-
-UI ENABLED
 
 <a name="models_mapping"></a>
 ### Models mapping
 
-Locomotive let you define the relationships between models you are used to in Rails, but the creation and usage of these mapped models can sometimes be disturbing in the UI, so let's see for each one of them of to deal with.
+Locomotive let you define the relationships between models you are used to in Rails, but the creation and usage of these mapped models can sometimes be uneasy, so let's see for each one of them of to deal with.
 
 This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
+
+We will see the ```belongs to```, ```has many``` and ```many to many``` relationships. A last subchapter will be dedicated to miscellaneous tips which are good to know when working with mapped models.
 
 
 #### Belongs to
@@ -802,6 +796,33 @@ Tag : "responsive" is related to the following books :
 Responsive Web design written by Ethan Marcotte
 ```
 
+#### Miscellaneous tips
+
+** Name of a field :**
+
+When you define a relationship field as follow (by example) :
+
+![tips name of field](Locomotive-fundamentals/raw/master/images/models_tips_slug.png)
+
+make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the hint explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow. 
+
+It may seems obvious, but if you change the name of the field (the one highlighten in yellow) and forgot the change accordingly the value of the field bellow, you will not be able to retrieve the object in liquid and may wonder why...
+
+
+** UI enabled :**
+
+When you define a field which will reference a child model, the property "Ui enable" is available to you, and 'true' by default :
+
+
+![tips ui enable](Locomotive-fundamentals/raw/master/images/models_tips_uienable.png)
+
+This property sets either you can edit and create a child model entrie directly from parent or not.
+
+When set to true, you can for example 
+
+>> qd on edite, on peut directement
+>> qd on cree un parent, il faut dabord le creer et ensuite ds lediting on peut creer le child >> what happens if required field ??
+
 
 
 <a name="models_rendering"></a>
@@ -810,6 +831,19 @@ Responsive Web design written by Ethan Marcotte
 https://groups.google.com/forum/#!topic/locomotivecms/talQGR12CQ8
 
 ds la loop for, pas besoin de mettre le model au singulier c pas obligatoire
+
+
+
+
+{% with_scope _slug: params.section %}
+{% assigns section = contents.sections.first %}
+{% endwith_scope %}
+
+{% for article in section.articles %}
+...
+{% endfor %}
+
+
 
 
 <a name="models_templatize"></a>
@@ -936,7 +970,7 @@ localised snippets / pages
 
 ``` source: [https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)``` 
 
-TODO: test this and finish it !
+
 
 Within your main app,
 
