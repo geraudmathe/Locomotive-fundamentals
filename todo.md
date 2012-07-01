@@ -21,3 +21,9 @@
 - simple input type : max 255 chars ?
 - Ui enabled dans mapping
 - considerations about nested relationships and performance of associated mongo queries ? ask Didier
+- find relevant / interesting examples ? else, nothing to explain really ? dans adding logic to basic loop rendering
+
+
+
+
+<a href=""></a>

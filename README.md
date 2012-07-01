@@ -668,7 +668,7 @@ When you define an attribute (or a field) for your model, you have some properti
 
 	Used for internationalization, detailed [here](#internationalization). 
 
-
+<a name="presentation_and_advanced_options"></a>
 #### Presentation and Advanced options
 
 When the attributes of the model are defined, click on "Create" to edit advanced options of the model :
@@ -951,36 +951,128 @@ In this subchapter, we will try to show the most common cases of rendering a mod
 
 First we will see the very basics of iterating over a collection of entries and the available logic you can add, then the pagination of results and finally the scoping the querie of results.
 
-#### Basic loop
-
-The simpliest loop is an iteration on your model entries, we loop here on the model ```posts```, the one from the previous [Basics](#models_basics) subchapter.
+#### Basics
 
 
-```
-{% for post in contents.posts %}
-<p>{{ post.title }}</p>
-{% endfor %}
-```
+The simpliest loop is an iteration over your model entries. We loop here on the model ```posts```, the one from the previous [Basics](#models_basics) subchapter:
+
+
+	{% for item in contents.posts %}
+	<p>{{ item.title }}</p>
+	{% endfor %}
+
+You loop in ```contents.slug-of-your-model```, and for each entrie you have access to the custom fields of your model, and also to a list of attributes :
+
+![entries attributes](Locomotive-fundamentals/raw/master/images/entries_attributes.png)
+
+They are listed and explained in the documentation so there is no need to detail each one of them.
+
+**Adding logic**
+
+Logic liquid tags let you put some logic inside your loops.
+
+http://doc.locomotivecms.com/templates/tags
+
+TODO: find relevant / interesting examples ? else, nothing to explain really ?
+
+**Rendering model's attributes**
 
 
 
+**Displaing Group by**
+
+In the [Presentation and Advanced options](#presentation_and_advanced_options) of the Basics subchapter, we saw how customize the displaying of a model's entries.
+One of the options is to group entries by a field, at the condition the field you want group_by entries is a ```select``` type.
+
+In frontend, you also have this. Here is an example, using the ```posts``` model, the one from the previous [Basics](#models_basics) subchapter.
 
 
+	{% for cat in contents.posts.group_by_category %}
+		<br>
+		{{ cat.name }} :
+		{% for entrie in cat.entries %}
+			<br>
+			{{ entrie.title }}
+		{% endfor %}
+	{% endfor %}
 
 
+The syntax is the follozing : ```contents.slug-of-your-model.group_by_field_name```, with the field name corresponding to the ```select``` type field you group by entries.
 
-	Source : 
+As explained in the documentation : *The method returns an ordered Array of Hash. Each Hash stores 2 keys, name which is the name of the option and entries which is the list of the ordered entries for the option. The Array is ordered based on the order of the options set in the back-office.*
 
-	- [loop for](http://doc.locomotivecms.com/templates/tags#for-section)  
-	- [content type object](http://doc.locomotivecms.com/templates/objects#content-type-section)
-
+So we first loop on each value of the ```select``` type field, wich is "cat", and then for each "cat" we loop on each entries of this category.
 
 
 #### Paginate entries
 
-```Reference : ```
+[http://doc.locomotivecms.com/templates/tags#paginate-section](http://doc.locomotivecms.com/templates/tags#paginate-section)
+
+[http://doc.locomotivecms.com/templates/filters#default-pagination-section](http://doc.locomotivecms.com/templates/filters#default-pagination-section)
+
+Locomotive comes with a paginate tag.
+
+	{% paginate contents.posts by 3 %}
+  		{% for post in paginate.collection %}
+    		<p>{{ post.title }}</p>
+  		{% endfor %}
+	{% endpaginate %}
+
+It creates a ```paginate``` objects with the following attributes :
+
+![paginate attributes](Locomotive-fundamentals/raw/master/images/paginate_object.png)
+
+There are all pretty straighforward, but let's have a look at the ```parts``` attributes, it seems there is everything here to build the navigation of your paginated pages.
+
+Here is an example of how we would to it :
+
+	{% paginate contents.posts by 1 %}
+		{% for post in paginate.collection %}
+			<p>{{ post.title }}</p>
+  		{% endfor %}
+		
+		<!-- pagination links -->
+		{% for page in paginate.parts %}
+			{% if page.is_link %}
+				<a href="{{ page.url }}" >{{ page.title }}</a>
+			{% else %}
+				{{ page.title }}
+			{% endif %}
+		{% endfor %}
+	{% endpaginate %}
+
+
+Well, that's fine if you want have the control of your markup, but if you don't, there is the filter ```default_pagination``` for rendering a clean pagination navigation without pain :
+
+	{% paginate contents.posts by 1 %}
+		{% for post in paginate.collection %}
+			<p>{{ post.title }}</p>
+	  	{% endfor %}
+		<!-- pagination links -->
+		{{ paginate | default_pagination, next: 'Next', previous: 'Previous' }}
+	{% endpaginate %}
+
+Which takes 2 arguments :
+
+![paginate filter](Locomotive-fundamentals/raw/master/images/paginate_filter.png)
+
+And which renders this kind of markup :
+
+```html
+<div class="pagination ">
+	<span class="disabled prev_page">« Previous</span>
+    <span class="current">1</span>
+    <a href="/posts?page=2">2</a>
+    <a href="/posts?page=3">3</a>
+	<a href="/posts?page=2" class="next_page">Next »</a>
+</div>
+```
 
 #### Scope results
+
+
+http://doc.locomotivecms.com/templates/tags#with-scope-section
+
 {% with_scope _slug: params.section %}
 {% assigns section = contents.sections.first %}
 {% endwith_scope %}
@@ -988,10 +1080,6 @@ The simpliest loop is an iteration on your model entries, we loop here on the mo
 {% for article in section.articles %}
 ...
 {% endfor %}
-
-
-#### All together
-
 
 
 
