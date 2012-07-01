@@ -20,3 +20,4 @@
 - Locomotive API
 - simple input type : max 255 chars ?
 - Ui enabled dans mapping
+- considerations about nested relationships and performance of associated mongo queries ? ask Didier

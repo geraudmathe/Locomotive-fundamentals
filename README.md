@@ -27,7 +27,6 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Models mapping](#models_mapping)__
   *  __[Rendering models](#models_rendering)__
   *  __[Templatize a model](#models_templatize)__
-  *  __[Recipe : Editing has_many in parent model](#editing_has_many)__
   *  __[Recipe: Public Submission](#public_submission)__
 6. __[Locomotive Editor](#locomotive_editor)__
 7. __[Using Locomotive in an existing Rails app](#locomotive_rails_app)__
@@ -729,9 +728,6 @@ And finally, last properties of your model:
 	Let frontend users create entries for the model, so typically you would use that option in a model "messages" for a contact form. This is detailed [here](#models_public_submission).
 
  
-
-
-
 <a name="models_mapping"></a>
 ### Models mapping
 
@@ -739,8 +735,8 @@ Locomotive let you define the relationships between models you are used to in Ra
 
 This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
 
-We will see the ```belongs to```, ```has many``` and ```many to many``` relationships. A last subchapter will be dedicated to miscellaneous tips which are good to know when working with mapped models.
-
+We will see the ```belongs to```, ```has many``` and ```many to many``` relationships. 
+Then we will look at more complex mapping, and the last subchapter presents the *Ui enabled* option of a field.
 
 #### Belongs to
 
@@ -926,10 +922,13 @@ Tag : "responsive" is related to the following books :
 Responsive Web design written by Ethan Marcotte
 ```
 
-#### Miscellaneous
+#### More complex mapping
+
+TODO: considerations about nested relationships and performance of associated mongo queries ? ask Didier
 
 
-** UI enabled :**
+#### Tip: UI enabled
+
 
 When you define a field which will reference a child model, the property "Ui enable" is available to you, and 'true' by default :
 
@@ -950,6 +949,8 @@ When set to true, you can for example ...
 
 In this subchapter, we will try to show the most common cases of rendering a model entries. It would be tedious to list every possible cases, the aim is only to give an overview of what's possible.
 
+First we will see the very basics of iterating over a collection of entries and the available logic you can add, then the pagination of results and finally the scoping the querie of results.
+
 #### Basic loop
 
 The simpliest loop is an iteration on your model entries, we loop here on the model ```posts```, the one from the previous [Basics](#models_basics) subchapter.
@@ -968,16 +969,18 @@ The simpliest loop is an iteration on your model entries, we loop here on the mo
 
 
 
-Source : 
+	Source : 
 
-- [loop for](http://doc.locomotivecms.com/templates/tags#for-section)  
-- [content type object](http://doc.locomotivecms.com/templates/objects#content-type-section)
+	- [loop for](http://doc.locomotivecms.com/templates/tags#for-section)  
+	- [content type object](http://doc.locomotivecms.com/templates/objects#content-type-section)
 
 
 
 #### Paginate entries
 
-#### Define a scope
+```Reference : ```
+
+#### Scope results
 {% with_scope _slug: params.section %}
 {% assigns section = contents.sections.first %}
 {% endwith_scope %}
@@ -995,15 +998,15 @@ Source :
 <a name="models_templatize"></a>
 ### Templatize a model
 
-The idea of a templatized page is that's a view of one instance of the model you specified in the ```templatized``` option of a page. 
+The idea of a templatized page is that's a view of one instance of a model you specify in the ```templatized``` option of a page. 
  
-Here is how it works : let's say you have the model ```posts```, the one from the previous [Basics](#models_basics) subchapter. You will have the following pages structure :
+Here is how it works : let's say you have the model ```posts```, the one from the previous [Basics](#models_basics) subchapter. You need to have the following pages structure :
 
 ![templatized page archi](Locomotive-fundamentals/raw/master/images/templatize_archi.png)
 
 With :
 
-- ```posts``` page :
+- **posts** page :
 
 	The templatized mechanism expects to have "models" under a parent folder which makes more sense for SEO purpose. This page can be used for instance to list the products, or could be a redirect page.
 	
@@ -1013,24 +1016,24 @@ With :
 	
 	![templatized page posts 2](Locomotive-fundamentals/raw/master/images/templatize_posts2.png)
 	
-	Again for the example, we could list in this page the posts, and display the link of each entrie. You have to build the relative url according this page's slug, and using the ```_permalink``` attribute of a model instance.
+	Again for the example, we could list in this page the entries of ```posts``` model, and display the link of each entrie. You have to build the relative url according this page's slug, and using the ```_permalink``` attribute of a model instance.
 	
 	![templatized page posts liquid](Locomotive-fundamentals/raw/master/images/templatize_posts_liquid.png)
 	
 	
-- ```template``` page :
+- **template** page :
 	
 	The template of the templatized model is defined as follow :
 	
 	![templatized page 1](Locomotive-fundamentals/raw/master/images/templatize_template1.png)
 	
-	You set the page ```posts``` as the ```parent``` of this one. A templatized page **must** have a parent one, other than index.
+	You set the page **posts** as the *parent* of this one. A templatized page **must** have a *parent*, other than index.
 	
 	![templatized page 2](Locomotive-fundamentals/raw/master/images/templatize_template2.png)
 	
-	You set the parameter ```Templatized``` as true, and select bellow the appropriate model you want templatize.
+	Set the parameter ```Templatized``` as true, and select bellow the model you want templatize.
 	
-	To follow the example, we will display a full post here, using directly the ```posts``` instance (notice the singular) :
+	To follow the example, we will display a full post, using directly the ```posts``` instance (notice the singular) :
 	
 	![templatized page template liquid](Locomotive-fundamentals/raw/master/images/templatize_template_liquid.png)
 	
