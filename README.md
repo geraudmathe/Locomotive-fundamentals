@@ -961,7 +961,7 @@ The simpliest loop is an iteration over your model entries. We loop here on the 
 	<p>{{ item.title }}</p>
 	{% endfor %}
 
-You loop in ```contents.slug-of-your-model```, and for each entrie you have access to the custom fields of your model, and also to a list of attributes :
+You loop over ```contents.slug-of-your-model```, and for each entrie you have access to the custom fields of your model, and also to a list of attributes :
 
 ![entries attributes](Locomotive-fundamentals/raw/master/images/entries_attributes.png)
 
@@ -984,7 +984,7 @@ TODO: find relevant / interesting examples ? else, nothing to explain really ?
 In the [Presentation and Advanced options](#presentation_and_advanced_options) of the Basics subchapter, we saw how customize the displaying of a model's entries.
 One of the options is to group entries by a field, at the condition the field you want group_by entries is a ```select``` type.
 
-In frontend, you also have this. Here is an example, using the ```posts``` model, the one from the previous [Basics](#models_basics) subchapter.
+In frontend, you also have this feature. Here is an example, using the ```posts``` model, the one from the previous [Basics](#models_basics) subchapter.
 
 
 	{% for cat in contents.posts.group_by_category %}
@@ -997,7 +997,7 @@ In frontend, you also have this. Here is an example, using the ```posts``` model
 	{% endfor %}
 
 
-The syntax is the follozing : ```contents.slug-of-your-model.group_by_field_name```, with the field name corresponding to the ```select``` type field you group by entries.
+The syntax is the following : ```contents.slug-of-your-model.group_by_field_name```, with the field name corresponding to the ```select``` type field you group by entries.
 
 As explained in the documentation : *The method returns an ordered Array of Hash. Each Hash stores 2 keys, name which is the name of the option and entries which is the list of the ordered entries for the option. The Array is ordered based on the order of the options set in the back-office.*
 
@@ -1081,6 +1081,10 @@ http://doc.locomotivecms.com/templates/tags#with-scope-section
 ...
 {% endfor %}
 
+
+
+with_scope: replace _permalink by _slug in the query
+https://github.com/locomotivecms/engine/issues/449
 
 
 <a name="models_templatize"></a>
