@@ -23,7 +23,7 @@
 - considerations about nested relationships and performance of associated mongo queries ? ask Didier
 - find relevant / interesting examples ? else, nothing to explain really ? dans adding logic to basic loop rendering
 - specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
-
+- verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
 
 
 <a href=""></a>
