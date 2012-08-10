@@ -1367,7 +1367,7 @@ Your template will have relative links to the app page, but if you don't localiz
 Making them localized is pretty simple, just add the locale prefix : 
 ```html
 <a href="/{{ locale }}/target-page">click here</a>
-```.
+```
 This way, each link will point to the current localized page.
 
 
