@@ -554,12 +554,10 @@ These meta values will then be available for use in the template with Liquid tag
 <a name="rss_feed"></a>
 ### Recipe : Create a RSS feed
 
+	TO DO
 
 <a name="models"></a>
 ## Models
-
-TODO: it's a draft, rewritte it
-
 
 This chapter covers models, or the custom content, Locomotive let you build in the Ui. In this guide we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type```, and ```content entrie``` for an instance of a ```content type```.
 
@@ -1181,42 +1179,47 @@ dev locally : https://groups.google.com/d/topic/locomotivecms/nmgDaCdb7Ts/discus
 <a name="export_site"></a>
 ### Export site
 
-``` source: [https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion) ```
+``` source: [https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion)```
 
-In Locomotive 1.0, there was an export feature, which allowed to export the site (template, models, entries) in a zip. 
+In Locomotive 1.0, there was an export feature, which allowed to export the site (template, models, entries) in a zip. This is no longer the case in Locomotive 2.0, since it now uses a REST API for push & pull commands.
 
-This is no longer the case in Locomotive 2.0, since it now uses a REST API for push & pull commands.
+Pushing a site (build with Locomotive Editor) is described in [this](#locomotive_editor) section and [here](http://doc.locomotivecms.com/editor/deployment).
 
-Pushing a site (a Locomotive Editor one) is described in [this](#locomotive_editor) section and [here](http://doc.locomotivecms.com/editor/deployment).
-
-For now, there isn't any script for pulling a Locomotive app, but it's possible though, following these steps :
+For now, there isn't any pulling script, but still it's possible, following these steps :
 
 1. Get an auth token
 
-```
-curl -d 'email=me@mysite.com&password=secret' 'http://mysite.com/locomotive/api/tokens.json'
-```
+	```
+	curl -d 'email=me@mysite.com&password=secret' 'http://mysite.com/locomotive/api/tokens.json'
+	```
 
-Obviously change the email and password to be valid credientials.
+	Obviously change the email and password to be valid credientials.
 
-Response will be something like 
-```
-{"token":"dtsjkqs1TJrWiSiJt2gg"}
-```
+	Response will be something like 
+	```
+	{"token":"dtsjkqs1TJrWiSiJt2gg"}
+	```
 
-2. Use the token to get the information you need. 
+2. Use the token to retrieve needed data. 
 
-Pages :
+	Pages :
 
-```curl 'http://mysite.com/locomotive/api/pages.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+	```
+	curl 'http://mysite.com/locomotive/api/pages.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
+	```
 
-Content Types :
+	Content Types :
 
-```curl 'http://test.engine.dev:1234/locomotive/api/content_types.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+	```
+	curl 'http://test.engine.dev:1234/locomotive/api/content_types.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
+	```
 
-Content Entries ( assume we have a "Projects" model ) : 
+	Content Entries ( assume we have a "Projects" model ) : 
 
-```curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'```
+	```
+	curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
+	```
+
 
 <a name="internationalization"></a>
 ### Internationalization
