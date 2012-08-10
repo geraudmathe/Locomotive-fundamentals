@@ -1227,7 +1227,7 @@ For now, there isn't any pulling script, but still it's possible, following thes
 Locomotive has an internationalization solution out of the box. We will see how to set up internationalization, deal with localized pages and model, and finally add a custom language to Locomotive.
 
 
-#### Set up internationalization
+#### Setup
 
 First thing first, choose the languages you want support in the Settings panel :
 
@@ -1240,11 +1240,12 @@ If you go back in the 'Contents' tab, you will see a locale switcher at the righ
 
 Now there is several things you may wanna translate :
 
-- content entries (your models entries)
-- editable contents in pages
-- HTML template of pages
 
-#### Page internationalization
+- HTML template of pages
+- editable contents in pages
+- content entries (your models entries)
+
+#### Page translation
 
 By default, page's template and included ```editable contents``` are translatable. 
 
@@ -1284,7 +1285,7 @@ And now at ```test.herokuapp.com/fr/lambda``` we have our translated page :
 Since the default locale of our app is English, the lambda page url is ```test.herokuapp.com/lambda``` but is also ```test.herokuapp.com/en/lambda```. It's your choice to redirect all url to the prefixed one, which may make sense for SEO purpose.
 
 
-#### Models internationalization
+#### Models translation
 
 Let's create a dummy model with a string field :
 
@@ -1311,7 +1312,7 @@ and  ```test.herokuapp.com/fr/lambda``` displays
 Mon entree en francais.
 ```
 
-#### Templating for internationalization
+#### Liquid for internationalization
 
 The first thing you may need is a locale switcher, allowing front users to choose their language. There is a Liquid tag for that : ```{% locale_switcher %}```. The params of the tag are explained [here](http://doc.locomotivecms.com/templates/tags#locale-switcher-section).
 
@@ -1354,7 +1355,7 @@ Making them localized is pretty simple, just add the locale prefix : ```html
 This way, each link will point to the current localized page.
 
 
-#### Custom locale
+#### Add a language
 
 Locomotive comes with the following available locales :
 
