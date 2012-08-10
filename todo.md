@@ -29,4 +29,6 @@ Didier :
 
 ## Finished (waiting for rewiew)
 
+- Tips > Export site
+- Tips > Internationalization
 
