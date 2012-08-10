@@ -1179,7 +1179,7 @@ dev locally : https://groups.google.com/d/topic/locomotivecms/nmgDaCdb7Ts/discus
 <a name="export_site"></a>
 ### Export site
 
-``` source: [https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion)```
+*This tip was given [here](https://groups.google.com/d/topic/locomotivecms/odfojqSPeC4/discussion)*
 
 In Locomotive 1.0, there was an export feature, which allowed to export the site (template, models, entries) in a zip. This is no longer the case in Locomotive 2.0, since it now uses a REST API for push & pull commands.
 
@@ -1187,7 +1187,7 @@ Pushing a site (build with Locomotive Editor) is described in [this](#locomotive
 
 For now, there isn't any pulling script, but still it's possible, following these steps :
 
-1. Get an auth token
+- Get an auth token
 
 	```
 	curl -d 'email=me@mysite.com&password=secret' 'http://mysite.com/locomotive/api/tokens.json'
@@ -1200,7 +1200,7 @@ For now, there isn't any pulling script, but still it's possible, following thes
 	{"token":"dtsjkqs1TJrWiSiJt2gg"}
 	```
 
-2. Use the token to retrieve needed data. 
+- Use the token to retrieve needed data. 
 
 	Pages :
 
@@ -1211,13 +1211,13 @@ For now, there isn't any pulling script, but still it's possible, following thes
 	Content Types :
 
 	```
-	curl 'http://test.engine.dev:1234/locomotive/api/content_types.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
+	curl 'http://mysite.com/locomotive/api/content_types.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
 	```
 
 	Content Entries ( assume we have a "Projects" model ) : 
 
 	```
-	curl 'http://test.engine.dev:1234/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
+	curl 'http://mysite.com/locomotive/api/content_types/projects/entries.json?auth_token=dtsjkqs1TJrWiSiJt2gg'
 	```
 
 
