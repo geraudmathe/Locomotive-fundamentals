@@ -1221,9 +1221,10 @@ Content Entries ( assume we have a "Projects" model ) :
 <a name="internationalization"></a>
 ### Internationalization
 
-Locomotive has an internationalization solution out of the box. We will start by setting up the backoffice for several locales, then see how to deal with templates, and finally see some advanced tips.
+Locomotive has an internationalization solution out of the box. We will see how to set up internationalization, deal with localized pages and model, and finally add a custom language to Locomotive.
 
-#### Setting up internationalization
+
+#### Set up internationalization
 
 First thing first, choose the languages you want support in the Settings panel :
 
@@ -1242,7 +1243,7 @@ Now there is several things you may wanna translate :
 
 #### Page internationalization
 
-By default, page's temaplate and included ```editable contents``` are translatable. 
+By default, page's template and included ```editable contents``` are translatable. 
 
 Let's try it : create a page named ```lambda``` with the following template :
 
@@ -1253,7 +1254,7 @@ The editable custom text in english.
 {% endeditable_short_text %}
 ```
 
-And we have at ```test.herokuapp.com/lambda``` :
+And we have at ```test.herokuapp.com/lambda``` (notice the locale prefix) :
 
 ![internationalizationeng page](Locomotive-fundamentals/raw/master/images/internationalization_eng.png)
 
@@ -1261,11 +1262,10 @@ Go back to the admin pages, and switch to the French locale. You will see that L
 
 ![internationalizationeng page](Locomotive-fundamentals/raw/master/images/internationalization_untranslated.png)
 
-** Notice : 
-Pages wich are not translated are not displayed, it generates a 404.
-**
+**Notice : 
+Pages wich are not translated are not displayed, it generates a 404.**
 
-Let's edit the ```lambda``` page in French this time, we will edit both the template (<h1> content) and the custom content ('my-custom-content') :
+Let's edit the ```lambda``` page in French this time, we will edit both the template and the custom content (editable_short_text) :
 
 ```html
 <h1>Et voila, une page en francais.</h1>
@@ -1289,7 +1289,7 @@ Let's create a dummy model with a string field :
 
 Notice the ```localized``` checkbox ? It's all it takes to localize a model field. You localize the fields you want, not necessarily all custom fields.
 
-So let's create an entrie in english, save it, and switch to French and translate it. Then wo go back to our lambda page and display the dummy models entries. Don't forget to change the template in both locales :
+So let's create an entrie in english, save it, and switch to French and translate it. Then wo go back to our lambda page and display the dummy models entries. Don't forget to update the template in both locales :
 
 ```html
 {% for item in contents.dummy %}
@@ -1310,13 +1310,11 @@ Mon entree en francais.
 
 #### Templating for internationalization
 
-The first thing you may need is a locale switcher, allowing front users to choose their language. There is a Liquid tag for that : ```{% locale_switcher %}```.
-
-The params of the tag are explained [here](http://doc.locomotivecms.com/templates/tags#locale-switcher-section).
+The first thing you may need is a locale switcher, allowing front users to choose their language. There is a Liquid tag for that : ```{% locale_switcher %}```. The params of the tag are explained [here](http://doc.locomotivecms.com/templates/tags#locale-switcher-section).
 
 There is also global variables relating to locales :
 
-- ```locale``` which is the current locale, wich you may use in logical statements :
+- ```locale``` gives is the current locale, wich you may use in logical statements :
 
 	```html
 	{% if locale == 'en' %}
@@ -1325,7 +1323,7 @@ There is also global variables relating to locales :
 	Page en francais
 	{% endif %}
 	```
-- ```locales``` which is an array of the site's locales :
+- ```locales``` is an array of the site's locales :
 	
 	```html
 	{% for loc in locales %}
@@ -1333,44 +1331,42 @@ There is also global variables relating to locales :
 	{% endfor %}
 	```
 	
-- ```default_locale``` which is the default site's locale.
+- ```default_locale``` is the default site's locale.
+
+These variables are referenced [here](http://doc.locomotivecms.com/templates/objects).  
 
 
 **Duplicated templates**
 
-The behavior of Locomotive is to allow a different page's template for each locale. So let's say you have developped your site in English only, every page is done, and then you add a locale : pages will be duplicated in the new locale. 
+Locomotive's behavior allows a different page's template for each locale. So let's say you have developped your site in English only, everything is developped, and then you add a locale : pages will be duplicated in the new locale. 
 
-It's not possible to specify only one template for every locales, so if you don't want to duplicate every page template at each modification, it could be easier to validate the site in one locale, and then at the end, adding the other locales.
+It's not possible to specify one template for every locales, so if you don't want to duplicate every page template at each code update, it could be easier to validate the site in one locale, and then at the end, adding the other locales.
 
 **Localised links**
 
-Pages have link related to each other, but if you don't localize them, each link will point to the default localized page.
+Your template will have relative links to the app, but if you don't localize them, each link will point to the default localized page.
 
-Making them localized is pretty simple actually :
-
-```html
-<a href="/{{ locale }}/target-page">click here</a>
-```
+Making them localized is pretty simple, just add the locale prefix : ```html
+<a href="/{{ locale }}/target-page">click here</a>```
 This way, each link will point to the current localized page.
 
 
 #### Custom locale
 
-Locomotive comes with the following locales available :
+Locomotive comes with the following available locales :
 
 ![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
 
-But what if you need for example to have a Chineese locale ? There is 2 things to consider with locales :
+What if you need for example to have a Chineese locale ? There is 2 things to consider with locales :
 
-- The backoffice language
-- The url prefixes (for SEO purpose)
+- backoffice language
+- url prefixes (for SEO purpose)
 
 There is a way to add custom locale without pain.
 
 1. Install a Locomotive engine as described in the [reference](http://doc.locomotivecms.com/installation/getting_started)
 2. Once you have run ```bundle exec rails g locomotive:install```, go in ```config/initializers/locomotive.rb```
 
-	2 lines interest us :
 
 	```
 	# default locale (for now, only en, de, fr, pt-BR, it and nb are supported)
@@ -1380,12 +1376,12 @@ There is a way to add custom locale without pain.
 	#config.site_locales = %w{en tw}
 	```
 	
-	The first one specifies the default locale, as mentioned, you can't specify a locale which doesn't exists in Locomotive defaults locales.
+	The first line specifies the default locale, but as mentioned, you can't specify a locale which doesn't exists in Locomotive defaults locales.
 	
 	The second one specifies the list of available locales for the site. That's where you will add your custom locale. You can also remove all unwanted locales, so that they don't appear in the admin panel.
 	
 
-3. When your custom locale is added, you need to add in the application assets the .png image of the locale flag (else it will raises an error) which will appears in the admin panel :
+3. When your custom locale is added, you need to add in the application assets the .png image of the locale flag which will appears in the admin panel (if you don't, it will raises an error) :
 
 	![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
 	
@@ -1405,9 +1401,9 @@ There is a way to add custom locale without pain.
 	formtastic.LOCALE.yml
 	```
 
-	The first thing to know is i18n will look for ```default_locale``` translations if there isn't translation for the current locale. In the case you want for example a backoffice in English for every locale, you don't need to add any custom translation, since it will fallback to the ```default_locale```.
+	The first thing to know is i18n will look for ```default_locale``` translations if there isn't any translation for the current locale. In the case you want for example a backoffice in English for every locale, you don't need to add any custom translation, since it will fallback to the ```default_locale```.
 
-	The second thing is, in every case, you need to add the translation of your custom locale in the ```admin_ui.LOCALE.yml``` above the other one :
+	The second thing is, in every case, you need to add the translation of your custom locale name in the ```admin_ui.LOCALE.yml``` above the others :
 	
 	```
 	locales:
