@@ -1301,8 +1301,7 @@ See the ```localized``` checkbox ? It's all it takes to localize a model field !
 Let's create an entrie in english, save it, and switch to French, and translate this entrie. 
 
 **Notice : 
-- Locomotive indicates which entries are not translated, as it does with pages
-- But unlike pages, a model entrie which isn't translated yet will still appears in front**
+Locomotive indicates which entries are not translated, as it does with pages. But unlike pages, a model entrie which isn't translated yet will still appears in front.**
 
  
 Then wo go back to our lambda page and display the dummy models entries. Don't forget to update the template in both locales :
