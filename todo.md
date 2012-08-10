@@ -15,7 +15,6 @@
 - Locomotive editor
 - Using Locomotive in an existing rails app
 - Using multi-sites
-- Internationalization
 - Writing custom Liquid tags
 - Locomotive API
 - simple input type : max 255 chars ?
