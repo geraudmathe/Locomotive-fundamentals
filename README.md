@@ -1221,8 +1221,238 @@ Content Entries ( assume we have a "Projects" model ) :
 <a name="internationalization"></a>
 ### Internationalization
 
+Locomotive has an internationalization solution out of the box. We will start by setting up the backoffice for several locales, then see how to deal with templates, and finally see some advanced tips.
 
-localised snippets / pages
+#### Setting up internationalization
+
+First thing first, choose the languages you want support in the Settings panel :
+
+![internationalization panel](Locomotive-fundamentals/raw/master/images/internationalization_1.png)
+
+Select your locales and save.
+If you go back in the 'Contents' tab, you will see a locale switcher at the right part of the menu :
+
+![internationalization locale switcher](Locomotive-fundamentals/raw/master/images/internationalization_2.png)
+
+Now there is several things you may wanna translate :
+
+- content entries (your models entries)
+- editable contents in pages
+- HTML template of pages
+
+#### Page internationalization
+
+By default, page's temaplate and included ```editable contents``` are translatable. 
+
+Let's try it : create a page named ```lambda``` with the following template :
+
+```html
+<h1>That's it, a page in english</h1>
+{% editable_short_text 'my-custom-content' %}
+The editable custom text in english.
+{% endeditable_short_text %}
+```
+
+And we have at ```test.herokuapp.com/lambda``` :
+
+![internationalizationeng page](Locomotive-fundamentals/raw/master/images/internationalization_eng.png)
+
+Go back to the admin pages, and switch to the French locale. You will see that Locomotive indicates pages which are not yet translated :
+
+![internationalizationeng page](Locomotive-fundamentals/raw/master/images/internationalization_untranslated.png)
+
+** Notice : 
+Pages wich are not translated are not displayed, it generates a 404.
+**
+
+Let's edit the ```lambda``` page in French this time, we will edit both the template (<h1> content) and the custom content ('my-custom-content') :
+
+```html
+<h1>Et voila, une page en francais.</h1>
+{% editable_short_text 'custom-content' %}
+Le contenu editable en francais.
+{% endeditable_short_text %}
+```
+
+And now at ```test.herokuapp.com/fr/lambda``` we have our translated page :
+
+![internationalization fr page](Locomotive-fundamentals/raw/master/images/internationalization_fr.png)
+
+Since the default locale of our app is English, the lambda page url is ```test.herokuapp.com/lambda``` but is also ```test.herokuapp.com/en/lambda```. It's your choice to redirect all url to the prefixed one, which may make sense for SEO purpose.
+
+
+#### Models internationalization
+
+Let's create a dummy model with a string field :
+
+![internationalization model](Locomotive-fundamentals/raw/master/images/internationalization_model.png)
+
+Notice the ```localized``` checkbox ? It's all it takes to localize a model field. You localize the fields you want, not necessarily all custom fields.
+
+So let's create an entrie in english, save it, and switch to French and translate it. Then wo go back to our lambda page and display the dummy models entries. Don't forget to change the template in both locales :
+
+```html
+{% for item in contents.dummy %}
+{{ item.title }}
+{% endfor %}
+```
+As expected, ```test.herokuapp.com/en/lambda``` displays 
+
+```
+My dummy entrie in english.
+```
+
+and  ```test.herokuapp.com/fr/lambda``` displays 
+
+```
+Mon entree en francais.
+```
+
+#### Templating for internationalization
+
+The first thing you may need is a locale switcher, allowing front users to choose their language. There is a Liquid tag for that : ```{% locale_switcher %}```.
+
+The params of the tag are explained [here](http://doc.locomotivecms.com/templates/tags#locale-switcher-section).
+
+There is also global variables relating to locales :
+
+- ```locale``` which is the current locale, wich you may use in logical statements :
+
+	```html
+	{% if locale == 'en' %}
+	English page
+	{% else %}
+	Page en francais
+	{% endif %}
+	```
+- ```locales``` which is an array of the site's locales :
+	
+	```html
+	{% for loc in locales %}
+	{{ loc }}
+	{% endfor %}
+	```
+	
+- ```default_locale``` which is the default site's locale.
+
+
+**Duplicated templates**
+
+The behavior of Locomotive is to allow a different page's template for each locale. So let's say you have developped your site in English only, every page is done, and then you add a locale : pages will be duplicated in the new locale. 
+
+It's not possible to specify only one template for every locales, so if you don't want to duplicate every page template at each modification, it could be easier to validate the site in one locale, and then at the end, adding the other locales.
+
+**Localised links**
+
+Pages have link related to each other, but if you don't localize them, each link will point to the default localized page.
+
+Making them localized is pretty simple actually :
+
+```html
+<a href="/{{ locale }}/target-page">click here</a>
+```
+This way, each link will point to the current localized page.
+
+
+#### Custom locale
+
+Locomotive comes with the following locales available :
+
+![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
+
+But what if you need for example to have a Chineese locale ? There is 2 things to consider with locales :
+
+- The backoffice language
+- The url prefixes (for SEO purpose)
+
+There is a way to add custom locale without pain.
+
+1. Install a Locomotive engine as described in the [reference](http://doc.locomotivecms.com/installation/getting_started)
+2. Once you have run ```bundle exec rails g locomotive:install```, go in ```config/initializers/locomotive.rb```
+
+	2 lines interest us :
+
+	```
+	# default locale (for now, only en, de, fr, pt-BR, it and nb are supported)
+	#config.default_locale = :en
+
+	# available locales suggested to "localize" a site. You will have to pick up at least one among that list.
+	#config.site_locales = %w{en tw}
+	```
+	
+	The first one specifies the default locale, as mentioned, you can't specify a locale which doesn't exists in Locomotive defaults locales.
+	
+	The second one specifies the list of available locales for the site. That's where you will add your custom locale. You can also remove all unwanted locales, so that they don't appear in the admin panel.
+	
+
+3. When your custom locale is added, you need to add in the application assets the .png image of the locale flag (else it will raises an error) which will appears in the admin panel :
+
+	![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
+	
+	The .png image is 24x24px. Put this file in the main Rails app, in the folder ```/app/assets/images/locomotive/icons/flags/```. The name of the image must be your locale's name, for example Taiwanese flag would be named ```tw.png```.
+
+4. Precompile your assets : ```bundle exec rake assets:precompile```
+5. Last step : add translations.
+
+	Locomotive backoffice have the following translation files (with LOCALE being the shortname of each locale) :
+
+	```
+	admin_ui.LOCALE.yml
+	carrierwave.LOCALE.yml
+	default.LOCALE.yml
+	devise.LOCALE.yml
+	flash.LOCALE.yml
+	formtastic.LOCALE.yml
+	```
+
+	The first thing to know is i18n will look for ```default_locale``` translations if there isn't translation for the current locale. In the case you want for example a backoffice in English for every locale, you don't need to add any custom translation, since it will fallback to the ```default_locale```.
+
+	The second thing is, in every case, you need to add the translation of your custom locale in the ```admin_ui.LOCALE.yml``` above the other one :
+	
+	```
+	locales:
+      en: English
+      de: German
+      fr: French
+      pt-BR: "Brazilian Portuguese"
+      it: Italian
+      nl: Dutch
+      nb: Norwegian
+      es: Spanish
+      ru: Russian
+	```
+	
+	Add here your custom locale, in order to display it in the admin panel.
+
+	To recapitulate :
+	
+	If your custom locales doesn't have to be translated in the admin, define your ```default_locale``` and just add your custom locale name translation in ```admin_ui.DEFAULT_LOCALE.yml```.
+	
+	If want translate the admin in your custom locale, copy these files :
+	
+	```
+	admin_ui.LOCALE.yml
+	carrierwave.LOCALE.yml
+	default.LOCALE.yml
+	devise.LOCALE.yml
+	flash.LOCALE.yml
+	formtastic.LOCALE.yml
+	```
+	and rename them with your custom locale shortname. Translate their content, and don't forget to add your custom locale name above in ```admin_ui.LOCALE.yml``` :
+	
+	```
+	locales:
+      en: English
+      de: German
+      fr: French
+      pt-BR: "Brazilian Portuguese"
+      it: Italian
+      nl: Dutch
+      nb: Norwegian
+      es: Spanish
+      ru: Russian
+	```
+
 
 <a name="customise_tiny_mce"></a>
 ### Customise TinyMCE 
