@@ -1486,7 +1486,7 @@ The ```<head>``` section of the admin layout is structured as follow (full code 
 
 There is an empty partial meant to be overriden for additionnal css or js : ```_main_app_head.html.haml``` located in ```app/views/locomotive/shared/``` of the engine directory. Since it's the last one called in the ```<head>```, every css or js added here will override the other ones.
 
-And how override this partial ? Well, Locomotive is build as a Rails engine, so you just need to create it in your main Rails app, because when a view is called, Rails first look for it in the main app, and then in the matching engine. We will add here a javascript tag reffering to our customized TinyMCE configuration.
+How override this partial ? Well, Locomotive is build as a Rails engine, so you just need to create it in your main Rails app, because when a view is called, Rails first look for it in the main app, and then in the matching engine. We will add here a javascript tag reffering to our customized TinyMCE configuration.
 
 Let's proceed :
 
@@ -1495,11 +1495,11 @@ Let's proceed :
 2. Edit the ```_main_app_head.html.haml``` file and insert this : ```= javascript_include_tag  'locomotive_misc'```
 
 3. Create a javascript file at the ```app/assets/javascripts/locomotive_misc.js.coffee``` and fill in with ```window.Locomotive.tinyMCE.defaultSettings.valid_elements = "<your option>"```
+	
+	You can modify all the default TinyMCE settings for Locomotive. 
+Take a look at [this](https://github.com/locomotivecms/engine/blob/master/app/assets/javascripts/locomotive/utils/tinymce_settings.js.coffee) file.
+
 4. Tells Rails this asset have to be precompiled, add ```config.assets.precompile += %w( locomotive_misc.js )``` in ```config/application.rb```
-
-
-You can modify all the default TinyMCE settings for Locomotive. 
-Take a look at [this](https://github.com/locomotivecms/engine/blob/master/app/assets/javascripts/locomotive/utils/tinymce_settings.js.coffee) file if you need to check them.
 
 
 <a name="custom_liquid_tag"></a>
