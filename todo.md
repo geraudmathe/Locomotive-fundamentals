@@ -32,6 +32,6 @@ Didier :
 - Tips > Internationalization
 - Tips > Customize TinyMCE
 - Models > Basics
-- - Models > Model mapping (sauf More complex mapping)
+- Models > Model mapping (sauf More complex mapping)
 
 
