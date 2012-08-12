@@ -1472,12 +1472,10 @@ There is a way to add custom locale without pain.
 <a name="customise_tiny_mce"></a>
 ### Customise TinyMCE 
 
-*This tip was given [here](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)*
-
 The ```<head>``` section of the admin layout is structured as follow (full code [here](https://github.com/locomotivecms/engine/blob/master/app/views/locomotive/shared/_head.html.haml
 )) :
 
-```html
+```haml
 %meta 
 	…
 %script 
@@ -1486,9 +1484,9 @@ The ```<head>``` section of the admin layout is structured as follow (full code 
 = render 'locomotive/shared/main_app_head'
 ```
 
-There is an empty partial meant to be overriden for additionnal css or js : ```_main_app_head.html.haml``` located in ```app/views/locomotive/shared/```. Since it's the last one called in the ```<head>```, every css or js added here will override previously one.
+There is an empty partial meant to be overriden for additionnal css or js : ```_main_app_head.html.haml``` located in ```app/views/locomotive/shared/``` of the engine directory. Since it's the last one called in the ```<head>```, every css or js added here will override the other ones.
 
-And how override this partial ```_main_app_head.html.haml``` ? Well, Locomotive is build as a Rails engine, so you just need to create it in your main Rails app (when a view is called, Rails first look for it in the main app, and then in the matching engine). We will add here a javascript tag reffering to our customized TinyMCE configuration.
+And how override this partial ? Well, Locomotive is build as a Rails engine, so you just need to create it in your main Rails app, because when a view is called, Rails first look for it in the main app, and then in the matching engine. We will add here a javascript tag reffering to our customized TinyMCE configuration.
 
 Let's proceed :
 
