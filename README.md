@@ -1472,26 +1472,36 @@ There is a way to add custom locale without pain.
 <a name="customise_tiny_mce"></a>
 ### Customise TinyMCE 
 
-``` source: [https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)``` 
+*This tip was given [here](https://groups.google.com/d/topic/locomotivecms/u5XwjR5zP8M/discussion)*
+
+The ```<head>``` section of the admin layout is structured as follow (full code [here](https://github.com/locomotivecms/engine/blob/master/app/views/locomotive/shared/_head.html.haml
+)) :
+
+```html
+%meta 
+	…
+%script 
+	…
+= yield :head
+= render 'locomotive/shared/main_app_head'
+```
+
+There is an empty partial meant to be overriden for additionnal css or js : ```_main_app_head.html.haml``` located in ```app/views/locomotive/shared/```. Since it's the last one called in the ```<head>```, every css or js added here will override previously one.
+
+And how override this partial ```_main_app_head.html.haml``` ? Well, Locomotive is build as a Rails engine, so you just need to create it in your main Rails app (when a view is called, Rails first look for it in the main app, and then in the matching engine). We will add here a javascript tag reffering to our customized TinyMCE configuration.
+
+Let's proceed :
+
+1. Within your main Rails app, create a partial at the ```app/views/locomotive/shared/_main_app_head.html.haml``` location (create the folders if they don't exist).
+
+2. Edit the ```_main_app_head.html.haml``` file and insert this : ```= javascript_include_tag  'locomotive_misc'```
+
+3. Create a javascript file at the ```app/assets/javascripts/locomotive_misc.js.coffee``` and fill in with ```window.Locomotive.tinyMCE.defaultSettings.valid_elements = "<your option>"```
+4. Tells Rails this asset have to be precompiled, add ```config.assets.precompile += %w( locomotive_misc.js )``` in ```config/application.rb```
 
 
-
-Within your main app,
-
-1. create a partial at the "app/views/locomotive/shared/_main_app_head.html.haml" location 
-note: create the folders if they don't exist
-
-2. edit the _main_app_head.html.haml file and insert this:
-
-= javascript_include_tag  'locomotive_misc'
-
-3. create a javascript file at the "app/assets/javascripts/locomotive_misc.js.coffee" and fill in with
-
-window.Locomotive.tinyMCE.defaultSettings.valid_elements = "<your option>"
-
-Note: basically, you can modify all the default tinymce settings for Locomotive. Take a look at this file if you need to check them: https://github.com/locomotivecms/engine/blob/master/app/assets/javascripts/locomotive/utils/tinymce_settings.js.coffee
-
-
+You can modify all the default TinyMCE settings for Locomotive. 
+Take a look at [this](https://github.com/locomotivecms/engine/blob/master/app/assets/javascripts/locomotive/utils/tinymce_settings.js.coffee) file if you need to check them.
 
 
 <a name="custom_liquid_tag"></a>
