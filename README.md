@@ -956,17 +956,14 @@ You loop over ```contents.slug-of-your-model```, and for each entrie you have ac
 
 ![entries attributes](Locomotive-fundamentals/raw/master/images/entries_attributes.png)
 
-They are listed and explained in the documentation so there is no need to detail each one of them.
 
 **Adding logic**
 
 Logic liquid tags let you put some logic inside your loops.
 
-http://doc.locomotivecms.com/templates/tags
-
-TODO: find relevant / interesting examples ? else, nothing to explain really ?
 
 **Rendering model's attributes**
+
 
 
 

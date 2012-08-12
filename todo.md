@@ -2,28 +2,29 @@
 
 Gabriel :
 
-- Creating a page : show Ui management and different kind of pages
-- Organization of this book
+- Foreword > Organization of this book
 - Overview part
-- Liquid syntax : finish it
+- Liquid syntax
 - Locomotive editor
 - Writing custom Liquid tags
-- Locomotive API
-- simple input type : max 255 chars ?
-- find relevant / interesting examples ? else, nothing to explain really ? dans adding logic to basic loop rendering
-- specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
+- Models > rendering
+- Models > public submission (nb csrf)
 - verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
+- specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
+
 
 Geraud :
 
 - Using Locomotive in an existing rails app 
-- Using multi-sites
+- Tips > Using multi-sites
 
 
 Didier :
 
-- Why should you use locomotive ? : rewrite
-- considerations about nested relationships and performance of associated mongo queries ? ask Didier
+- Foreword > Why should you use locomotive ?
+- Foreword > Philosophy behind the CMS
+- Models > Models mapping > More complex mapping
+- Overview : est-ce utile ? Si oui, est-ce que tu peux developper le contenu ?
 
 ## Finished (waiting for rewiew)
 
@@ -31,8 +32,7 @@ Didier :
 - Tips > Internationalization
 - Tips > Customize TinyMCE
 - Models > Basics
-- Models > Model mapping
-
-- Ui enabled dans mapping
+- Models > Model mapping (sauf More complex mapping)
+- 
 
 
