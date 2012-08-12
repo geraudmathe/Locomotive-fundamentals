@@ -559,7 +559,7 @@ These meta values will then be available for use in the template with Liquid tag
 <a name="models"></a>
 ## Models
 
-This chapter covers models, or the custom content, Locomotive let you build in the Ui. In this guide we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type```, and ```content entrie``` for an instance of a ```content type```.
+This chapter covers models, or the custom content, Locomotive let you build in the Ui. Here we use the word ```model``` as it's what we are used to, but in the Locomotive [reference](http://doc.locomotivecms.com/) you will see ```content type``` for ```model```, and ```content entrie``` for an instance of a ```model```.
 
 The [first](#models_basics) subchapter aims to introduce the very basic creation and usage of models, the [second one](#models_mapping) is about building relationships between your models. 
 We cover [then](#models_rendering) the rendering of models using Liquid, where we try to show the common use cases, and after that a [subchapter](#models_templating) is dedicated to the functionality of templating a model.
@@ -575,8 +575,7 @@ First step of model creation, specify the name of the model :
 ![Create model](Locomotive-fundamentals/raw/master/images/models_basics_creation.png)
 
 As mentioned in the hint, you will reference your model in Liquid logic by its *slug*. 
-
-Then, you will define the fields (attributes) of your model in the following section :
+Then, define the fields (attributes) of your model in the following section :
 
 ![Create fields](Locomotive-fundamentals/raw/master/images/models_basics_fields.png)
 
@@ -656,7 +655,7 @@ When you define an attribute (or a field) for your model, you have some properti
 
 	Make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the tip explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow. 
 
-	It may seems obvious, it is, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in Liquid and may wonder why...
+	It seems obvious, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in Liquid and may wonder why...
 
 - Hint :
 
@@ -733,8 +732,8 @@ Locomotive let you define the relationships between models you are used to in Ra
 
 This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
 
-We will see the ```belongs to```, ```has many``` and ```many to many``` relationships. 
-Then we will look at more complex mapping, and the last subchapter presents the *Ui enabled* option of a field.
+We will see the ```belongs to```, ```has many``` and ```many to many``` relationships and finally look at more complex mapping
+
 
 #### Belongs to
 
@@ -840,6 +839,15 @@ Published in Web design monthly :
 Awesome book, blablabla ...
 ```
 
+##### UI enabled
+
+
+When you added ```review``` to your ```book``` entrie, it was possible because of the property "Ui enable" of your ```has many``` field. This property is set to ```true``` by default :
+
+![tips ui enable](Locomotive-fundamentals/raw/master/images/models_tips_uienable.png)
+
+This property sets either you can edit and create a child model entrie from a parent model entrie, or not.
+
 #### Many to many
 
 Finally, we will add the ability to associate tags to a book. Here, the model ```tags``` have many ```books``` and ```books``` have many ```tags```.
@@ -877,7 +885,8 @@ We have to create a new tag entrie separatelly, and then add it when editing the
 You don't have to select here the book entrie you want to connect the tag.
 And when we go back to the book entrie we were editing, the tag is available in the select list :
 
-manytomany_books_tags_available
+![m2m tag available in book](Locomotive-fundamentals/raw/master/images/manytomany_books_tags_available.png)
+
 
 So let's (finally !) add our tag to our book, save, and check if everything is okay back in frontend :
 
@@ -922,23 +931,7 @@ Responsive Web design written by Ethan Marcotte
 
 #### More complex mapping
 
-TODO: considerations about nested relationships and performance of associated mongo queries ? ask Didier
-
-
-#### Tip: UI enabled
-
-
-When you define a field which will reference a child model, the property "Ui enable" is available to you, and 'true' by default :
-
-
-![tips ui enable](Locomotive-fundamentals/raw/master/images/models_tips_uienable.png)
-
-This property sets either you can edit and create a child model entrie directly from parent or not.
-
-When set to true, you can for example ...
-
-- qd on edite, on peut directement
-- qd on cree un parent, il faut dabord le creer et ensuite ds lediting on peut creer le child >> what happens if required field ??
+TODO: considerations about nested relationships and performance of associated mongo queries
 
 
 

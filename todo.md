@@ -10,7 +10,6 @@ Gabriel :
 - Writing custom Liquid tags
 - Locomotive API
 - simple input type : max 255 chars ?
-- Ui enabled dans mapping
 - find relevant / interesting examples ? else, nothing to explain really ? dans adding logic to basic loop rendering
 - specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
 - verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
@@ -31,3 +30,8 @@ Didier :
 - Tips > Export site
 - Tips > Internationalization
 - Tips > Customize TinyMCE
+- Models > Models mapping
+
+- Ui enabled dans mapping
+
+
