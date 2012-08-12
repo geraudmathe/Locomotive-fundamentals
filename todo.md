@@ -30,7 +30,8 @@ Didier :
 - Tips > Export site
 - Tips > Internationalization
 - Tips > Customize TinyMCE
-- Models > Models mapping
+- Models > Basics
+- Models > Model mapping
 
 - Ui enabled dans mapping
 
