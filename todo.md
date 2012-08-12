@@ -2,7 +2,6 @@
 
 Gabriel :
 
-- customize tinymce : test and write the part
 - Creating a page : show Ui management and different kind of pages
 - Organization of this book
 - Overview part
@@ -31,4 +30,4 @@ Didier :
 
 - Tips > Export site
 - Tips > Internationalization
-
+- Tips > Customize TinyMCE
