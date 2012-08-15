@@ -1082,7 +1082,7 @@ We will see here how to render each type of attribute.
 	{% endfor %}
  	```
  
-** Usage of capture and assigns **
+**Usage of capture and assigns**
 
 - Capture :
 	
@@ -1202,10 +1202,6 @@ So we first loop on each value of the ```select``` type field, wich is "cat", an
 
 #### Paginate entries
 
-[http://doc.locomotivecms.com/templates/tags#paginate-section](http://doc.locomotivecms.com/templates/tags#paginate-section)
-
-[http://doc.locomotivecms.com/templates/filters#default-pagination-section](http://doc.locomotivecms.com/templates/filters#default-pagination-section)
-
 Locomotive comes with a paginate tag.
 
 	{% paginate contents.posts by 3 %}
@@ -1263,6 +1259,11 @@ And which renders this kind of markup :
 	<a href="/posts?page=2" class="next_page">Next »</a>
 </div>
 ```
+
+[Reference : paginate](http://doc.locomotivecms.com/templates/tags#paginate-section)
+
+[Reference : default paginate](http://doc.locomotivecms.com/templates/filters#default-pagination-section)
+
 
 #### Scope results
 
