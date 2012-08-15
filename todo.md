@@ -12,6 +12,9 @@ Gabriel :
 - verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
 - specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
 
+Reference >> ajouter created_at et updated_at
+
+editable control etc editables things
 
 Geraud :
 

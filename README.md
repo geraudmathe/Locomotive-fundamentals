@@ -632,6 +632,9 @@ Let's detail each one of them. The rendering of these types will be detailed [la
 	
 	![type date](Locomotive-fundamentals/raw/master/images/models_basics_date.png)
 
+	But if you need a field for "updated at" or "created at", be aware this attributes already exist by default, they are rendered with ```entry.created_at``` and ```entry.updated_at```.
+	
+
 - File :
 
 	A field of this type supports the upload of any kind of file.
@@ -945,29 +948,234 @@ First we will see the very basics of iterating over a collection of entries and 
 #### Basics
 
 
-The simpliest loop is an iteration over your model entries. We loop here on the model ```posts```, the one from the previous [Basics](#models_basics) subchapter:
+The simpliest loop is an iteration over your model entries. We loop here on the model ```posts```, the one from the previous [Models basics](#models_basics) subchapter:
 
 
 	{% for item in contents.posts %}
 	<p>{{ item.title }}</p>
 	{% endfor %}
 
-You loop over ```contents.slug-of-your-model```, and for each entrie you have access to the custom fields of your model, and also to a list of attributes :
+Loop over ```contents.slug-of-your-model```, and for each entrie you have access to the custom fields of your model, and also to a list of attributes :
 
 ![entries attributes](Locomotive-fundamentals/raw/master/images/entries_attributes.png)
+
+[Reference](http://doc.locomotivecms.com/templates/tags#for-section)
 
 
 **Adding logic**
 
 Logic liquid tags let you put some logic inside your loops.
 
+- if / else / unless : [Reference](http://doc.locomotivecms.com/templates/tags#if-else-unless-section)
+- case : [Reference](http://doc.locomotivecms.com/templates/tags#case-section)
+
+What about empty fields ?
+
+You will certainly have some ```required``` fields, and some not, so how to not display an attribute if it's empty ? 
+An empty field will actually return ```nil```, so you can test it in a ```if``` statement :
+
+```html
+{% for item in contents.posts %}
+	{% if item.category %}
+		<div class="category">{{ itme.category }}</div>
+	{% endif %}
+{% endfor %}
+```
+
 
 **Rendering model's attributes**
 
+We will see here how to render each type of attribute.
+
+- Simple input : 
+	
+	Nothing tricky here, ```title``` is our simple input field : 
+	
+	```html
+	{% for item in contents.posts %}
+	<p>Title of the post : {{ item.title }}</p>
+	{% endfor %}
+	```
+	
+- Text :
+
+	This field has an property ```Text formatting``` HTML or none.
+	In the first case, you can edit the content of it with a WYSIWYG editor, in the other case it's just a textarea.
+	It doesn't change anything for the rendering, in one case the output will be HTML formmated and in the other it will be a simple long string.
+	
+	```main_text``` is our text field :
+
+	```html
+	{% for item in contents.posts %}
+	<p>Content of the post : {{ item.main_text }}</p>
+	{% endfor %}
+	```
+	
+- Select : 
+
+	Display the current value of an entrie's select field. You will not be able to list all the select options of a model, just the current value.
+	
+	```category``` is our select field :
+	
+	```html
+	{% for item in contents.posts %}
+	<ul>
+		<li>Category of the post : {{ item.category }}</li>
+	</ul>
+	{% endfor %
+ 	```
+	
+- Checkbox :
+
+	This field is a simple boolean one. So you may use it mainly for templating logic, but you can also display it's raw values ('true' or 'false').
+	
+	Here the checkbox field is ```is_a_report``, let's first use it for logic :
+	
+	
+	```html
+	{% for item in contents.posts %}
+		{% if item.is_a_report %}
+			This item is a report.
+		{% else %}
+			This item is not a report
+		{% endif %}
+	{% endfor %}
+ 	```
+	
+	And let's display it's raw value :
+	
+	```html
+	{% for item in contents.posts %}
+		Is it a report ? {{  item.is_a_report }}
+	{% endfor %}
+ 	```
+
+- Date :
+
+	Every entrie has by default the properties ```created_at``` and ```updated_at```. But if you need an additionnal date field, like ```publishing``` in the above example, here is how to render it :
+	
+	
+	```html
+	{% for item in contents.posts %}
+		Publishing date : {{  item.publishing }}
+	{% endfor %}
+ 	```
+ 	
+ 	It will render a raw ISO date, if you need to format it, have a look at the next part "Don't forget Liquid filters".
+ 	
+
+- File :
+
+	The only thing you can do with a file field is display its url. You must specify the propertie ```url``` when you display it, like in the above example with an ```attached``` field :
+	
+	```html
+	{% for item in contents.posts %}
+		Attached file url : {{  item.attached.url }}
+	{% endfor %}
+ 	```
+	
+	One of the usual case is displaying images. In this case, you would simply have to encapsulate the url in an image HTML tag, and if you need to resize it have a look at the next section.
+	
+	```html
+	{% for item in contents.posts %}
+		<img src="{{  item.attached.url }}">
+	{% endfor %}
+ 	```
+ 
+** Usage of capture and assigns **
+
+- Capture :
+	
+	Combine a number of strings into a single string and save it to a variable.
+	
+	May be usefull to clean your Liquid template if you have a lot of logic and formatting, or simply to keep it DRY.
+	
+	
+	```html
+	{% for item in contents.posts %}
+		{% capture full_titile %}{{ item.title }} - {{ item.category }}{% endcapture %}
+		{{ full_title }}
+	{% endfor %}
+ 	```
+	
+	[Reference](http://doc.locomotivecms.com/templates/tags#capture-section)
+
+- Assigns :
+	
+	Can be used to assign a value to a variable.
+	
+	[Reference](http://doc.locomotivecms.com/templates/tags#assigns-section)
 
 
 
-**Displaing Group by**
+**Don't forget Liquid filters**
+
+Some Liquid filters will allow you to format your entries attributes.
+
+- Resize image :
+
+	An image rendered from a file's field is done this way : 
+	```html
+	<img src="{{  item.attached.url }}">
+	```
+	
+	But the the DragonFly gem can resize any image on the fly behind the scene. 
+	The url to the dynamically resized image is returned. The processing relies on ImageMagick. Here is an example :
+	
+	```html
+	<img src="{{  item.attached.url | resize: '100x100' }}">
+	```
+	
+	Just add the "resize" filter, which takes the ImageMagick geometry string for argument. Here is a list of arguments examples taken from the [Dragonfly doc](http://markevans.github.com/dragonfly/file.ImageMagick.html):
+	
+	
+	```
+	'400x300'            # resize, maintain aspect ratio
+	'400x300!'           # force resize, don't maintain aspect ratio
+	'400x'               # resize width, maintain aspect ratio
+	'x300'               # resize height, maintain aspect ratio
+	'400x300>'           # resize only if the image is larger than this
+	'400x300<'           # resize only if the image is smaller than this
+	'50x50%'             # resize width and height to 50%
+	'400x300^'           # resize width, height to minimum 400,300, maintain aspect ratio
+	'2000@'              # resize so max area in pixels is 2000
+	'400x300#'           # resize, crop if necessary to maintain aspect ratio (centre gravity)
+	'400x300#ne'         # as above, north-east gravity
+	'400x300se'          # crop, with south-east gravity
+	'400x300+50+100'     # crop from the point 50,100 with width, height 400,300
+	```
+	
+	Resized images are cached by default by the Rack::Cache middleware. If you host your LocomotiveCMS on Heroku, Varnish is used instead. For more information, please visit [this](http://markevans.github.com/dragonfly/file.Caching.html) page.
+	
+	[Reference](http://doc.locomotivecms.com/templates/filters#resize-section)
+
+- Format / Localize a date :
+	
+	If you have a ```date``` field, or if you simply use the properties ```created_at, updated_at``` of an entry, you may wanna format it.
+	Here it is :
+	
+	```{{ item.created_at | localized_date: '%d %B' }}```
+	
+	The ```localized_date``` takes as argument the format string which depends on the current locale. There is also an optionnal argument 'locale', if you need to force an other locale than the current one : 
+	
+	```{{ item.created_at | localized_date: '%d %B', 'fr' }}```
+	
+	[Reference](http://doc.locomotivecms.com/templates/filters#localized-date-section)
+
+- Format text :
+
+	There is several filters allowing text formatting, 
+	
+	- Underscore : Makes an underscored, lowercase form from the expression in the string. [Reference](http://doc.locomotivecms.com/templates/filters#underscore-section)
+	- Dasherize : Replaces underscores with dashes in the string. [Reference](http://doc.locomotivecms.com/templates/filters#dasherize-section)
+	- Multi_line : Inserts a <br /> tag in front of every \n linebreak character. [Reference](http://doc.locomotivecms.com/templates/filters#multi-line-section)
+	- Concat : Append strings passed in args to the input [Reference](http://doc.locomotivecms.com/templates/filters#concat-section)
+	- Textile : Convert a Markdown-formatted string into HTML. [Reference](http://doc.locomotivecms.com/templates/filters#textile-section)
+
+- Embed Flash tag : Embed a flash movie into a page given an url [Reference](http://doc.locomotivecms.com/templates/filters#flash-section)
+
+
+**Displaying Grouped By**
 
 In the [Presentation and Advanced options](#presentation_and_advanced_options) of the Basics subchapter, we saw how customize the displaying of a model's entries.
 One of the options is to group entries by a field, at the condition the field you want group_by entries is a ```select``` type.
