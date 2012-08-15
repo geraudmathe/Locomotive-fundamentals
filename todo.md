@@ -12,9 +12,13 @@ Gabriel :
 - verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
 - specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
 
-Reference >> ajouter created_at et updated_at
+/////
 
-editable control etc editables things
+- Reference >> ajouter created_at et updated_at
+- to do : editable control etc editables things
+- with scope ne marche pas ?!
+
+/////
 
 Geraud :
 
@@ -36,5 +40,7 @@ Didier :
 - Tips > Customize TinyMCE
 - Models > Basics
 - Models > Model mapping (sauf More complex mapping)
-
+- Models > Rendering models > basics
+- Models > Rendering models > paginate
+- 
 
