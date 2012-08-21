@@ -571,7 +571,7 @@ In order to create that kind of page, follow these steps:
 - select "RSS" as the response type in the "Advanced options".
 - fill the template
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
