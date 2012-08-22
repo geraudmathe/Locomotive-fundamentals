@@ -54,16 +54,17 @@ TBR: This guide isn't the official one, even if some members of the LocomotiveCM
 ### Philosophy
 
 Let's start first with a little bit of history.
-When I was a developer in a Chicago web agency, I built numerous custom and unique content management system applications for each of our clients. Even if I enjoyed crafting unique back-offices for the clients, it was clear to me that I should spend less time on that kind of projects and more on bigger ones. Besides, at this time, there were no open source Rails CMS fitting both my needs and my vision of my dream CMS. Then, I left the web agency and went back to France.
 
-But I kept thinking about what should be the perfect CMS. My thoughts were also enhanced with my experiences as a Rails developer in other companies. Then, in my spare time, I began to code a first prototype which I constantly improved since. I also spent a lot of time trying out many concepts, and in the process learned a lot about what the perfect CMS should look like.
+When I was a developer at a Chicago web agency, I built numerous custom and unique content management system applications for each of our clients. Even though I enjoyed crafting unique back-offices for our clients, it was clear to me that I should spend less time on those kinds of projects so that I may tackle larger ones. At this time, there were no open source Rails CMSes fitting both my needs and my vision of ideal CMS.
 
-However, I did not question the basic requirements of my dream CMS and never moved away from them. What were they ?
+Upon returning to France, I kept thinking about what the perfect CMS should be. My thoughts were also enhanced by my experiences as a Rails developer in other companies. I began coding a prototype which have constantly improved ever since. I also spent a lot of time experimenting with many concepts and through process learned a lot about what the perfect CMS should look like.
 
-- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and does not have to require the help of an admin system guy.
-- It should be super easy for the content editor people to edit the site without messing up with the layout or even breaking the site.
+However, I stayed true to what were the basic requirements of my dream CMS and never moved away from them. These requirements are:
+
+- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and will not have to require the help of an admin system guy.
+- It should be effortless for the content editors to edit the site without ruining the layout or, worse, crashing the site.
 - Developing a LocomotiveCMS site should not require Ruby on Rails knowledge.
-- It should be possible and easy to extend or customize LocomotiveCMS in an elegant way.
+- It should be possible and easy to extend and customize LocomotiveCMS in elegant ways.
 - The back-office should be sexy as hell.
 - The code of LocomotiveCMS should not "smell". Thus, refactoring the code is a continuous process during all the development. That also means using standard components like for instance "Devise" for the authentication part.
 
@@ -72,7 +73,6 @@ However, I did not question the basic requirements of my dream CMS and never mov
 
 LocomotiveCMS is a CMS that has been created with a main guideline: keep it simple !
 
-- Keep it simple, for the lambda user who doesn't write code.
 - Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
 - Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
 
@@ -1491,7 +1491,6 @@ If you go back in the 'Contents' tab, you will see a locale switcher at the righ
 
 There is several kind of content you may wanna translate :
 
-
 - HTML template of pages
 - editable contents in pages
 - content entries (your models entries)
@@ -1536,7 +1535,6 @@ And now at ```test.herokuapp.com/fr/lambda``` (notice the locale prefix) we have
 Et voila, une page en francais.
 Le contenu editable en francais.
 ```
-
 
 Since the default locale of this app is English, the lambda page url is ```test.herokuapp.com/lambda``` but is also ```test.herokuapp.com/en/lambda```. It's your choice to redirect all url to the prefixed one, which may make sense for SEO purpose.
 
