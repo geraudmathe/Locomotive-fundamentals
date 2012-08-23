@@ -22,19 +22,23 @@ Gabriel :
 
 Geraud :
 
-- Using Locomotive in an existing rails app 
+- Using Locomotive in an existing rails app
 - Tips > Using multi-sites
 
 
 Didier :
 
-- Foreword > Why should you use locomotive ?
-- Foreword > Philosophy behind the CMS
 - Models > Models mapping > More complex mapping
-- Overview : est-ce utile ? Si oui, est-ce que tu peux developper le contenu ?
+
 
 ## Finished (waiting for rewiew)
 
+
+## Reviewed
+
+- Overview : est-ce utile ? Si oui, est-ce que tu peux developper le contenu ? => [Didier] non pas la peine.
+- Foreword > Why should you use locomotive ?
+- Foreword > Philosophy behind the CMS
 - Tips > Export site
 - Tips > Internationalization
 - Tips > Customize TinyMCE
@@ -42,5 +46,5 @@ Didier :
 - Models > Model mapping (sauf More complex mapping)
 - Models > Rendering models > basics
 - Models > Rendering models > paginate
-- 
+-
 
