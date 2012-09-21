@@ -8,7 +8,7 @@ Gabriel :
 - Locomotive editor
 - Writing custom Liquid tags
 - Models > rendering
-- Models > public submission (nb csrf)
+- Models > public submission (nb csrf) + file submission https://groups.google.com/forum/?fromgroups=#!topic/locomotivecms/qhLaBGF8LZs
 - verifier dans quels cas content_types ne marche pas, et modifier la doc officielle en consequence
 - specify cdn : https://groups.google.com/forum/?fromgroups#!topic/locomotivecms/9GjjtnD80gU
 
