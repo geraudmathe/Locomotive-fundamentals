@@ -16,7 +16,7 @@ Gabriel :
 
 - Reference >> ajouter created_at et updated_at
 - to do : editable control etc editables things
-- with scope ne marche pas ?!
+- with scope ne marche pas >>> https://groups.google.com/forum/?fromgroups=#!topic/locomotivecms/vAq0IIij4Ag
 - menu custom : https://github.com/locomotivecms/documentation/blob/master/app/views/pages/index.liquid.haml#L39
 /////
 
