@@ -223,7 +223,7 @@ src: http://doc.locomotivecms.com/templates/tags#block-section
 The principle of page's inheritance can be applied to every page.
 When you create a page, it automatically inherits from index, but you can also make it inherits from another page, by specifying it's parent :
 
-![Specifying parent](Locomotive-fundamentals/raw/master/images/specifying_parent.png)
+![Specifying parent](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/specifying_parent.png)
 
 By doing so, you can define as many levels as you want :
 
@@ -492,7 +492,7 @@ You have several option when you create a page. Let's take a look.
 
 #### General information
 
-![General Information](Locomotive-fundamentals/raw/master/images/page_general_info.png)
+![General Information](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/page_general_info.png)
 
 Nothing complex, just specify the name of the page. The slug field will be updated automatically.
 
@@ -502,7 +502,7 @@ Set the parent page, as explained in __[Templating Logic](#templating_1)__.
 
 #### SEO settings
 
-![SEO settings](Locomotive-fundamentals/raw/master/images/page_seo_settings.png)
+![SEO settings](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/page_seo_settings.png)
 
 Edit the meta ```title```, ```keyword```, ```description``` for the page, or leave it empty if you want use the global meta.
 
@@ -516,7 +516,7 @@ These meta values will then be available for use in the template with Liquid tag
 
 #### Advanced options
 
-![Advanced options](Locomotive-fundamentals/raw/master/images/page_advanced_options.png)
+![Advanced options](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/page_advanced_options.png)
 
 - Handle :
 
@@ -558,7 +558,7 @@ These meta values will then be available for use in the template with Liquid tag
 
 You can create a page which will be used as a RSS feed for your blog. In the list of pages, it is tagged with the "RSS" label.
 
-![RSS page](Locomotive-fundamentals/raw/master/images/page_rss.png)
+![RSS page](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/page_rss.png)
 
 Assumptions:
 
@@ -627,19 +627,19 @@ Finally, we will cover the [public submission](#models_public_submission) of mod
 
 First step of model creation, specify the name of the model :
 
-![Create model](Locomotive-fundamentals/raw/master/images/models_basics_creation.png)
+![Create model](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_creation.png)
 
 As mentioned in the hint, you will reference your model in Liquid logic by its *slug*.
 Then, define the fields (attributes) of your model in the following section :
 
-![Create fields](Locomotive-fundamentals/raw/master/images/models_basics_fields.png)
+![Create fields](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_fields.png)
 
 
 #### Fields types
 
 The following types of attributes (fields) are available :
 
-![Types list](Locomotive-fundamentals/raw/master/images/models_basics_types_list.png)
+![Types list](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_types_list.png)
 
 Let's detail each one of them. The rendering of these types will be detailed [later](#models_rendering).
 
@@ -654,25 +654,25 @@ Let's detail each one of them. The rendering of these types will be detailed [la
   Text field, but you can choose the format.
   When you add a field :
 
-  ![type text 1](Locomotive-fundamentals/raw/master/images/models_basics_text_1.png)
+  ![type text 1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_text_1.png)
 
   you then have a properties panel which appears by clicking on the arrow on the right part of the line :
 
-  ![type text 2](Locomotive-fundamentals/raw/master/images/models_basics_text_2.png)
+  ![type text 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_text_2.png)
 
   If you choose ```Text formatting : HTML```, you will have a WYSIWYG editor, TinyMCE :
 
-  ![type text tinymce](Locomotive-fundamentals/raw/master/images/models_basics_text_tinymce.png)
+  ![type text tinymce](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_text_tinymce.png)
 
    And if you choose ```Text formatting : none```, you will have a simple textarea :
 
-   ![type text textarea](Locomotive-fundamentals/raw/master/images/models_basics_text_textarea.png)
+   ![type text textarea](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_text_textarea.png)
 
 - Select :
 
   Displays a select list of options for the field.
 
-  ![type select](Locomotive-fundamentals/raw/master/images/models_basics_select.png)
+  ![type select](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_select.png)
 
   You have to put the options of the list in the property of the field, here we have "frontend" "backend" and "api" for the example. This type of attribute is handy, since it may avoids you the creation of a third-party model for simple lists like this one.
 
@@ -686,7 +686,7 @@ Let's detail each one of them. The rendering of these types will be detailed [la
 
   A date field which is editable by this :
 
-  ![type date](Locomotive-fundamentals/raw/master/images/models_basics_date.png)
+  ![type date](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_date.png)
 
   But if you need a field for "updated at" or "created at", be aware this attributes already exist by default, they are rendered with ```entry.created_at``` and ```entry.updated_at```.
 
@@ -702,7 +702,7 @@ The other fields specifying a relationship with an other model (```belongs_to```
 
 When you define an attribute (or a field) for your model, you have some properties which are specific for each kind of attribute (detailed previously), and some which are common to every one.
 
-![type properties](Locomotive-fundamentals/raw/master/images/models_basics_properties.png)
+![type properties](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_properties.png)
 
 - Required / Optional :
 
@@ -729,12 +729,12 @@ When you define an attribute (or a field) for your model, you have some properti
 
 When the attributes of the model are defined, click on "Create" to edit advanced options of the model :
 
-![models advanced props](Locomotive-fundamentals/raw/master/images/models_basics_advanced.png)
+![models advanced props](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced.png)
 
 For the purpose of the example, the following model will be used in what's follow :
 
 
-![models advanced model](Locomotive-fundamentals/raw/master/images/models_basics_advanced_model.png)
+![models advanced model](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_model.png)
 
 So let's say we have a model of posts, with a title (string), some text (text), a category (select with options "frontend" and "backend") and a publishing_date (date).
 
@@ -748,29 +748,29 @@ Theses options let you customize how entries of your model are displayed in the 
 
   If you choose the field ```title```, you have :
 
-  ![models advanced label 1](Locomotive-fundamentals/raw/master/images/models_basics_advanced_label1.png)
+  ![models advanced label 1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_label1.png)
 
 
   And if you choose ```publishing_date```, you end up with :
 
-  ![models advanced label 2](Locomotive-fundamentals/raw/master/images/models_basics_advanced_label2.png)
+  ![models advanced label 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_label2.png)
 
 - Group by field :
 
   Group entries by a common field value. This is available only for fields which have the type ```select```. So here we can group by category :
 
-  ![models advanced group by](Locomotive-fundamentals/raw/master/images/models_basics_advanced_groupby.png)
+  ![models advanced group by](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_groupby.png)
 
 - Item template :
 
   Let you really customize the string displayed for each entry in the list of model's entries.
   For example, let's say I don't display my posts grouped by category, but still I would like the category appears aside the post title, I would do so :
 
-  ![models advanced item template](Locomotive-fundamentals/raw/master/images/models_basics_advanced_itemtemplate.png)
+  ![models advanced item template](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_itemtemplate.png)
 
   And my entries would display this way :
 
-  ![models advanced item template1](Locomotive-fundamentals/raw/master/images/models_basics_advanced_itemtemplate1.png)
+  ![models advanced item template1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_basics_advanced_itemtemplate1.png)
 
 
 **Advanced options**
@@ -800,22 +800,22 @@ We have the model ```books``` belongs_to ```authors```.
 
 First, we create the model ```authors``` in its simplest form :
 
-![authors](Locomotive-fundamentals/raw/master/images/belongsto_authors.png)
+![authors](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_authors.png)
 
 The mapping with the model ```books``` will be defined in ```books```.
 Let's create ```books```:
 
-![books step 1](Locomotive-fundamentals/raw/master/images/belongsto_books_1.png)
+![books step 1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_books_1.png)
 
 We give him a ```title``` field, and a ```writer``` field which defines the ```belongs_to``` relationship.
 
 But wait, we haven't mapped ```books``` to ```authors``` yet, so click on the "add" button and then on the down arrow to specify more options concerning this field :
 
-![books arrow](Locomotive-fundamentals/raw/master/images/belongsto_arrow.png)
+![books arrow](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_arrow.png)
 
 You then have the option panel where you choose the ```Class name``` of the model targeted by the belongs_to relationship :
 
-![books step 2](Locomotive-fundamentals/raw/master/images/belongsto_books_2.png)
+![books step 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_books_2.png)
 
 We are done, so click on the "Create" button to save the model.
 
@@ -823,17 +823,17 @@ We are done, so click on the "Create" button to save the model.
 
 Now we have our models defined, let's add some dummy entries. We will create a new book entry :
 
-![books entrie empty](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_empty.png)
+![books entrie empty](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_book_entrie_empty.png)
 
 We can give him a name, but the ```writer``` list is empty, right, because ```authors``` model hasn't any entries yet.
 
 So create an author :
 
-![author add](Locomotive-fundamentals/raw/master/images/belongsto_author_entrie.png)
+![author add](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_author_entrie.png)
 
 And then go back in the book creation page, the author appears in the ```writer``` list :
 
-![book entrie valid](Locomotive-fundamentals/raw/master/images/belongsto_book_entrie_valid.png)
+![book entrie valid](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/belongsto_book_entrie_valid.png)
 
 Great, save the entry and we will check if it works.
 
@@ -853,25 +853,25 @@ A review is basically a piece of text, and it is often published in a media. Wha
 
 First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content```, and also a belongs_to field ```book``` :
 
-![book reviews](Locomotive-fundamentals/raw/master/images/hasmany_reviews.png)
+![book reviews](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/hasmany_reviews.png)
 
 **The ```belongs_to``` field targeting the parent model class name, ```books```, is required !**
 
-![book reviews belongs to field](Locomotive-fundamentals/raw/master/images/hasmany_reviews_belongsfield.png)
+![book reviews belongs to field](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/hasmany_reviews_belongsfield.png)
 
 Save the model, and now go editing ```books```. We will add a has_many field named ```reviews```, targeting the ```Class name``` ```reviews```, and ```Inverse of``` itself, so ```books``` :
 
-![book editing](Locomotive-fundamentals/raw/master/images/hasmany_books.png)
+![book editing](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/hasmany_books.png)
 
 *Nota Bene : here again, the name of the field defining the has_many relationship (here 'reviews') can be named as you want.*
 
 Save the updated ```books``` model, and let's edit the previous ```books``` entry :
 
-![book entrie](Locomotive-fundamentals/raw/master/images/hasmany_bookentrie_1.png)
+![book entrie](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/hasmany_bookentrie_1.png)
 
 Let's add a review to this book, click on "Add a new entry" and fill it with dummy text :
 
-![book entrie reviewed](Locomotive-fundamentals/raw/master/images/hasmany_bookentrie_2.png)
+![book entrie reviewed](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/hasmany_bookentrie_2.png)
 
 Click on "Save" to close the modal window and create the ```reviews``` entry related to this ```books``` entry. Click again on "Save" to update the ```book```.
 
@@ -902,7 +902,7 @@ Awesome book, blablabla ...
 
 When you added ```review``` to your ```book``` writer, it was possible because of the property "Ui enabled" of your ```has many``` field. This property is set to ```true``` by default :
 
-![tips ui enable](Locomotive-fundamentals/raw/master/images/models_tips_uienable.png)
+![tips ui enable](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/models_tips_uienable.png)
 
 This property sets either you can edit and create a child model entry from a parent model entry, or not.
 
@@ -912,8 +912,8 @@ Finally, we will add the ability to associate tags to a book. Here, the model ``
 
 Let's create the ```tags``` model.
 
-![tags creation 1](Locomotive-fundamentals/raw/master/images/manytomany_tags_1.png)
-![tags creation 2](Locomotive-fundamentals/raw/master/images/manytomany_tags_2.png)
+![tags creation 1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_tags_1.png)
+![tags creation 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_tags_2.png)
 
 We have the ```books``` field referring to books via a ```many_to_many``` relationship. Like previously, we specify the ```Class name``` of the targeted model, which is ```books```. We also have to specify ```Inverse of``` (itself) ```tags``` here, but we can't, the select list is empty.
 
@@ -921,28 +921,28 @@ For now, save the  ```tags``` model, we will get back here soon.
 Go edit the  ```books``` model and add, as you may guessed, the ```tags``` field referring to tags via a ```many_to_many``` relationship. The ```Class name``` of the targeted model is ```tags```. Yes I'm repeating myself a little, just in case.
 But here you can define the ```Inverse of``` (itself) which is ```books```, so do it please :
 
-![books m2m update](Locomotive-fundamentals/raw/master/images/manytomany_books.png)
+![books m2m update](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_books.png)
 
 Then save the ```books``` model and go back editing ```tags``` model : magic, the ```Inverse of``` attribute of the many_to_many field ```books``` is field with the appropriate value ```tags``` :
 
 
-![tags inverse of update](Locomotive-fundamentals/raw/master/images/manytomany_tags_inverseof.png)
+![tags inverse of update](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_tags_inverseof.png)
 
 Here it is, your many to many is settled.
 
 Now we will add some tags to our book, but unlike the previous cases, you can't create a tag entry in the book entry page :
 
-![m2m enable ui problem](Locomotive-fundamentals/raw/master/images/manytomany_enableui.png)
+![m2m enable ui problem](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_enableui.png)
 
 We have to create a new tag entry separately, and then add it when editing the book entry. So we do :
 
-![m2m tag available in book](Locomotive-fundamentals/raw/master/images/manytomany_tag_entrie.png)
+![m2m tag available in book](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_tag_entrie.png)
 
 
 You don't have to select here the book entry you want to connect the tag.
 And when we go back to the book entry we were editing, the tag is available in the select list :
 
-![m2m tag available in book](Locomotive-fundamentals/raw/master/images/manytomany_books_tags_available.png)
+![m2m tag available in book](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/manytomany_books_tags_available.png)
 
 So let's (finally !) add our tag to our book, save, and check if everything is okay back in frontend :
 
@@ -1009,7 +1009,7 @@ The simplest loop is an iteration over your model entries. We loop here on the m
 
 Loop over ```contents.slug_of_your_model```, and for each entry you have access to the custom fields of your model, and also to a list of attributes :
 
-![entries attributes](Locomotive-fundamentals/raw/master/images/entries_attributes.png)
+![entries attributes](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/entries_attributes.png)
 
 [Reference](http://doc.locomotivecms.com/templates/tags#for-section)
 
@@ -1264,7 +1264,7 @@ LocomotiveCMS comes with a paginate tag.
 
 It creates a ```paginate``` objects with the following attributes :
 
-![paginate attributes](Locomotive-fundamentals/raw/master/images/paginate_object.png)
+![paginate attributes](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/paginate_object.png)
 
 There are all pretty straightforward, but let's have a look at the ```parts``` attributes, it seems there is everything here to build the navigation of your paginated pages.
 
@@ -1298,7 +1298,7 @@ Well, that's fine if you want have the control of your markup, but if you don't,
 
 Which takes 2 arguments :
 
-![paginate filter](Locomotive-fundamentals/raw/master/images/paginate_filter.png)
+![paginate filter](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/paginate_filter.png)
 
 And which renders this kind of markup :
 
@@ -1343,7 +1343,7 @@ The idea of a templatized page is that's a view of one instance of a model you s
 
 Here is how it works : let's say you have the model ```posts```, the one from the previous [Basics](#models_basics) subchapter. You need to have the following pages structure :
 
-![templatized page archi](Locomotive-fundamentals/raw/master/images/templatize_archi.png)
+![templatized page archi](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_archi.png)
 
 With :
 
@@ -1353,30 +1353,30 @@ With :
 
   So for the example, here are the parameters of the page, but there isn't anything specific here :
 
-  ![templatized page posts](Locomotive-fundamentals/raw/master/images/templatize_posts1.png)
+  ![templatized page posts](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_posts1.png)
 
-  ![templatized page posts 2](Locomotive-fundamentals/raw/master/images/templatize_posts2.png)
+  ![templatized page posts 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_posts2.png)
 
   Again for the example, we could list in this page the entries of ```posts``` model, and display the link of each entry. You have to build the relative url according this page's slug, and using the ```_permalink``` attribute of a model instance.
 
-  ![templatized page posts liquid](Locomotive-fundamentals/raw/master/images/templatize_posts_liquid.png)
+  ![templatized page posts liquid](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_posts_liquid.png)
 
 
 - **template** page :
 
   The template of the templatized model is defined as follow :
 
-  ![templatized page 1](Locomotive-fundamentals/raw/master/images/templatize_template1.png)
+  ![templatized page 1](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_template1.png)
 
   You set the page **posts** as the *parent* of this one. A templatized page **must** have a *parent*, other than index.
 
-  ![templatized page 2](Locomotive-fundamentals/raw/master/images/templatize_template2.png)
+  ![templatized page 2](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_template2.png)
 
   Set the parameter ```Templatized``` as true, and select bellow the model you want to templatize.
 
   To follow the example, we will display a full post, using directly the ```posts``` instance (notice the singular) :
 
-  ![templatized page template liquid](Locomotive-fundamentals/raw/master/images/templatize_template_liquid.png)
+  ![templatized page template liquid](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/templatize_template_liquid.png)
 
 
 
@@ -1482,12 +1482,12 @@ LocomotiveCMS handles internationalization easily. We will see how set up severa
 
 First thing first, choose the languages you want support in the *Settings* panel :
 
-![internationalization panel](Locomotive-fundamentals/raw/master/images/internationalization_1.png)
+![internationalization panel](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_1.png)
 
 Select your locales and save.
 If you go back in the 'Contents' tab, you will see a locale switcher at the right part of the menu :
 
-![internationalization locale switcher](Locomotive-fundamentals/raw/master/images/internationalization_2.png)
+![internationalization locale switcher](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_2.png)
 
 There is several kind of content you may wanna translate :
 
@@ -1515,7 +1515,7 @@ The editable custom text in english.
 
 Go back to the admin, and switch to the French locale. You will see that LocomotiveCMS indicates pages which are not yet translated :
 
-![internationalizationeng page](Locomotive-fundamentals/raw/master/images/internationalization_untranslated.png)
+![internationalizationeng page](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_untranslated.png)
 
 **Notice :
 Pages which are not translated are not available in front, they generates a 404.**
@@ -1543,7 +1543,7 @@ Since the default locale of this app is English, the lambda page url is ```test.
 
 Let's create a dummy model with a string field :
 
-![internationalization model](Locomotive-fundamentals/raw/master/images/internationalization_model.png)
+![internationalization model](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_model.png)
 
 See the ```localized``` checkbox ? It's all it takes to localize a model field ! You can localize the fields you want, but not necessarily all custom fields.
 
@@ -1622,7 +1622,7 @@ This way, each link will point to the current localized page.
 
 LocomotiveCMS comes with the following available locales :
 
-![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
+![internationalization locales](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_locales.png)
 
 What if you need for example to have a Chinese locale ? There is 2 things to consider with locales :
 
@@ -1650,7 +1650,7 @@ There is a way to add custom locale without pain.
 
 3. When your custom locale is added in the LocomotiveCMS config, you need to add the .png image of the locale flag in the application assets, which will appears in the admin panel (if you don't, it will raises an error) :
 
-  ![internationalization locales](Locomotive-fundamentals/raw/master/images/internationalization_locales.png)
+  ![internationalization locales](https://raw.github.com/geraudmathe/Locomotive-fundamentals/master/images/internationalization_locales.png)
 
   The .png image is 24x24px. Put this file in the main Rails app, in the folder ```/app/assets/images/locomotive/icons/flags/```. The name of the image must be your locale's name, for example Taiwanese flag must be named ```tw.png```.
 
