@@ -28,6 +28,8 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
   *  __[Rendering models](#models_rendering)__
   *  __[Templatize a model](#models_templatize)__
   *  __[Recipe: Public Submission](#public_submission)__
+  *  __[Recipe: Create models and content via YAML](#models_yaml)__
+
 6. __[LocomotiveCMS Editor](#locomotive_editor)__
 7. __[Using LocomotiveCMS in an existing Rails app](#locomotive_rails_app)__
 7. __[Tips](#tips)__
@@ -1392,6 +1394,128 @@ https://github.com/locomotivecms/engine/blob/master/features/public/contact_form
 
 ////
 Very big form, session problem hack : https://github.com/locomotivecms/engine/issues/418
+
+<a name="models_yaml"></a>
+### Recipe: Create models and content via YAML
+
+  Locomotive's ability to create models via the UI is really awesome.
+It's powerful and flexible. The only issue though is what if you
+maintain a Dev and Prod instance of your CMS (or say Dev, Staging and
+Prod)? Let's say further that this model doesn't even need a template. 
+How do you keep your new models DRY and push whatever you created
+in Dev. Simple: you can create your model with a YAML file. You can
+even create initial content, either as a placeholder or as a default,
+first time content. Its really awesome.
+
+Let's say you want to create a model that allows content editors make
+small simple entries for news about their company. Our model will be
+called "News."
+
+First you need to create a directory inside your app directory called
+'content_types'. Then create a .yml file named for your model. So,
+following our exmaple you would have this:
+
+```
+app/content_types/news.yml
+```
+
+Next you are going to represent your model in a similar way to how you
+do it in the UI. It helps to know YAML, but if your model is simple
+enough you can probably just follow this example.
+
+Here is what we need in our model:
+
+A title.
+A description.
+A URL to link to the actual news item. 
+A tag (for the type of news items it is such as video, event or news),
+Whether the item should be featured on the home page.
+Whether the item should be published.
+
+Here is what your file should look like:
+
+```
+name: News
+slug: news
+description: "stories and news about AliveCor"
+order_by: pub_date
+order_direction: desc
+label_field_name: title
+fields:
+  - title:
+      label: Title
+      type: string
+      hint: "Short title will display as a heading, keep it short! around 40 characters"
+  - description:
+      label: Description
+      type: text
+      hint: "Short description that will display as text below heading, around 90 characters"
+  - url:
+      label: URL
+      type: string
+      hint: "Type or paste the full URL of the news story we are linking to"
+  - tag:
+      label: Tag
+      type: select
+      hint: "Pick the type of news category this is"
+      select_options:
+       - news
+       - event
+       - video
+  - featured:
+      label: Featured
+      type: boolean
+      hint: "Will appear on homepage, you can only have two news stories there so watch it!"
+  - pub_date:
+      label: Date
+      type: date
+      hint: "The date you enter will be used for display and ordering of the news stories"
+  - publish:
+      label: Publish
+      type: boolean
+      hint: "Set this to yes when you are ready to publish it to the site"
+```
+
+You can push this to your Dev instance and see it in the UI now! Badass.
+
+A few things to notice: 
+
+At this time the 'order_direction' doesn't seem
+to work. For me it always defaulted to 'asc' so for now I just manually
+do it in the UI. I'm sure this bug will be fixed soon.
+
+The other thing to notice is how you create the choices that will appear
+in the select menu. They will appear in the order you list under
+'select_options'. 
+
+Everything else is quite straighforward.
+
+Now on to creating some default content!
+
+For this you need to create a directory as a sibling of 'app'. Call this
+one 'data'. Inside 'data' you must create a .yml file with a name that
+corresponds to the one you created in the 'content_types' directory. So
+you will end up with this:
+
+```
+data/news.yml
+```
+
+Here is an example news story in that file:
+
+```
+'American Onion':
+  title: 'American Onion'
+  description: "Stoner Architect Drafts All-Foyer Mansion"
+  url: 'http://www.theonion.com/articles/stoner-architect-drafts-allfoyer-mansion,1469/'
+  tag: 'news'
+  featured: true
+  pub_date: 2000-08-09
+  publish: true
+```
+
+Now you can push this to your Dev server and it will be visible in the
+UI and ready for you to reference in your templates. Huzzah!
 
 
 <a name="locomotive_editor"></a>
