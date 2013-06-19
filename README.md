@@ -59,11 +59,11 @@ Let's start first with a little bit of history.
 
 When I was a developer at a Chicago web agency, I built numerous custom and unique content management system applications for each of our clients. Even though I enjoyed crafting unique back-offices for our clients, it was clear to me that I should spend less time on those kinds of projects so that I may tackle larger ones. At this time, there were no open source Rails CMSes fitting both my needs and my vision of ideal CMS.
 
-Upon returning to France, I kept thinking about what the perfect CMS should be. My thoughts were also enhanced by my experiences as a Rails developer in other companies. I began coding a prototype which have constantly improved ever since. I also spent a lot of time experimenting with many concepts and through process learned a lot about what the perfect CMS should look like.
+Upon returning to France, I kept thinking about what the perfect CMS should be. My thoughts were also enhanced by my experiences as a Rails developer in other companies. I began coding a prototype, and that protoype has been constantly improved ever since. I also spent a lot of time experimenting with many concepts and throughout the process, I learned a lot about what the perfect CMS should look like.
 
-However, I stayed true to what were the basic requirements of my dream CMS and never moved away from them. These requirements are:
+However, I stayed true to basic requirements of my dream CMS and never moved away from them. These requirements are:
 
-- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and will not have to require the help of an admin system guy.
+- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and will not require the help of an systems admin guy.
 - It should be effortless for the content editors to edit the site without ruining the layout or, worse, crashing the site.
 - Developing a LocomotiveCMS site should not require Ruby on Rails knowledge.
 - It should be possible and easy to extend and customize LocomotiveCMS in elegant ways.
@@ -73,36 +73,36 @@ However, I stayed true to what were the basic requirements of my dream CMS and n
 <a name="foreword_3"></a>
 ### Why should you use LocomotiveCMS ?
 
-LocomotiveCMS is a CMS that has been created with a main guideline: keep it simple !
+LocomotiveCMS is a CMS that has been created with a single core concept: keep it simple !
 
 - Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
 - Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
 
-If you recognize yourself in on of the case listed above, you should use LocomotiveCMS.
+If one of the cases listed above applies to you, you should use LocomotiveCMS.
 
 ///
 
-From a "business" point of view, LocomotiveCMS have several benefits to sell :
+From a "business" point of view, LocomotiveCMS has several great selling points:
 
 - Front-end editing of static texts, using Aloha editor
 - Hosting on Heroku / AWS very cheap, almost free
-- Finally, a great looking back-office !
+- Finally, a great looking back-office!
 
 <a name="foreword_4"></a>
 ### Assumptions
 
 During this reading, it is assumed that:
 
-- You know what is Ruby and Rails and you've a good feeling with terms like Gem, Bundler, deployment
-- You know what is a data model, and ideally what is a document-oriented storage like Mongo
-- You have basic knowledge about shell and command-line interface
+- You know what Ruby and Rails is and you've a good feeling with terms like Gem, Bundler, deployment
+- You know what a data model is, and ideally you understand document-oriented storage, like Mongo
+- You have basic knowledge of how to use a shell/command-line interface
 
 <a name="foreword_5"></a>
 ### Organization of this book
 
-This guide is structured as follow :
+This guide is structured as follows:
 
-First, an *Overview* of the CMS aims to introduce the environment and the main things to know about.
+First, the *Overview* of the CMS aims to introduce the environment and the main things to know about.
 
 *Getting something running in 5 minutes* may help LocomotiveCMS's beginners walking through the
 
@@ -115,7 +115,7 @@ First, an *Overview* of the CMS aims to introduce the environment and the main t
 LocomotiveCMS is crafted as an engine.
 
 <i>
-A Rails engine is an application packaged as a ruby gem that is able to be run or mounted within another Rails application. An engine can have its own models, views, controllers, generators and publicly served static files.
+A Rails engine is an application packaged as a ruby gem that is able to be run or is mounted within another Rails application. An engine can have its own models, views, controllers, generators and publicly served static files.
 </i>
 ([more about engines](http://guides.rubyonrails.org/engines.html))
 
@@ -132,9 +132,9 @@ What's inside ?
 <a name="overview_2"></a>
 ### Key features
 
-You have out of the box :
+You have out of the box:
 
-- Multi sites : manage multiple websites with one application instance
+- Multi sites: manage multiple websites with one application instance
 - Flexible content types
 - Front-end inline editing (Aloha editor)
 - Content localization
@@ -159,9 +159,9 @@ il n'y a pas de template de base, sauf si on achète loco editor là il y en a m
 
 #### Basics of inheritance
 
-The logic in LocomotiveCMS is differs a bit from what you are certainly used to, it may be weird a first, but it's actually very simple.
+The logic in LocomotiveCMS differs a bit from what you are used to, so it may be weird a first, but it's actually very simple.
 
-In the classic, Rails way, you have the following architecture, with page's content integrated in the application layout using the ``` yield ``` statement :
+In the classic 'Rails way', you have the following architecture, with page content integrated in the application layout using the ``` yield ``` statement :
 
     +- Views
         +- layout
@@ -178,9 +178,9 @@ In Locomotive, it's a bit different :
             +- first page
             +- second page
 
-All pages inherit from index. This way, the index contains the application's layout and the index page content. How do you re-use the layout without re-using the index page content ? By introducing ```{% block 'block_name' %} ... {% endblock %}``` : since all pages inherit from index, you declare blocks of content inside the layout (index), which will be overwritten in child pages. Here is a the simplest example :
+All pages inherit from index. This way, the index contains the application's layout and the index page content. How do you re-use the layout without re-using the index page content? By introducing ```{% block 'block_name' %} ... {% endblock %}``` : since all pages inherit from index, you declare blocks of content inside the layout (index), which will be overwritten in child pages. Here is a simple example:
 
-Index page :
+Index page:
 
 ```html
 <html>
@@ -203,7 +203,7 @@ Index page :
 </html>
 ```
 
-A page, which inherits from index :
+A page, which inherits from index:
 ```html
 {% extends parent %}
 
@@ -212,9 +212,9 @@ A page, which inherits from index :
 {% endblock %}
 ```
 
-By extending index, 'a-page' re-use all of its content, except the content inside the ``` {% block %} ``` tag which is overwritten. This tag is written with the Liquid syntax which will is explained later.
+By extending index, 'a-page' re-uses all of its content, except the content inside the ``` {% block %} ``` tag which is overwritten. This tag is written using Liquid syntax which will be explained later.
 
-You can have as many ``` {% block %} ``` tags as you want, everywhere in the layout, as long as the name of each block is unique. For a basic application which only have one layout, that's all you need to know.
+You can have as many ``` {% block %} ``` tags as you want, everywhere in the layout, as long as the name of each block is unique. For a basic application which only has one layout, that's all you need to know.
 
 src: http://doc.locomotivecms.com/templates/tags#block-section
 
@@ -222,8 +222,8 @@ src: http://doc.locomotivecms.com/templates/tags#block-section
 
 **Several levels of inheritance**
 
-The principle of page's inheritance can be applied to every page.
-When you create a page, it automatically inherits from index, but you can also make it inherits from another page, by specifying it's parent :
+The principle of page inheritance can be applied to every page.
+When you create a page, it automatically inherits from index, but you can also make it inherit from another page, by specifying it's parent:
 
 ![Specifying parent](images/specifying_parent.png)
 
@@ -238,9 +238,9 @@ By doing so, you can define as many levels as you want :
 
 **Inherit from an other page than the parent one**
 
-When you extend the parent's layout, you use the tag ``` {% extends parent %} ```, but what if you would like to extends a page which isn't a direct parent ?
+When you extend the parent's layout, you use the tag ``` {% extends parent %} ```, but what if you would like to extends a page which isn't a direct parent?
 
-For example, how would you make "first page" extends "second page" ?
+For example, how would you make "second page" extend "first page"?
 
     +- Pages
         +- index
@@ -252,11 +252,11 @@ You specify the page you want to extend with its *slug*.
 
 src: http://doc.locomotivecms.com/templates/tags#extends-section
 
-**What about several layouts ?**
+**What about several layouts?**
 
-Let's say your website needs two layouts, how do it without putting the entire index in ``` {% block %} ``` tags ? It's actually fairly simple : you are not forced to make a page inherits its content from another.
+Let's say your website needs two layouts, how do you do it without putting the entire index in ``` {% block %} ``` tags? It's actually fairly simple: you are not forced to make a page inherit its content from another.
 
-Remember the previous page we created which inherited from index :
+Remember the previous page we created which inherited from index:
 ```html
 {% extends parent %}
 
@@ -265,16 +265,16 @@ Remember the previous page we created which inherited from index :
 {% endblock %}
 ```
 
-Well, actually the tag ``` {% extends parent %} ``` can be removed, so the page doesn't extends any other page, letting you define a brand new layout if needed.
+Well, actually the tag ``` {% extends parent %} ``` can be removed, so the page doesn't extend any other page, letting you define a brand new layout if needed.
 
 Let's illustrate this with an example:
 
-- the main layout of the site will be define in index
+- the main layout of the site will be defined in index
 - a second layout will be defined in a page called "alternate_layout"
 - we will have a page called "normal" which will use the main layout
 - and finally an other page called "alternate_page" which will use the alternate layout
 
-The skeleton will look like that :
+The skeleton will look like that:
 
     +- Pages
         +- index
@@ -282,9 +282,9 @@ The skeleton will look like that :
             +- alternate_layout
                 +- alternate_page
 
- Here we go :
+ Here we go:
 
- First, the index page :
+ First, the index page:
  ```html
  <html>
   <head>
@@ -306,7 +306,7 @@ The skeleton will look like that :
 </html>
  ```
 
- The "normal" page, which inherits from it index :
+ The "normal" page, which inherits from index:
 
  ```html
 {% extends parent %}
@@ -316,7 +316,7 @@ The skeleton will look like that :
 {% endblock %}
  ```
 
- Then the "alternate layout" page, which doesn't extends its parent, index :
+ Then the "alternate layout" page, which doesn't extend its parent, index:
  ```html
 <html>
   <head>
@@ -350,10 +350,10 @@ And finally, the "alternate page", which inherits from "alternate layout". You m
 
 **Snippets**
 
-To conclude with templating basics, it's worth to know that LocomotiveCMS gives you the ability to put some blocks of code in a separate file called snippet, in the same way Rails does with partials.
-That's very useful when you have to build a modular layout without repeating code.
+To conclude the templating basics section, it's worth it to know that LocomotiveCMS gives you the ability to put some blocks of code in a separate folder called snippet, in the same way Rails does with partials.
+Snippets are very useful when you want to build a modular layout without repeating code.
 
-Like Rails, you can pass a variable to the snippet, or simply include a static bloc of code. The following example will cover both cases, don't bother with the liquid syntax which will be explained in the next part.
+Like Rails, you can pass a variable to the snippet, or simply include a static block of code. The following example will cover both cases, don't bother with the liquid syntax which will be explained in the next part.
 
     +- Pages
         +- index
@@ -362,7 +362,7 @@ Like Rails, you can pass a variable to the snippet, or simply include a static b
         +- product_information
 
 
-Here is the index, which includes the sidebar, and also loops on products model and include the snippet "product_information" at each product item :
+Here is the index, which includes the sidebar, loops on the products model, and includes the snippet "product_information" for each product:
 ```html
 <html>
   <head>
@@ -385,14 +385,14 @@ Here is the index, which includes the sidebar, and also loops on products model 
 </html>
 ```
 
-Then the sidebar :
+Then the sidebar:
 ```html
 <div id="sidebar">
   the sidebar
 </div>
 ```
 
-And finally the product_information snippet which uses the context "product" :
+And finally the product_information snippet which uses the context "product":
 ```html
 <div class="product">
 {{ product.name }} :  {{ product.price }}$
@@ -403,17 +403,17 @@ src: http://doc.locomotivecms.com/templates/tags#include-section
 <a name="templating_2"></a>
 ### Liquid syntax
 
-Liquid is a templating library extracted from Shopify, the project is hosted at <a href="http://liquidmarkup.org" >http://liquidmarkup.org</a>. LocomotiveCMS reuses a lot of the original library.
+Liquid is a templating library extracted from Shopify. The project is hosted at <a href="http://liquidmarkup.org" >http://liquidmarkup.org</a>. LocomotiveCMS reuses a lot of the original library.
 
 #### Everything in 2 markups
 
-The liquid syntax is a templating engine based on a set of functions that allow the developer (or the designer, since you don't need strong code skills to write it) to keep focus on the rendering of the data, not on the way it could render it.
-Liquid defines 2 types of markup, pretty close to what you are used to with Erb :
+The liquid syntax is a templating engine based on a set of functions that allow the developer (or the designer, since you don't need strong coding skills to write it) to keep focus on the rendering of the data, not on the way it could render it.
+Liquid defines 2 types of markup, pretty close to what you are used to with Erb:
 
 
-**Ouput markup : matched pairs of curly brackets output the value of an object :**
+**Output markup: matched pairs of curly brackets output the value of an object :**
 
-Erb :
+Erb:
 
     <%= @product.name %>
 
@@ -421,7 +421,7 @@ Liquid :
 
     {{ product.name }}
 
-**Tag markup : matched pairs of culry brackets and percent, not resolved to text :**
+**Tag markup: matched pairs of curly brackets and percent, not resolved to text:**
 
 Erb :
 
@@ -432,20 +432,20 @@ Liquid :
     {% assign name with product.name %}
 
 Liquid is extracted from http://www.shopify.com, but LocomotiveCMS extends it.
-To cover all, we will distinguish 3 cases :
+To cover all, we will distinguish 3 cases:
 - Objects
 - Filters
 - Tags
-which are all in the LocomotiveCMS doc : http://doc.locomotivecms.com/templates/basics
-In the next part, we give some examples.
+which are all in the LocomotiveCMS doc: http://doc.locomotivecms.com/templates/basics
+In the next part, we'll give some examples.
 
 original Liquid doc: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
 
 #### Objects
 
-When writing a liquid template, you will access to a couple of objects representing for instance the current site, page, logged in account as well as collections such as your custom content types. They are also called 'drops'.
+When writing a liquid template, you will have access to a couple of basic objects, like the current site, page, logged in account, as well as collections, like your custom content types. These objects are also called 'drops'.
 
-Available objects and their attributes are listed here : http://doc.locomotivecms.com/templates/objects
+Available objects and their attributes are listed here: http://doc.locomotivecms.com/templates/objects
 
 **SEO purpose**
 
@@ -490,7 +490,7 @@ example: <img src="{% editable_file 'Promotion_2_image', hint: 'Upload a promoti
 <a name="templating_3"></a>
 ### Creating a page
 
-You have several option when you create a page. Let's take a look.
+You have several options when you're creating a page. Let's take a look.
 
 #### General information
 
@@ -498,7 +498,7 @@ You have several option when you create a page. Let's take a look.
 
 Nothing complex, just specify the name of the page. The slug field will be updated automatically.
 
-Be aware the slug will reference the url linked with the page you are creating, if you change it later, it could break links in the website.
+Be aware the slug will reference the url linked to the page you are creating, so if you change it later, it could break links in the website.
 
 Set the parent page, as explained in __[Templating Logic](#templating_1)__.
 
@@ -508,7 +508,7 @@ Set the parent page, as explained in __[Templating Logic](#templating_1)__.
 
 Edit the meta ```title```, ```keyword```, ```description``` for the page, or leave it empty if you want use the global meta.
 
-These meta values will then be available for use in the template with Liquid tags, this way :
+These meta values will then be available for use in the template with Liquid tags, like this:
 
 ```html
 <title>{{ page.seo_title }}</title>
@@ -520,45 +520,45 @@ These meta values will then be available for use in the template with Liquid tag
 
 ![Advanced options](images/page_advanced_options.png)
 
-- Handle :
+- Handle:
 
   Used when you integrate LocomotiveCMS with a Rails app, see [this chapter](#locomotive_rails_app).
 
-- Response type :
+- Response type:
 
-  You can choose between HTML, RSS, XML or JSON. You may this way generate a RSS feed or build an simple API from your LocomotiveCMS site.
+  You can choose between HTML, RSS, XML or JSON. You may use this to generate a RSS feed or build an simple API from your LocomotiveCMS site.
 
-- Templatized :
+- Templatized:
 
-  Defines wether this page should be a template for a model instance, see [this chapter](#models_templatize).
+  Defines whether this page should be a template for a model instance, see [this chapter](#models_templatize).
 
 
 - Published :
 
-  Since only authenticated accounts can view unpublished pages, this allows debugging a page on a deployed site.
+  Since only authenticated accounts can view unpublished pages, this allows debugging on a page in a deployed site.
 
-- Listed :
+- Listed:
 
-  The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.com/templates/tags#nav-section)) based on your page. Control here wether this page appears in the generated menu.
+  The Liquid ``` {% nav %} ``` generates a menu ([doc](http://doc.locomotivecms.com/templates/tags#nav-section)) based on your page. Use this to determine whether or not this page appears in the generated menu.
 
-- Redirect :
+- Redirect:
 
   If you check this, you can redirect the page to a url.
 
-  It then will be a 301 redirection, which from a SEO point of view, is a permanent redirection. You should use it when you have changed your urls. The search engine will then forget the previous page and update the url in its database.
+  LocomotiveCMS will perform a 301 redirect. From an SEO perspective, this is a permanent redirection, so you should use it when your URLs have changed. When search engines encounter a 301 redirect, they update the URLs in their database.
 
 
   ``` source: [https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion](https://groups.google.com/d/topic/locomotivecms/UoNFhChvpOQ/discussion)```
 
-- Cache strategy :
+- Cache strategy:
 
-  Define here the cache strategy for this page.
+  Define the cache strategy for this page here.
 
 
 <a name="rss_feed"></a>
-### Recipe : Create a RSS feed
+### Recipe: Create a RSS feed
 
-You can create a page which will be used as a RSS feed for your blog. In the list of pages, it is tagged with the "RSS" label.
+You can create a page which will return an RSS feed of your blog. In the list of pages, it is tagged with the "RSS" label.
 
 ![RSS page](images/page_rss.png)
 
@@ -618,82 +618,82 @@ If you want the browsers and news readers to auto-detect your RSS feed, add the 
 <a name="models"></a>
 ## Models
 
-This chapter covers models, or the custom content, LocomotiveCMS lets you build in the UI. Here we use the word ```model``` as it's what we are used to, but in the LocomotiveCMS [reference](http://doc.locomotivecms.com/) you will see ```content type``` for ```model```, and ```content entry``` for an instance of a ```model```.
+This chapter covers models, also known as the custom content LocomotiveCMS lets you build in the UI. Here we use the word ```model``` as it's what we are used to, but in the LocomotiveCMS [reference](http://doc.locomotivecms.com/) you will see ```content type``` for ```model```, and ```content entry``` for an instance of a ```model```.
 
-The [first](#models_basics) subchapter aims to introduce the very basic creation and usage of models, the [second one](#models_mapping) is about building relationships between your models.
-We cover [then](#models_rendering) the rendering of models using Liquid, where we try to show the common use cases, and after that a [subchapter](#models_templating) is dedicated to the functionality of templating a model.
-Finally, we will cover the [public submission](#models_public_submission) of models, which allows frontend users to create instances.
+The [first subchapter](#models_basics) aims to introduce the very basic creation and usage of models. The [second subchapter](#models_mapping) is about building relationships between your models.
+In the [third subchapter](#models_rendering) we cover common use cases for rendering models with Liquid. In the [fourth subchapter](#models_templating) we will show the flexibility and functionality of the templating a model.
+Finally, we will cover the [public submission](#models_public_submission) of models, which will allow frontend users to create instances.
 
 <a name="models_basics"></a>
 ### Basics
 
-First step of model creation, specify the name of the model :
+First step of model creation, specify the name of the model:
 
 ![Create model](images/models_basics_creation.png)
 
 As mentioned in the hint, you will reference your model in Liquid logic by its *slug*.
-Then, define the fields (attributes) of your model in the following section :
+Then, define the fields (attributes) of your model in the following section:
 
 ![Create fields](images/models_basics_fields.png)
 
 
 #### Fields types
 
-The following types of attributes (fields) are available :
+The following types of attributes (fields) are available:
 
 ![Types list](images/models_basics_types_list.png)
 
-Let's detail each one of them. The rendering of these types will be detailed [later](#models_rendering).
+Let's look at an overview of each one. The rendering of these types will be reviewed [later](#models_rendering).
 
-*Nota bene : you will encounter some properties not explained, it's because they are common to all field types and will be detailed later.*
+*Nota bene : you will encounter some unexplained properties. This is because they are common to all field types and will be covered later.*
 
-- Simple input :
+- Simple input:
 
   A string, max 255 chars (?)
 
-- Text :
+- Text:
 
   Text field, but you can choose the format.
-  When you add a field :
+  When you add a field:
 
   ![type text 1](images/models_basics_text_1.png)
 
-  you then have a properties panel which appears by clicking on the arrow on the right part of the line :
+  you will have a properties panel that appears when you click on the arrow on the right part of the line:
 
   ![type text 2](images/models_basics_text_2.png)
 
-  If you choose ```Text formatting : HTML```, you will have a WYSIWYG editor, TinyMCE :
+  If you choose ```Text formatting: HTML```, you will get TinyMCE, a WYSIWYG editor:
 
   ![type text tinymce](images/models_basics_text_tinymce.png)
 
-   And if you choose ```Text formatting : none```, you will have a simple textarea :
+   And if you choose ```Text formatting: none```, you will get a simple textarea:
 
    ![type text textarea](images/models_basics_text_textarea.png)
 
-- Select :
+- Select:
 
   Displays a select list of options for the field.
 
   ![type select](images/models_basics_select.png)
 
-  You have to put the options of the list in the property of the field, here we have "frontend" "backend" and "api" for the example. This type of attribute is handy, since it may avoids you the creation of a third-party model for simple lists like this one.
+  You have to put the options of the list in the property of the field. In the example we have "frontend", "backend" and "api". This type of attribute is handy, since it may allow you to avoid creating another model to store simple lists.
 
   The options are both editable from the model editing page and the model instance creating/editing pages.
 
-- Checkbox :
+- Checkbox:
 
   A simple boolean field. The "Required" attribute will not applied to that kind of field.
 
-- Date :
+- Date:
 
-  A date field which is editable by this :
+  A date field, with the follwoing date selector built-in:
 
   ![type date](images/models_basics_date.png)
 
-  But if you need a field for "updated at" or "created at", be aware this attributes already exist by default, they are rendered with ```entry.created_at``` and ```entry.updated_at```.
+  The "updated at" or "created at" fields already exist by default, they can be rendered with ```entry.created_at``` and ```entry.updated_at```.
 
 
-- File :
+- File:
 
   A field of this type supports the upload of any kind of file.
 
@@ -706,101 +706,101 @@ When you define an attribute (or a field) for your model, you have some properti
 
 ![type properties](images/models_basics_properties.png)
 
-- Required / Optional :
+- Required / Optional:
 
-  Defines wether this field is required or not for the validation.
+  Defines whether this field is required when the form is validated.
 
-  A model must have at least one field, that's obvious, and the first field you will define will be considered as the mandatory one, and will be automatically saved as ```Required```. There is one exception though: you can't have a mandatory field whose type defines a relationship with an other model.
+  Obviously, a model must have at least one field. The first field you define will be considered as the mandatory one, and will be automatically saved as ```Required```. There is one exception though: you can't have a mandatory field whose type defines a relationship with an other model.
 
-- Name :
+- Name:
 
-  Make sure the name of the field *highlighten in yellow here* match the "Name" property bellow. As the tip explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighten in yellow.
+  Make sure the name of the field *highlighted in yellow here* matches the "Name" property below. As the tip explains "Name of the property for liquid templates", it will be this value you will have to use in the liquid template, and not the value highlighted in yellow.
 
-  It seems obvious, but if you change the name of the field (the one highlighten in yellow) and forgot the update accordingly the value of the field bellow, you will not be able to retrieve the object in Liquid and may wonder why...
+  It seems obvious, but if you change the name of the field (the one highlighted in yellow) and forgot to update the value of the field below to match it, you will not be able to retrieve the object in Liquid and may wonder why...
 
-- Hint :
+- Hint:
 
-  Hint for the end user of the back-office, displayed in the model form just below the field.
+  Hint for the end user of the back-office. The text is displayed in the model form just below the field.
 
-- Localized :
+- Localized:
 
   Used for internationalization, detailed [here](#internationalization).
 
 <a name="presentation_and_advanced_options"></a>
 #### Presentation and Advanced options
 
-When the attributes of the model are defined, click on "Create" to edit advanced options of the model :
+When the attributes of the model are defined, click on "Create" to edit advanced options of the model:
 
 ![models advanced props](images/models_basics_advanced.png)
 
-For the purpose of the example, the following model will be used in what's follow :
+For the purpose of the example, the following model will be used in the following examples:
 
 
 ![models advanced model](images/models_basics_advanced_model.png)
 
-So let's say we have a model of posts, with a title (string), some text (text), a category (select with options "frontend" and "backend") and a publishing_date (date).
+So let's say we have a 'Post' model with a title (string), some text (text), a category (select with options "frontend" and "backend") and a publishing_date (date).
 
 **Presentation**
 
 Theses options let you customize how entries of your model are displayed in the back-office page.
 
-- Label field :
+- Label field:
 
   Choose the field of the model displayed for each entry.
 
-  If you choose the field ```title```, you have :
+  If you choose the field ```title```, you have:
 
   ![models advanced label 1](images/models_basics_advanced_label1.png)
 
 
-  And if you choose ```publishing_date```, you end up with :
+  And if you choose ```publishing_date```, you end up with:
 
   ![models advanced label 2](images/models_basics_advanced_label2.png)
 
-- Group by field :
+- Group by field:
 
-  Group entries by a common field value. This is available only for fields which have the type ```select```. So here we can group by category :
+  Group entries by a common field value. This is available only for fields which have the type ```select```. So here we can group by category:
 
   ![models advanced group by](images/models_basics_advanced_groupby.png)
 
-- Item template :
+- Item template:
 
-  Let you really customize the string displayed for each entry in the list of model's entries.
-  For example, let's say I don't display my posts grouped by category, but still I would like the category appears aside the post title, I would do so :
+  Let's you customize the string displayed for each entry in the list of model entries.
+  For example, let's say I don't display my posts grouped by category, but I would still like the category to appear beside the post title, I would enter the following:
 
   ![models advanced item template](images/models_basics_advanced_itemtemplate.png)
 
-  And my entries would display this way :
+  And my entries would display this way:
 
   ![models advanced item template1](images/models_basics_advanced_itemtemplate1.png)
 
 
 **Advanced options**
 
-And finally, last properties of your model:
+And finally, the last properties of your model:
 
-- Order by, Order direction :
+- Order by, Order direction:
   The ordering of items in your model, both in frontend and in backend.
 
-- Public Submission :
+- Public Submission:
   Let frontend users create entries for the model, so typically you would use that option in a model "messages" for a contact form. This is detailed [here](#models_public_submission).
 
 
 <a name="models_mapping"></a>
-### Models mapping
+### Model mappings
 
-LocomotiveCMS lets you define the relationships between models you are used to in Rails, but the creation and usage of these mapped models can sometimes be uneasy, so let's see for each one of them of to deal with.
+LocomotiveCMS lets you define the relationships between models using the same style you are used to in Rails, but the creation and usage of these mapped models can sometimes be difficult, so let's examine each mapping type in detail.
 
 This part is dedicated to the models creation and mapping in the admin UI, and the template code shown here will be very concise and simple. For more about displaying models, read the next part.
 
-We will see the ```belongs to```, ```has many``` and ```many to many``` relationships and finally look at more complex mapping
+We will see the ```belongs to```, ```has many``` and ```many to many``` relationships and finally look at more complex mappings.
 
 
 #### Belongs to
 
 We have the model ```books``` belongs_to ```authors```.
 
-First, we create the model ```authors``` in its simplest form :
+First, we create the model ```authors``` in its simplest form:
 
 ![authors](images/belongsto_authors.png)
 
@@ -811,79 +811,79 @@ Let's create ```books```:
 
 We give him a ```title``` field, and a ```writer``` field which defines the ```belongs_to``` relationship.
 
-But wait, we haven't mapped ```books``` to ```authors``` yet, so click on the "add" button and then on the down arrow to specify more options concerning this field :
+But wait, we haven't mapped ```books``` to ```authors``` yet, so click on the "add" button and then on the down arrow to specify more options concerning this field:
 
 ![books arrow](images/belongsto_arrow.png)
 
-You then have the option panel where you choose the ```Class name``` of the model targeted by the belongs_to relationship :
+You then have the option panel where you choose the ```Class name``` of the model targeted by the belongs_to relationship:
 
 ![books step 2](images/belongsto_books_2.png)
 
 We are done, so click on the "Create" button to save the model.
 
-*Nota Bene : the name of the field defining the belongs_to relationship (here 'writer') can be named as you want, you don't have to name it the singular of the targeted model (here it would be 'author'), even if it may be a good practice. (???)*
+*Nota Bene: the name of the field defining the belongs_to relationship (here 'writer') can be named as you want, you don't have to name it the singular of the targeted model (here it would be 'author'), even if it may be a best practice. (???)*
 
-Now we have our models defined, let's add some dummy entries. We will create a new book entry :
+Now we have our models defined, let's add some dummy entries. First, we'll create a new book entry:
 
 ![books entrie empty](images/belongsto_book_entrie_empty.png)
 
 We can give him a name, but the ```writer``` list is empty, right, because ```authors``` model hasn't any entries yet.
 
-So create an author :
+So create an author:
 
 ![author add](images/belongsto_author_entrie.png)
 
-And then go back in the book creation page, the author appears in the ```writer``` list :
+And then go back in the book creation page, the author appears in the ```writer``` list:
 
 ![book entrie valid](images/belongsto_book_entrie_valid.png)
 
 Great, save the entry and we will check if it works.
 
-In a dummy page, we loop on ```books``` entries, and for each one (here the only one), we display the title of the book and its writer :
+In a dummy page, we loop on ```books``` entries, and for each one (here the only one), we display the title of the book and its writer:
 
 ```
 {% for book in contents.books %}
   {{ book.title }} written by {{ book.writer.name }} is a great lecture.
 {% endfor %}
 ```
-and it displays : ```Responsive Web design written by Ethan Marcotte is a great lecture.```.
+and it displays: ```Responsive Web design written by Ethan Marcotte is a great lecture.```.
 
 #### Has many
 
-Let's keep the previous models, and let's say ```books``` have ```reviews```.
+Let's continue to use the same models from the previous section, and add that ```books``` have ```reviews```.
 A review is basically a piece of text, and it is often published in a media. What's more, a book has many reviews, but a review refers to one and only one book. So we are indeed in the relationship ```books``` has_many ```reviews```.
 
-First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content```, and also a belongs_to field ```book``` :
+First, we create the ```reviews``` model, which has a string field ```journal``` (in which the review is published) and a text field ```content```, and also a belongs_to field ```book```:
 
 ![book reviews](images/hasmany_reviews.png)
 
-**The ```belongs_to``` field targeting the parent model class name, ```books```, is required !**
+**The ```belongs_to``` field targeting the parent model class name, ```books```, is required!**
 
 ![book reviews belongs to field](images/hasmany_reviews_belongsfield.png)
 
-Save the model, and now go editing ```books```. We will add a has_many field named ```reviews```, targeting the ```Class name``` ```reviews```, and ```Inverse of``` itself, so ```books``` :
+Save the model, and then edit the ```books``` model. Now add a has_many field named ```reviews```, targeting the ```Class name``` ```reviews```, and ```Inverse of``` itself, so ```books```:
 
 ![book editing](images/hasmany_books.png)
 
-*Nota Bene : here again, the name of the field defining the has_many relationship (here 'reviews') can be named as you want.*
+*Nota Bene: here again, the name of the field defining the has_many relationship (here 'reviews') can be named as you want.*
 
-Save the updated ```books``` model, and let's edit the previous ```books``` entry :
+Save the updated ```books``` model, and then edit the previous ```books``` entry:
 
 ![book entrie](images/hasmany_bookentrie_1.png)
 
-Let's add a review to this book, click on "Add a new entry" and fill it with dummy text :
+Let's add a review to this book, click on "Add a new entry" and fill it with dummy text:
 
 ![book entrie reviewed](images/hasmany_bookentrie_2.png)
 
 Click on "Save" to close the modal window and create the ```reviews``` entry related to this ```books``` entry. Click again on "Save" to update the ```book```.
 
-In the previous dummy page where we tested the belongs_to relationship, we add a loop on the reviews of a book :
+In the previous dummy page where we tested the belongs_to relationship, we add a loop on the reviews of a book:
 
 ```
 {% for book in contents.books %}
   {{ book.title }} written by {{ book.writer.name }} is a great lecture.
   <br>
-  Reviews :
+  Reviews:
   <br>
   {% for review in book.reviews %}
     Published in {{ review.journal }} : {{ review.content }}
@@ -891,22 +891,22 @@ In the previous dummy page where we tested the belongs_to relationship, we add a
 {% endfor %}
 ```
 
-and it displays :
+and it displays:
 
 ```
 Responsive Web design written by Ethan Marcotte is a great lecture.
-Published in Web design monthly :
+Published in Web design monthly:
 Awesome book, blablabla ...
 ```
 
 ##### UI enabled
 
 
-When you added ```review``` to your ```book``` writer, it was possible because of the property "Ui enabled" of your ```has many``` field. This property is set to ```true``` by default :
+When you added ```review``` to your ```book``` writer, it was possible because of the property "Ui enabled" of your ```has many``` field. This property is set to ```true``` by default:
 
 ![tips ui enable](images/models_tips_uienable.png)
 
-This property sets either you can edit and create a child model entry from a parent model entry, or not.
+This property sets whether you can edit and create a child model entry from a parent model entry, or not.
 
 #### Many to many
 
@@ -919,9 +919,9 @@ Let's create the ```tags``` model.
 
 We have the ```books``` field referring to books via a ```many_to_many``` relationship. Like previously, we specify the ```Class name``` of the targeted model, which is ```books```. We also have to specify ```Inverse of``` (itself) ```tags``` here, but we can't, the select list is empty.
 
-For now, save the  ```tags``` model, we will get back here soon.
-Go edit the  ```books``` model and add, as you may guessed, the ```tags``` field referring to tags via a ```many_to_many``` relationship. The ```Class name``` of the targeted model is ```tags```. Yes I'm repeating myself a little, just in case.
-But here you can define the ```Inverse of``` (itself) which is ```books```, so do it please :
+For now, save the ```tags``` model, we will get back here soon.
+Go edit the ```books``` model and add, as you may guessed, the ```tags``` field referring to tags via a ```many_to_many``` relationship. The ```Class name``` of the targeted model is ```tags```. Yes I'm repeating myself a little, just in case.
+But here you can define the ```Inverse of``` (itself) which is ```books```, so do it please:
 
 ![books m2m update](images/manytomany_books.png)
 
