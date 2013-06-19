@@ -236,7 +236,7 @@ By doing so, you can define as many levels as you want :
                     +- child of first page's child
             +- second page
 
-**Inherit from an other page than the parent one**
+**Inherit from an page other than the parent**
 
 When you extend the parent's layout, you use the tag ``` {% extends parent %} ```, but what if you would like to extends a page which isn't a direct parent?
 
@@ -530,7 +530,7 @@ These meta values will then be available for use in the template with Liquid tag
 
 - Templatized:
 
-  Defines whether this page should be a template for a model instance, see [this chapter](#models_templatize).
+  Defines whether or not this page should be a template for a model instance, see [this chapter](#models_templatize).
 
 
 - Published :
@@ -682,15 +682,15 @@ Let's look at an overview of each one. The rendering of these types will be revi
 
 - Checkbox:
 
-  A simple boolean field. The "Required" attribute will not applied to that kind of field.
+  A simple boolean field. The "Required" attribute can not be applied to this field type.
 
 - Date:
 
-  A date field, with the follwoing date selector built-in:
+  A date field, with the following date selector built-in:
 
   ![type date](images/models_basics_date.png)
 
-  The "updated at" or "created at" fields already exist by default, they can be rendered with ```entry.created_at``` and ```entry.updated_at```.
+  The "updated at" and "created at" fields already exist by default, they can be rendered with ```entry.created_at``` and ```entry.updated_at```.
 
 
 - File:
