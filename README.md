@@ -73,7 +73,7 @@ However, I stayed true to basic requirements of my dream CMS and never moved awa
 <a name="foreword_3"></a>
 ### Why should you use LocomotiveCMS ?
 
-LocomotiveCMS is a CMS that has been created with a single core concept: keep it simple !
+LocomotiveCMS is a CMS that has been created with a single core concept: keep it simple!
 
 - Keep it simple, for the developer who shouldn't have to go deep in architecture, and should be able to edit a website quickly.
 - Keep it simple, for the author who needs to be focused on content, and shouldn't have to go through several pages to edit.
@@ -93,7 +93,7 @@ From a "business" point of view, LocomotiveCMS has several great selling points:
 
 During this reading, it is assumed that:
 
-- You know what Ruby and Rails is and you've a good feeling with terms like Gem, Bundler, deployment
+- You know what Ruby and Rails is and you have a decent understanding of terms like Gem, Bundler, deployment
 - You know what a data model is, and ideally you understand document-oriented storage, like Mongo
 - You have basic knowledge of how to use a shell/command-line interface
 
