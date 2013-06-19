@@ -178,7 +178,7 @@ In Locomotive, it's a bit different :
             +- first page
             +- second page
 
-All pages inherit from index. This way, the index contains the application's layout and the index page content. How do you re-use the layout without re-using the index page content? By introducing ```{% block 'block_name' %} ... {% endblock %}``` : since all pages inherit from index, you declare blocks of content inside the layout (index), which will be overwritten in child pages. Here is a simple example:
+All pages inherit from index. This way, the index contains the application's master layout and the content of the index page. How do you re-use the layout without re-using the index page's content? By introducing ```{% block 'block_name' %} ... {% endblock %}``` : since all pages inherit from index, you declare blocks of content inside the layout (index), which will be overwritten in child pages. Here is a simple example:
 
 Index page:
 
