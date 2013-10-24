@@ -556,7 +556,7 @@ These meta values will then be available for use in the template with Liquid tag
 
 
 <a name="rss_feed"></a>
-### Recipe: Create a RSS feed
+### Recipe: Create an RSS feed
 
 You can create a page which will return an RSS feed of your blog. In the list of pages, it is tagged with the "RSS" label.
 
@@ -572,6 +572,7 @@ In order to create that kind of page, follow these steps:
 - click on the "new page" button.
 - select "RSS" as the response type in the "Advanced options".
 - fill the template
+- replace "example.com" with your real domain
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -599,7 +600,7 @@ In order to create that kind of page, follow these steps:
         ]]></content:encoded>
         <link>http://www.example.com/articles/{{ article._permalink }}</link>
         <guid isPermaLink="true">http://www.example.com/articles/{{ article._permalink }}</guid>
-        <pubDate>{{ article.posted_at | localized_date: '%a, %d %b %Y %H:%M:%S %z' }}</pubDate>
+        <pubDate>{{ article.created_at | localized_date: '%a, %d %b %Y %H:%M:%S %z' }}</pubDate>
         <source url="http://www.example.com/">example.com</source>
       </item>
     {% endfor %}
@@ -609,7 +610,7 @@ In order to create that kind of page, follow these steps:
 
 - click on the "create" button at the bottom of the screen
 
-Note: do not forget to set the "Published" flag to true.
+Note: do not forget to set the "Published" flag to true and validate your feed [here](http://validator.w3.org/feed/).
 
 If you want the browsers and news readers to auto-detect your RSS feed, add the following statement within the "head" tag of your template.
 
