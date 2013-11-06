@@ -1032,7 +1032,7 @@ An empty field will actually return ```nil```, so you can test it in a ```if``` 
 ```html
 {% for item in contents.posts %}
   {% if item.category %}
-    <div class="category">{{ itme.category }}</div>
+    <div class="category">{{ item.category }}</div>
   {% endif %}
 {% endfor %}
 ```
