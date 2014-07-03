@@ -63,7 +63,7 @@ Upon returning to France, I kept thinking about what the perfect CMS should be. 
 
 However, I stayed true to basic requirements of my dream CMS and never moved away from them. These requirements are:
 
-- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and will not require the help of an systems admin guy.
+- A single instance of LocomotiveCMS should host many sites. Once LocomotiveCMS is installed, setting up a new site has to be quick and will not require the help of a systems admin guy.
 - It should be effortless for the content editors to edit the site without ruining the layout or, worse, crashing the site.
 - Developing a LocomotiveCMS site should not require Ruby on Rails knowledge.
 - It should be possible and easy to extend and customize LocomotiveCMS in elegant ways.
