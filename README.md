@@ -41,7 +41,7 @@ For any questions or advices about this book, ask [mail@geraudmathe.com](mailto:
 8. __[Appendix](#appendix)__
 
 <a name="foreword"></a>
-##Foreword
+## Foreword
 
 <a name="foreword_1"></a>
 ### Why this guide ?
